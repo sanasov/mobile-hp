@@ -1,0 +1,51 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>app</artifactId>
+    <version>1.0</version>
+    <name>app</name>
+
+
+    <parent>
+        <groupId>ru.igrey.hp</groupId>
+        <artifactId>mobile-hp</artifactId>
+        <version>1.0</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
+
+                <configuration>
+                    <installDirectory>.mvn</installDirectory>
+                    <nodeVersion>v8.9.1</nodeVersion>
+                    <yarnVersion>v1.3.2</yarnVersion>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>Install Node and yarn</id>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>yarn</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+    </profiles>
+
+</project>

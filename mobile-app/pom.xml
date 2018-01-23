@@ -5,8 +5,6 @@
     <version>1.0</version>
     <name>mobile-app</name>
 
-    <description>Мобильная часть приложения</description>
-
     <parent>
         <groupId>ru.igrey.hp</groupId>
         <artifactId>mobile-hp</artifactId>

@@ -8,11 +8,13 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {CalendarPage} from "../pages/calendar/calendar";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    CalendarPage,
     ListPage
   ],
   imports: [
@@ -23,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
+    CalendarPage,
     ListPage
   ],
   providers: [

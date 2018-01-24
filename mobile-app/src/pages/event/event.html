@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Events</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let event of events" (swipe)="preRemoveSwipe($event, event)" style="display: inline-flex">
+    <ion-item>
+      <ion-input placeholder="Describe event" type="text" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-datetime displayFormat="MMM DD YYYY" placeholder="select date" [(ngModel)]="event.date"></ion-datetime>
+    </ion-item>
+    <ion-item class = "remove-btn" [class.visibility-hidden] = !event.preClose>
+      <button ion-button color="light" (click)="remove()">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+  <button ion-button color="light" (click)="addEvent(event)">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-content>

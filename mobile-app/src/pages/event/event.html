@@ -15,13 +15,11 @@
     <ion-item>
       <ion-datetime displayFormat="MMM DD YYYY" placeholder="select date" [(ngModel)]="event.date"></ion-datetime>
     </ion-item>
-    <ion-item class = "remove-btn" [class.visibility-hidden] = !event.preClose>
-      <button ion-button color="light" (click)="remove()">
-        <ion-icon name="remove-circle"></ion-icon>
-      </button>
+    <ion-item class="remove-btn" [class.visibility-hidden]=!event.preClose>
+      <span (click)="remove()"><ion-icon name="close"></ion-icon></span>
     </ion-item>
   </ion-card>
-  <button ion-button color="light" (click)="addEvent(event)">
+  <button ion-button color="light" class=add-btn (click)="addEvent(event)">
     <ion-icon name="add"></ion-icon>
   </button>
 </ion-content>

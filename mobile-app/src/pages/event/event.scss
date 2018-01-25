@@ -10,3 +10,22 @@
   margin-right: 10px;
   float: right;
 }
+
+.close-mode {
+  ion-input, div {
+    color: grey;
+  }
+  .close-line {
+    width: 97%;
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    z-index: 1;
+  }
+}
+
+.event-title {
+ border: none;
+  width: 100%;
+}
+

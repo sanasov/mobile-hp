@@ -1,12 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'page-event',
   templateUrl: 'event.html'
 })
-export class EventPage {
+export class EventPage implements OnDestroy {
 
   events: Array<{ title: string, date: string }>;
 
@@ -16,16 +16,30 @@ export class EventPage {
     });
   }
 
+  ngOnDestroy() {
+    this.save();
+  }
+
   addEvent() {
     this.events.push({title: "", date: ""});
   }
 
   preRemoveSwipe($event, event) {
-    event.preClose =  !event.preClose;
+    if (!event.title && !event.title) {
+      this.remove(event);
+      return;
+    }
+    event.preClose = !event.preClose;
   }
 
   remove(event) {
-    this.events.splice(this.events.indexOf(event, 0));
+    this.events.splice(this.events.indexOf(event), 1);
+    this.save();
+  }
+
+
+  save() {
+    this.storage.set('events', this.events);
   }
 
 }

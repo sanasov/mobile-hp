@@ -1,37 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Events</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Events</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let event of events"
-            (swipe)="preRemoveSwipe($event, event)"
-            style="display: inline-flex; position: relative"
-            [class.close-mode]=event.preClose>
-    <hr class="close-line"/>
-    <ion-item>
-      <input class="event-title"
-             placeholder="Describe event"
-             type="text" [(ngModel)]="event.title"
-             (blur)="save()"
-      />
-    </ion-item>
-    <ion-item>
-      <ion-datetime displayFormat="MMM DD YYYY"
-                    placeholder="Select date"
-                    [(ngModel)]="event.date"
-                    (ngModelChange)="save()"
-      ></ion-datetime>
-    </ion-item>
-    <ion-item class="remove-btn" [class.visibility-hidden]=!event.preClose>
-      <span (click)="remove(event)"><ion-icon name="close"></ion-icon></span>
-    </ion-item>
-  </ion-card>
-  <button ion-button color="light" class=add-btn (click)="addEvent(event)">
-    <ion-icon name="add"></ion-icon>
-  </button>
+    <ion-card  [hidden]="events && events.length !== 0">
+    <ion-card-header>
+        Add Events
+    </ion-card-header>
+    </ion-card>
+    <ion-card *ngFor="let event of events"
+              (swipe)="preRemoveSwipe($event, event)"
+              style="display: inline-flex; position: relative"
+              [class.close-mode]=event.preClose>
+        <hr class="close-line"/>
+        <ion-item>
+            <input class="event-title"
+                   placeholder="Describe event"
+                   [(ngModel)]="event.title"
+                   (blur)="save()"/>
+        </ion-item>
+        <ion-item>
+            <ion-datetime displayFormat="MMM DD YYYY"
+                          placeholder="Select date"
+                          [(ngModel)]="event.date"
+                          (ngModelChange)="save()"
+            ></ion-datetime>
+        </ion-item>
+        <ion-item class="remove-btn" [class.visibility-hidden]=!event.preClose>
+            <span (click)="remove(event)"><ion-icon name="close"></ion-icon></span>
+        </ion-item>
+    </ion-card>
+    <button ion-button color="light" class=add-btn (click)="addEvent(event)">
+        <ion-icon name="add"></ion-icon>
+    </button>
 </ion-content>

@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
-import { Storage } from '@ionic/storage';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -19,13 +19,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage) {
-    // storage.set('events', [
-    //   {title: "Birthday", date: "1991-02-28"},
-    //   {title: "mom's birthday", date: "1960-05-03"},
-    //   {title: "dad's birthday", date: "1960-04-15"},
-    //   {title: "albert's birthday", date: "1983-06-08"}
-    // ]);
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

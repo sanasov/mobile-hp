@@ -12,7 +12,7 @@ export class EventPage implements OnDestroy {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     storage.get('events').then((result) => {
-      this.events = result;
+      this.events = result || [];
     });
   }
 

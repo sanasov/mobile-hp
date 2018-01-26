@@ -3,21 +3,18 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Events</ion-title>
+        <ion-title id="event-title">Events</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <ion-card  [hidden]="events && events.length !== 0">
-    <ion-card-header>
-        Add Events
-    </ion-card-header>
-    </ion-card>
+<ion-content padding>
+
+
     <ion-card *ngFor="let event of events"
               (swipe)="preRemoveSwipe($event, event)"
               style="display: inline-flex; position: relative"
               [class.close-mode]=event.preClose>
-        <hr class="close-line"/>
+        <hr [hidden]="!event.preClose" class="close-line"/>
         <ion-item>
             <input class="event-title"
                    placeholder="Describe event"
@@ -35,7 +32,9 @@
             <span (click)="remove(event)"><ion-icon name="close"></ion-icon></span>
         </ion-item>
     </ion-card>
-    <button ion-button color="light" class=add-btn (click)="addEvent(event)">
+    <button class=add-btn (click)="addEvent(event)">
         <ion-icon name="add"></ion-icon>
     </button>
+    <div class="first-step-info" [hidden]="events && events.length !== 0"><span>Add great events to find out new holidays...</span>
+    </div>
 </ion-content>

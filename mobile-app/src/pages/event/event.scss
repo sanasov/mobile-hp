@@ -1,6 +1,7 @@
 .visibility-hidden {
   visibility: hidden;
 }
+
 .display-none {
   display: none;
 }
@@ -10,8 +11,17 @@
 }
 
 .add-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
   margin-right: 10px;
   float: right;
+  color: #fff;
+  background-color: #0da5f3;
+
+  ion-icon {
+    font-size: 1.5em;
+  }
 }
 
 .close-mode {
@@ -19,16 +29,36 @@
     color: grey;
   }
   .close-line {
-    width: calc(100% - 40px);
-    position: absolute;
-    top: 16px;
-    left: 10px;
     z-index: 1;
   }
 }
 
+.close-line {
+  width: calc(100% - 40px);
+  position: absolute;
+  top: 16px;
+  left: 10px;
+}
+
+.button-inner {
+  color: #a3a3a3;
+}
+
 .event-title {
- border: none;
+  border: none;
   width: 100%;
 }
 
+.first-step-info {
+  font-size: 40px;
+  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  width: 100%;
+}
+
+#event-title .toolbar-title-md {
+  color: #0da5f3;
+}

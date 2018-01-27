@@ -7,7 +7,8 @@
 }
 
 .remove-btn {
-  width: 90px;
+  margin: auto 10px auto 0px;
+  color: grey;
 }
 
 .add-btn {
@@ -15,6 +16,7 @@
   height: 50px;
   border-radius: 25px;
   margin-right: 10px;
+  margin-top: 10px;
   float: right;
   color: #fff;
   background-color: #0da5f3;
@@ -61,4 +63,17 @@
 
 #event-title .toolbar-title-md {
   color: #0da5f3;
+}
+
+.width210 {
+  width: 210px;
+}
+
+.min-width140 {
+  min-width: 140px;
+}
+
+.card-md {
+  margin: 5px;
+  width: calc(100% - 10px);
 }

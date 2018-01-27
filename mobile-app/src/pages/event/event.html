@@ -7,7 +7,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
 
     <ion-card *ngFor="let event of events"
@@ -21,16 +21,14 @@
                    [(ngModel)]="event.title"
                    (blur)="save()"/>
         </ion-item>
-        <ion-item>
+        <ion-item class="width210 min-width140">
             <ion-datetime displayFormat="MMM DD YYYY"
                           placeholder="Select date"
                           [(ngModel)]="event.date"
                           (ngModelChange)="save()"
             ></ion-datetime>
         </ion-item>
-        <ion-item class="remove-btn" [class.visibility-hidden]=!event.preClose>
-            <span (click)="remove(event)"><ion-icon name="close"></ion-icon></span>
-        </ion-item>
+            <span class="remove-btn" [class.visibility-hidden]=!event.preClose (click)="remove(event)"><ion-icon name="close"></ion-icon></span>
     </ion-card>
     <button class=add-btn (click)="addEvent(event)">
         <ion-icon name="add"></ion-icon>

@@ -16,12 +16,9 @@
               [class.close-mode]=event.preClose>
         <hr [hidden]="!event.preClose" class="close-line"/>
         <ion-item>
-            <input class="event-title"
-                   placeholder="Describe event"
-                   [(ngModel)]="event.title"
-                   (blur)="save()"/>
+            <span (click)="openModal(event)">{{event.title}}</span>
         </ion-item>
-        <ion-item class="width210 min-width140">
+        <ion-item class="ion-item-date-time">
             <ion-datetime displayFormat="MMM DD YYYY"
                           placeholder="Select date"
                           [(ngModel)]="event.date"

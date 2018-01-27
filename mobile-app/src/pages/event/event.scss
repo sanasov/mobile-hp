@@ -7,8 +7,9 @@
 }
 
 .remove-btn {
-  margin: auto 10px auto 0px;
+  margin: auto 0px auto 0px;
   color: grey;
+  min-width: 25px;
 }
 
 .add-btn {
@@ -46,7 +47,7 @@
   color: #a3a3a3;
 }
 
-.event-title {
+#hp-event-title {
   border: none;
   width: 100%;
 }
@@ -65,8 +66,14 @@
   color: #0da5f3;
 }
 
-.width210 {
-  width: 210px;
+.ion-item-date-time{
+  margin-right: 15px;
+  min-width: 140px;
+  width: 140px;
+}
+
+.width140 {
+  width: 140px;
 }
 
 .min-width140 {

@@ -1,32 +1,73 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Calendar</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Calendar</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  Calendar here
+    <div>
+        <div>
+            <div class="calendar-nav-ctrl visibility-hidden">
+                <div id="calendarPreviousMonth"
+                     mwlCalendarPreviousView
+                     [view]="view"
+                     [(viewDate)]="viewDate"
+                     (viewDateChange)="activeDayIsOpen = false">
+                    Previous
+                </div>
+                <div id="calendarNextMonth"
+                     mwlCalendarNextView
+                     [view]="view"
+                     [(viewDate)]="viewDate"
+                     (viewDateChange)="activeDayIsOpen = false">
+                    Next
+                </div>
+            </div>
+        </div>
+        <div class="calendar-month-header">
+            <span class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</span>
+            <span class="calendar-today" mwlCalendarToday
+               [(viewDate)]="viewDate">
+                Today
+            </span>
+        </div>
 
-  <p>
-    <button ion-button color="light">Light</button>
-  </p>
+    </div>
+    <br>
+    <div (swipe)="changeMonth($event)">
+        <mwl-calendar-month-view
 
-  <p>
-    <button ion-button>Default</button>
-  </p>
-
-  <p>
-    <button ion-button color="secondary">Secondary</button>
-  </p>
-
-  <p>
-    <button ion-button color="danger">Danger</button>
-  </p>
-
-  <p>
-    <button ion-button color="dark">Dark</button>
-  </p>
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                [activeDayIsOpen]="activeDayIsOpen"
+                [weekendDays]="weekendDays"
+                [headerTemplate]="customHeaderTemplate"
+                (dayClicked)="dayClicked($event.day)"
+                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+    </div>
 </ion-content>
+
+<ng-template
+        #customHeaderTemplate
+        let-days="days"
+        let-locale="locale">
+    <div class="cal-cell-row cal-header">
+        <div
+                class="cal-cell"
+                *ngFor="let day of days"
+                [class.cal-past]="day.isPast"
+                [class.cal-today]="day.isToday"
+                [class.cal-future]="day.isFuture"
+                [class.cal-weekend]="day.isWeekend"
+                [ngClass]="day.cssClass">
+            {{ day.date | calendarDate:'monthViewColumnHeader':locale }}
+        </div>
+
+    </div>
+</ng-template>

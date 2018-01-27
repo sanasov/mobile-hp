@@ -1,3 +1,39 @@
-page-list {
+.calendar-nav-ctrl {
+  display: flex;
+}
 
+.cal-month-view .cal-day-cell {
+  min-height: 70px;
+
+  .cal-cell-top {
+    min-height: 70px;
+  }
+}
+
+.cal-header {
+  .cal-cell {
+    color: #0da5f3;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.calendar-month-header {
+  justify-content: center;
+  display: flex;
+
+  .calendar-month-title {
+    color: grey;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .calendar-today {
+    color: #0da5f3;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
 }

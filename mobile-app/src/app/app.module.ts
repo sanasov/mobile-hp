@@ -12,6 +12,8 @@ import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
 import {IonicStorageModule} from "@ionic/storage";
 import {EventModalPage} from "../pages/event/event-modal/event-modal";
+import {CalendarModule} from "angular-calendar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -24,8 +26,10 @@ import {EventModalPage} from "../pages/event/event-modal/event-modal";
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        CalendarModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [

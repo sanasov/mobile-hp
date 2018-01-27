@@ -17,11 +17,17 @@ export class EventModalPage implements OnInit {
 
 
     ngOnInit(): void {
-        setTimeout(() => document.getElementById("hp-event-title").focus(),500);
+        setTimeout(() => document.getElementById("hp-event-title").focus(), 500);
 
     }
 
     dismiss() {
         this.viewCtrl.dismiss();
+    }
+
+    readyAddEvent($event) {
+        if ($event.key === "Enter") {
+            document.getElementById("hp-event-title").blur();
+        }
     }
 }

@@ -38,11 +38,7 @@ export class EventPage implements OnDestroy {
     }
 
     preRemoveSwipe($event, event) {
-        if (!event.title && !event.title) {
-            this.remove(event);
-            return;
-        }
-        event.preClose = !event.preClose;
+        event.preClose = $event.deltaX > 0;
     }
 
     remove(event) {

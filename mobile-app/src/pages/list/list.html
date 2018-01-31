@@ -9,6 +9,8 @@
 
 <ion-content>
   <ion-list>
+    {{'CALENDAR' | translate }}
+    <div [innerHTML]="'EVENT' | translate"></div>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
       {{item.title}}

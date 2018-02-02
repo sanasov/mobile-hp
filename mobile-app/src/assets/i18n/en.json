@@ -3,5 +3,6 @@
   "EVENTS": "Event",
   "SETTINGS": "Settings",
   "PROFILE": "Profile",
-  "LANGUAGES": "Languages"
+  "LANGUAGES": "Languages",
+  "NOTIFICATIONS": "Notifications"
 }

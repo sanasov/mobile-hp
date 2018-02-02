@@ -1,5 +1,7 @@
 {
   "CALENDAR": "Calendar",
-  "EVENT": "Event",
-  "PROFILE": "Profile"
+  "EVENTS": "Event",
+  "SETTINGS": "Settings",
+  "PROFILE": "Profile",
+  "LANGUAGES": "Languages"
 }

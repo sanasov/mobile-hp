@@ -1,5 +1,7 @@
 {
   "CALENDAR": "Календарь",
-  "EVENT": "События",
-  "PROFILE": "Профиль"
+  "EVENTS": "События",
+  "PROFILE": "Профиль",
+  "SETTINGS": "Настройки",
+  "LANGUAGES": "Языки"
 }

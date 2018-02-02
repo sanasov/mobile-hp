@@ -1,25 +1,23 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>list</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'SETTINGS' | translate }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    {{'CALENDAR' | translate }}
-    <div [innerHTML]="'EVENT' | translate"></div>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+
+    <ion-list>
+        <ion-item (click)="openLanguagePage($event)">
+            <ion-icon name='globe' item-start></ion-icon>
+            {{'LANGUAGES' | translate}}
+            <ion-note item-end>
+                {{currentLanguage}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
+
+
 </ion-content>

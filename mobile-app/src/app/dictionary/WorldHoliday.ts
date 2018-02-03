@@ -1,14 +1,15 @@
 export class WorldHoliday {
     holidays: Array<{ title: string, date: string }> = [
-        {title: "ARCHAEOLOGIST", date: "13.07"},
+        {title: "ARCHAEOLOGIST", date: "28.02"},
         {title: "BLONDE", date: "14.07"},
         {title: "BOSS", date: "15.07"},
         {title: "CHOCOLATE", date: "16.07"},
-        {title: "CHRISTMAS", date: "17.07"},
+        {title: "CHRISTMAS", date: "25.12"},
+        {title: "CHRISTMAS", date: "7.01"},
         {title: "FAMILY", date: "18.07"},
         {title: "FOOTBALL", date: "19.07"},
         {title: "FRIENDS", date: "10.07"},
-        {title: "HALLOWEEN", date: "11.02"},
+        {title: "HALLOWEEN", date: "31.10"},
         {title: "HUGS", date: "12.02"},
         {title: "KIT", date: "13.02"},
         {title: "LAUGHT", date: "14.02"},

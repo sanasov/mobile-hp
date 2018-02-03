@@ -11,6 +11,7 @@ export class HolidayPage {
     date: Date;
     events: CalendarEvent[];
     holiday: String;
+    holidaySrc: String;
 
     constructor(public platform: Platform,
                 public params: NavParams,
@@ -18,6 +19,7 @@ export class HolidayPage {
         this.date = navParams.get('date');
         this.events = navParams.get('events');
         this.holiday = new WorldHoliday(this.date).get();
+        this.holidaySrc = "assets/imgs/world-holiday/" + this.holiday.toLowerCase() + ".jpg";
     }
 
 }

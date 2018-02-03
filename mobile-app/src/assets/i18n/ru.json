@@ -3,6 +3,8 @@
   "EVENTS": "События",
   "PROFILE": "Профиль",
   "SETTINGS": "Настройки",
-  "LANGUAGES": "Языки",
-  "NOTIFICATIONS": "Уведомления"
+  "LANGUAGE": "Язык",
+  "NOTIFICATIONS": "Уведомления",
+  "WORLD_HOLIDAYS": "Ваши праздники",
+  "EVENT_HOLIDAYS": "Всемирные праздники"
 }

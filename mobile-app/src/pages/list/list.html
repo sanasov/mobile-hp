@@ -10,32 +10,32 @@
 <ion-content>
 
     <ion-list>
-        <ion-item (click)="openLanguagePage($event)">
+        <button ion-item icon-start (click)="openLanguagePage($event)">
             <ion-icon name='globe' item-start></ion-icon>
-            {{'LANGUAGES' | translate}}
+            {{'LANGUAGE' | translate}}
             <ion-note item-end>
                 {{currentLanguage}}
             </ion-note>
-        </ion-item>
+        </button>
     </ion-list>
 
     <ion-list class="margin-top-40px" no-border>
         <ion-list-header>
             {{'NOTIFICATIONS' | translate | uppercase}}
+            <ion-icon name="notifications" item-start></ion-icon>
         </ion-list-header>
+
         <ion-item>
-            <ion-toggle checked="true"></ion-toggle>
             <ion-label>
-                Quidditch Practice
+                {{'WORLD_HOLIDAYS' | translate }}
             </ion-label>
-            <ion-icon name='brush' item-start></ion-icon>
+            <ion-toggle [(ngModel)]="notification.worldHoliday" (ionChange)="saveNotificationSettings()"></ion-toggle>
         </ion-item>
         <ion-item>
-            <ion-toggle checked="true"></ion-toggle>
             <ion-label>
-                Quidditch Practice
+                {{'EVENT_HOLIDAYS' | translate}}
             </ion-label>
-            <ion-icon name='brush' item-start></ion-icon>
+            <ion-toggle [(ngModel)]="notification.eventHoliday" (ionChange)="saveNotificationSettings()"></ion-toggle>
         </ion-item>
     </ion-list>
 

@@ -3,6 +3,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {Language} from "../../../app/dictionary/language";
 import {Storage} from '@ionic/storage';
+import {NavController, NavParams} from "ionic-angular";
 
 @Component({
     selector: 'app-language-page',
@@ -14,13 +15,15 @@ export class LanguagePage implements OnInit {
 
     constructor(private translateService: TranslateService,
                 private zone: NgZone,
-                private storage: Storage) {
+                private storage: Storage,
+                private navParams: NavParams) {
     }
 
     ngOnInit() {
         this.storage.get('device-language').then((deviceLanguage: Language) => {
             this.deviceLanguage = deviceLanguage;
         })
+
     }
 
     onLanguageChange() {

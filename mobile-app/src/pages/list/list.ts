@@ -11,6 +11,7 @@ import {Language} from "../../app/dictionary/language";
 })
 export class ListPage {
     currentLanguage: Language;
+    notification: Object = {worldHoliday: true, eventHoliday: true};
 
 
     constructor(private storage: Storage, private translateService: TranslateService, private navCtrl: NavController, private navParams: NavParams) {
@@ -23,11 +24,31 @@ export class ListPage {
                 this.currentLanguage = deviceLanguage;
                 this.translateService.use(deviceLanguage.toLocaleLowerCase())
             })
+
+        this.storage
+            .get("notification")
+            .then((result) => {
+                if (result) {
+                    this.notification = result;
+                }
+            })
     }
 
     openLanguagePage(event) {
         // That's right, we're pushing to ourselves!
-        this.navCtrl.push(LanguagePage, {});
+        this.navCtrl.push(LanguagePage, {currentLanguage: this.currentLanguage});
+    }
+
+    ionViewWillEnter() {
+        this.storage
+            .get("device-language")
+            .then((deviceLanguage) => {
+                this.currentLanguage = deviceLanguage;
+            })
+    }
+
+    saveNotificationSettings() {
+        this.storage.set("notification", this.notification);
     }
 }
 

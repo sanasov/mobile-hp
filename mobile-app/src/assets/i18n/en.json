@@ -3,6 +3,8 @@
   "EVENTS": "Event",
   "SETTINGS": "Settings",
   "PROFILE": "Profile",
-  "LANGUAGES": "Languages",
-  "NOTIFICATIONS": "Notifications"
+  "LANGUAGE": "Language",
+  "NOTIFICATIONS": "Notifications",
+  "WORLD_HOLIDAYS": "World holidays",
+  "EVENT_HOLIDAYS": "Your holidays"
 }

@@ -22,7 +22,7 @@ export class WorldHoliday {
         {title: "PI", date: "14.03"},
         {title: "POLOTENCE", date: "25.05"},
         {title: "ROCK_N_ROLL", date: "13.04"},
-        {title: "SLEEPCAT", date: "1.05"},
+        {title: "SLEEPCAT", date: "1.03"},
         {title: "SUN", date: "3.05"}
     ];
     date: Date;

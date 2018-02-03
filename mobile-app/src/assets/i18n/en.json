@@ -6,5 +6,100 @@
   "LANGUAGE": "Language",
   "NOTIFICATIONS": "Notifications",
   "WORLD_HOLIDAYS": "World holidays",
-  "EVENT_HOLIDAYS": "Your holidays"
+  "EVENT_HOLIDAYS": "Your holidays",
+
+
+
+  "ARCHAEOLOGIST": {
+    "TITLE": "Archaeologist",
+    "COMMENT": "Time to collect sweets"
+  },
+  "BLONDE": {
+    "TITLE": "Blonde",
+    "COMMENT": "Time to collect sweets"
+  },
+  "BOSS": {
+    "TITLE": "Boss",
+    "COMMENT": "Time to collect sweets"
+  },
+  "CHOCOLATE": {
+    "TITLE": "Chocolate",
+    "COMMENT": "Time to collect sweets"
+  },
+  "CHRISTMAS": {
+    "TITLE": "Christmas",
+    "COMMENT": "Time to collect sweets"
+  },
+  "FAMILY": {
+    "TITLE": "Family",
+    "COMMENT": "Time to collect sweets"
+  },
+  "FOOTBALL": {
+    "TITLE": "Football",
+    "COMMENT": "Time to collect sweets"
+  },
+  "FRIENDS": {
+    "TITLE": "Friends",
+    "COMMENT": "Time to collect sweets"
+  },
+  "HALLOWEEN": {
+    "TITLE": "Halloween",
+    "COMMENT": "Time to collect sweets"
+  },
+  "HUGS": {
+    "TITLE": "Hugs",
+    "COMMENT": "Time to collect sweets"
+  },
+  "KIT": {
+    "TITLE": "Kit",
+    "COMMENT": "Time to collect sweets"
+  },
+  "LAUGHT": {
+    "TITLE": "Laught",
+    "COMMENT": "Time to collect sweets"
+  },
+  "MEN": {
+    "TITLE": "Men's day",
+    "COMMENT": "Time to collect sweets"
+  },
+  "MOUNTIN": {
+    "TITLE": "Mountin",
+    "COMMENT": "Time to collect sweets"
+  },
+  "MOVIE": {
+    "TITLE": "Movie",
+    "COMMENT": "Time to collect sweets"
+  },
+  "MUSEUM": {
+    "TITLE": "Museum",
+    "COMMENT": "Time to collect sweets"
+  },
+  "NOTABAK": {
+    "TITLE": "Notabak",
+    "COMMENT": "Time to collect sweets"
+  },
+  "NURSE": {
+    "TITLE": "Nurse",
+    "COMMENT": "Time to collect sweets"
+  },
+  "PI": {
+    "TITLE": "Pi",
+    "COMMENT": "Time to collect sweets"
+  },
+  "POLOTENCE": {
+    "TITLE": "Polotence",
+    "COMMENT": "Time to collect sweets"
+  },
+  "ROCK_N_ROLL": {
+    "TITLE": "Rock_n_roll",
+    "COMMENT": "Time to collect sweets"
+  },
+  "SLEEPCAT": {
+    "TITLE": "Sleepcat",
+    "COMMENT": "Time to collect sweets"
+  },
+  "SUN": {
+    "TITLE": "Sun",
+    "COMMENT": "Time to collect sweets"
+  }
 }

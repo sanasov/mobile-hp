@@ -1,7 +1,8 @@
-import {NavController, NavParams, Platform} from "ionic-angular";
-import {OnInit, Component} from "@angular/core";
+import {NavParams, Platform} from "ionic-angular";
+import {Component} from "@angular/core";
 import {CalendarEvent} from 'angular-calendar';
-// import {WorldHoliday} from "../../../app/dictionary/worldHoliday";
+import {WorldHoliday} from "../../../app/dictionary/WorldHoliday";
+
 @Component({
     templateUrl: 'holiday.html'
 })
@@ -16,7 +17,7 @@ export class HolidayPage {
                 private navParams: NavParams) {
         this.date = navParams.get('date');
         this.events = navParams.get('events');
-        // this.holiday = new WorldHoliday(this.date).holiday();
+        this.holiday = new WorldHoliday(this.date).get();
     }
 
 }

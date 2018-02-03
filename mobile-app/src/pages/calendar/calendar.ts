@@ -66,10 +66,10 @@ export class CalendarPage {
     activeDayIsOpen: boolean = false;
 
     dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
-        // this.navCtrl.push(HolidayPage, {
-        //     date: date,
-        //     events: events
-        // });
+        this.navCtrl.push(HolidayPage, {
+            date: date,
+            events: events
+        });
     }
 
 

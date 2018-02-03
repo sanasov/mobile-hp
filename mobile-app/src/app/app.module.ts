@@ -18,6 +18,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LanguagePage} from "../pages/list/launguage-page/language";
+import {HolidayPage} from "../pages/calendar/holiday/holiday";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {LanguagePage} from "../pages/list/launguage-page/language";
         EventPage,
         EventModalPage,
         LanguagePage,
+        HolidayPage,
         ListPage
     ],
     imports: [
@@ -53,6 +55,7 @@ import {LanguagePage} from "../pages/list/launguage-page/language";
         EventPage,
         EventModalPage,
         LanguagePage,
+        HolidayPage,
         ListPage
     ],
     providers: [

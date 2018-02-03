@@ -7,6 +7,8 @@ import {
 } from 'angular-calendar';
 import {Subject} from "rxjs/Subject";
 import {HolidayEngine} from "../../app/service/HolidayEngine";
+import {HolidayPage} from "./holiday/holiday";
+import {NavController, NavParams} from "ionic-angular";
 
 @Component({
     selector: 'page-calendar',
@@ -24,7 +26,7 @@ export class CalendarPage {
     weekendDays: Array<String> = ["a", "b", "c", "d", "c", "d", "c"];
 
 
-    constructor(private storage: Storage) {
+    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams) {
         storage.get('events').then((result) => {
             this.holidayEngine = new HolidayEngine(result || []);
             this.events = this.holidayEngine.getCalendarEvents(2019)
@@ -59,25 +61,18 @@ export class CalendarPage {
 
     refresh: Subject<any> = new Subject();
 
-    events: CalendarEvent[] = [
-
-    ];
+    events: CalendarEvent[] = [];
 
     activeDayIsOpen: boolean = false;
 
     dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
-        // if (isSameMonth(date, this.viewDate)) {
-        //     if (
-        //         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        //         events.length === 0
-        //     ) {
-        //         this.activeDayIsOpen = false;
-        //     } else {
-        //         this.activeDayIsOpen = true;
-        //         this.viewDate = date;
-        //     }
-        // }
+        this.openHolidayPage();
     }
+
+    openHolidayPage() {
+        this.navCtrl.push(HolidayPage);
+    }
+
 
     eventTimesChanged({
                           event,
@@ -94,22 +89,6 @@ export class CalendarPage {
         this.modalData = {event, action};
         // this.modal.open(this.modalContent, { size: 'lg' });
     }
-
-    addEvent(): void {
-        // this.events.push({
-        //     title: 'New event',
-        //     start: startOfDay(new Date()),
-        //     end: endOfDay(new Date()),
-        //     color: colors.red,
-        //     draggable: true,
-        //     resizable: {
-        //         beforeStart: true,
-        //         afterEnd: true
-        //     }
-        // });
-        this.refresh.next();
-    }
-
 
     changeMonth($event): void {
         if (Math.abs($event.deltaX) < 100) {

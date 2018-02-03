@@ -3,7 +3,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {Language} from "../../../app/dictionary/language";
 import {Storage} from '@ionic/storage';
-import {NavController, NavParams} from "ionic-angular";
+import {NavParams} from "ionic-angular";
 
 @Component({
     selector: 'app-language-page',

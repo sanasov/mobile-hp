@@ -42,23 +42,22 @@
 
 .holiday-img {
   border-radius: 1%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .holiday-card {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.holiday-header-title {
+.holiday-card-title {
   color: grey;
   font-size: 28px;
   font-weight: 300;
-  text-align: center;
-  margin-right: 65px;
 }
 
 .holiday-card-description {

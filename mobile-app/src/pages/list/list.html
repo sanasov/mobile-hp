@@ -4,10 +4,10 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="color-grey">
 
     <ion-list>
-        <button ion-item icon-start (click)="openLanguagePage($event)">
+        <button class="language-btn" ion-item icon-start (click)="openLanguagePage($event)">
             <ion-icon name='globe' item-start></ion-icon>
             {{'LANGUAGE' | translate}}
             <ion-note item-end>
@@ -16,7 +16,7 @@
         </button>
     </ion-list>
 
-    <ion-list class="margin-top-40px" no-border>
+    <ion-list class="margin-top-50px">
         <ion-list-header>
             {{'NOTIFICATIONS' | translate | uppercase}}
             <ion-icon name="notifications" item-start></ion-icon>
@@ -24,16 +24,23 @@
 
         <ion-item>
             <ion-label>
+                <span class="holiday-icon holiday-yellow-background"></span>
                 {{'WORLD_HOLIDAYS' | translate }}
             </ion-label>
-            <ion-toggle [(ngModel)]="notification.worldHoliday" (ionChange)="saveNotificationSettings()"></ion-toggle>
+            <ion-toggle [(ngModel)]="notification.worldHoliday"
+                        (ionChange)="saveNotificationSettings()"
+                        color="holiday-yellow">
+            </ion-toggle>
         </ion-item>
         <ion-item>
             <ion-label>
+                <span class="holiday-icon holiday-red-background"></span>
                 {{'EVENT_HOLIDAYS' | translate}}
             </ion-label>
-            <ion-toggle [(ngModel)]="notification.eventHoliday" (ionChange)="saveNotificationSettings()"></ion-toggle>
+            <ion-toggle [(ngModel)]="notification.eventHoliday"
+                        (ionChange)="saveNotificationSettings()"
+                        color="holiday-red">
+            </ion-toggle>
         </ion-item>
     </ion-list>
-
 </ion-content>

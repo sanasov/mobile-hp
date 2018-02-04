@@ -1,11 +1,12 @@
 <ion-header>
     <ion-navbar>
-        <div class="holiday-header-title"> {{holiday + ".TITLE" | translate}}</div>
+        <ion-title>{{date}}</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
 
     <div class="holiday-card">
+        <div class="holiday-card-title"> {{holiday + ".TITLE" | translate}}</div>
         <img class="holiday-img" [src]="holidaySrc">
         <div class="holiday-card-description"> {{holiday + ".DESCRIPTION" | translate}}</div>
     </div>

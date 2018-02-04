@@ -1,3 +1,29 @@
-page-list {
+.color-grey {
+  color: #757575;
+}
 
+.holiday-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 6px;
+}
+
+.list-md {
+  .list-header-md {
+    border-top: none;
+  }
+  ion-icon {
+    color: #595555;
+  }
+  .label-md {
+    font-size: 1.4rem;
+    color: #595555;
+  }
+
+   .language-btn{
+    border-bottom: 1px solid #dedede;
+  }
 }

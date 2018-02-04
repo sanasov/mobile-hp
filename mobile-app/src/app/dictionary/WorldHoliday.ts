@@ -1,3 +1,6 @@
+import {CalendarEvent} from 'angular-calendar';
+import {holidayColors} from "./holidayColor";
+
 export class WorldHoliday {
     holidays: Array<{ title: string, date: string }> = [
         {title: "ARCHAEOLOGIST", date: "15.08"},
@@ -25,15 +28,22 @@ export class WorldHoliday {
         {title: "SLEEPCAT", date: "1.03"},
         {title: "SUN", date: "3.05"}
     ];
-    date: Date;
 
-    constructor(date: Date) {
-        this.date = date;
-    }
-
-    get(): String {
-        const dayMonth = this.date.getDate() + "." + (this.date.getMonth() < 9 ? "0" : "") + (this.date.getMonth() + 1)
+    get (date: Date): String {
+        const dayMonth = date.getDate() + "." + (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1)
         const holiday = this.holidays.filter(h => h.date === dayMonth)[0];
         return holiday ? holiday.title : "";
+    }
+
+    toCalendarEvents(year: number): Array<CalendarEvent> {
+        return this.holidays.map(holiday => {
+            return {
+                start: new Date(year, +holiday.date.split(".")[1] - 1, +holiday.date.split(".")[0]),
+                end: new Date(year, +holiday.date.split(".")[1] - 1, +holiday.date.split(".")[0]),
+                title: holiday.title,
+                color: holidayColors.yellow,
+                actions: null
+            }
+        });
     }
 }

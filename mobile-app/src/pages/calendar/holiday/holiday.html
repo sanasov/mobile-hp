@@ -3,7 +3,9 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <img [src]="holidaySrc">
+    <div>
+        <img class="holiday-img" [src]="holidaySrc">
+    </div>
     <div>
         {{holiday + ".TITLE" | translate}} <br/>
         {{holiday + ".COMMENT" | translate}}

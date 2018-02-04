@@ -18,7 +18,7 @@ export class HolidayPage {
                 private navParams: NavParams) {
         this.date = navParams.get('date');
         this.events = navParams.get('events');
-        this.holiday = new WorldHoliday(this.date).get();
+        this.holiday = new WorldHoliday().get(this.date);
         this.holidaySrc = "assets/imgs/world-holiday/" + this.holiday.toLowerCase() + ".jpg";
     }
 

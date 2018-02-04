@@ -9,6 +9,7 @@ import {Subject} from "rxjs/Subject";
 import {HolidayEngine} from "../../app/service/HolidayEngine";
 import {HolidayPage} from "./holiday/holiday";
 import {NavController, NavParams} from "ionic-angular";
+import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
 
 @Component({
     selector: 'page-calendar',
@@ -33,7 +34,8 @@ export class CalendarPage {
                 .concat(this.holidayEngine.getCalendarEvents(2017))
                 .concat(this.holidayEngine.getCalendarEvents(2016))
                 .concat(this.holidayEngine.getCalendarEvents(2015))
-                .concat(this.holidayEngine.getCalendarEvents(2014));
+                .concat(this.holidayEngine.getCalendarEvents(2014))
+                .concat(new WorldHoliday().toCalendarEvents(2018))
         });
     }
 

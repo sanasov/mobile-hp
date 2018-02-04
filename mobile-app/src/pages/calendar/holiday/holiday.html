@@ -1,14 +1,14 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{date}}</ion-title>
+        <ion-title>{{worldHolidays.current().date | date :'dd MMM yyyy' : '' : locale}}</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
 
-    <div class="holiday-card">
-        <div class="holiday-card-title"> {{holiday + ".TITLE" | translate}}</div>
-        <img class="holiday-img" [src]="holidaySrc">
-        <div class="holiday-card-description"> {{holiday + ".DESCRIPTION" | translate}}</div>
+    <div class="holiday-card" (swipe) ="swipeHoliday($event)">
+        <div class="holiday-card-title"> {{worldHolidays.current().title + ".TITLE" | translate}}</div>
+        <img class="holiday-img" [src]="holidaySrc()">
+        <div class="holiday-card-description"> {{worldHolidays.current().title + ".DESCRIPTION" | translate}}</div>
     </div>
 
 </ion-content>

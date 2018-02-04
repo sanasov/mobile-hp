@@ -10,6 +10,7 @@ import {HolidayEngine} from "../../app/service/HolidayEngine";
 import {HolidayPage} from "./holiday/holiday";
 import {NavController, NavParams} from "ionic-angular";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
+import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
 
 @Component({
     selector: 'page-calendar',
@@ -25,9 +26,9 @@ export class CalendarPage {
     viewDate: Date = new Date();
     currentYear: Number = new Date().getFullYear();
     weekendDays: Array<String> = ["a", "b", "c", "d", "c", "d", "c"];
+    locale: String;
 
-
-    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams) {
+    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams, private translateService: TranslateService) {
         storage.get('events').then((result) => {
             this.holidayEngine = new HolidayEngine(result || []);
             this.events = this.holidayEngine.getCalendarEvents(2019)
@@ -35,9 +36,13 @@ export class CalendarPage {
                 .concat(this.holidayEngine.getCalendarEvents(2016))
                 .concat(this.holidayEngine.getCalendarEvents(2015))
                 .concat(this.holidayEngine.getCalendarEvents(2014))
-                .concat(new WorldHoliday().toCalendarEvents(2018))
+                .concat(WorldHoliday.toCalendarEvents(2018))
+        });
+        translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.locale = translateService.currentLang
         });
     }
+
 
 
     modalData: {

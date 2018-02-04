@@ -1,8 +1,9 @@
 import {CalendarEvent} from 'angular-calendar';
 import {holidayColors} from "./holidayColors";
+import {_} from 'underscore'
 
 export class WorldHoliday {
-    holidays: Array<{ title: string, date: string }> = [
+    static holidays: Array<{ title: string, date: string }> = [
         {title: "ARCHAEOLOGIST", date: "15.08"},
         {title: "BLONDE", date: "31.05"},
         {title: "BOSS", date: "16.10"},
@@ -28,18 +29,62 @@ export class WorldHoliday {
         {title: "SLEEPCAT", date: "1.03"},
         {title: "SUN", date: "3.05"}
     ];
+    date: Date;
+    holiday: { title: string, date: Date }
 
-    get (date: Date): String {
-        const dayMonth = date.getDate() + "." + (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1)
-        const holiday = this.holidays.filter(h => h.date === dayMonth)[0];
-        return holiday ? holiday.title : "";
+    constructor(date: Date) {
+        this.date = date;
+        this.holiday = this.init();
     }
 
-    toCalendarEvents(year: number): Array<CalendarEvent> {
-        return this.holidays.map(holiday => {
+    private init(): { title: string, date: Date } {
+        const dayMonth = WorldHoliday.toDayMonth(this.date);
+        return WorldHoliday.holidays
+            .filter(h => h.date === dayMonth)
+            .map(h => {
+                return {title: h.title, date: this.date}
+            })[0];
+    }
+
+    current(): { title: string, date: Date } {
+        return this.holiday || {title: "", date: null};
+    }
+
+    previous(): void {
+        this.holiday = _.max(
+            WorldHoliday.holidays
+                .filter(h => WorldHoliday.toDate(h.date, this.date.getFullYear()) <= this.current().date && h.title !== this.holiday.title)
+                .map(h => {
+                        return {title: h.title, date: WorldHoliday.toDate(h.date, this.date.getFullYear())}
+                    }
+                ),
+            (h) => h.date);
+    }
+
+    next(): void {
+        this.holiday = _.min(
+            WorldHoliday.holidays
+                .filter(h => WorldHoliday.toDate(h.date, this.date.getFullYear()) >= this.current().date && h.title !== this.holiday.title)
+                .map(h => {
+                        return {title: h.title, date: WorldHoliday.toDate(h.date, this.date.getFullYear())}
+                    }
+                ),
+            (h) => h.date);
+    }
+
+    static toDayMonth(date: Date): String {
+        return date.getDate() + "." + (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1);
+    }
+
+    static toDate(dayMonth: String, year: number): Date {
+        return new Date(year, +dayMonth.split(".")[1] - 1, +dayMonth.split(".")[0])
+    }
+
+    static toCalendarEvents(year: number): Array<CalendarEvent> {
+        return WorldHoliday.holidays.map(holiday => {
             return {
-                start: new Date(year, +holiday.date.split(".")[1] - 1, +holiday.date.split(".")[0]),
-                end: new Date(year, +holiday.date.split(".")[1] - 1, +holiday.date.split(".")[0]),
+                start: WorldHoliday.toDate(holiday.date, year),
+                end: WorldHoliday.toDate(holiday.date, year),
                 title: holiday.title,
                 color: holidayColors.yellow,
                 actions: null

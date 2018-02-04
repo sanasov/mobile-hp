@@ -28,10 +28,10 @@
             </div>
         </div>
         <div class="calendar-month-header">
-            <span class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</span>
+            <span class="calendar-month-title">{{ viewDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</span>
             <span class="calendar-today" mwlCalendarToday
                [(viewDate)]="viewDate">
-                Today
+                {{'TODAY' | translate }}
             </span>
         </div>
 
@@ -45,6 +45,7 @@
                 [refresh]="refresh"
                 [activeDayIsOpen]="activeDayIsOpen"
                 [weekendDays]="weekendDays"
+                [locale]="locale"
                 [headerTemplate]="customHeaderTemplate"
                 (dayClicked)="dayClicked($event.day)"
                 (eventClicked)="handleEvent('Clicked', $event.event)"

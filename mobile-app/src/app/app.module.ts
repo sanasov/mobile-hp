@@ -19,6 +19,12 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LanguagePage} from "../pages/list/launguage-page/language";
 import {HolidayPage} from "../pages/calendar/holiday/holiday";
+import {registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
+import {CapitalizeFirstPipe} from "./pipe/capitalizefirst.pipe";
+
+registerLocaleData(localeRu, localeFrCaExtra);
 
 
 @NgModule({
@@ -30,7 +36,8 @@ import {HolidayPage} from "../pages/calendar/holiday/holiday";
         EventModalPage,
         LanguagePage,
         HolidayPage,
-        ListPage
+        ListPage,
+        CapitalizeFirstPipe
     ],
     imports: [
         BrowserModule,

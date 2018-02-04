@@ -2,6 +2,7 @@ import {NavParams, Platform} from "ionic-angular";
 import {Component} from "@angular/core";
 import {CalendarEvent} from 'angular-calendar';
 import {WorldHoliday} from "../../../app/dictionary/WorldHoliday";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
     templateUrl: 'holiday.html'
@@ -10,16 +11,33 @@ export class HolidayPage {
 
     date: Date;
     events: CalendarEvent[];
-    holiday: String;
-    holidaySrc: String;
+    worldHolidays: WorldHoliday;
+    locale: String;
 
     constructor(public platform: Platform,
                 public params: NavParams,
-                private navParams: NavParams) {
+                private navParams: NavParams,
+                public translateService: TranslateService) {
         this.date = navParams.get('date');
         this.events = navParams.get('events');
-        this.holiday = new WorldHoliday().get(this.date);
-        this.holidaySrc = "assets/imgs/world-holiday/" + this.holiday.toLowerCase() + ".jpg";
+        this.worldHolidays = new WorldHoliday(this.date);
+        this.locale = translateService.currentLang;
+    }
+
+    swipeHoliday($event): void {
+        if (Math.abs($event.deltaX) < 100) {
+            return;
+        }
+        if ($event.deltaX < 0) {
+           this.worldHolidays.next();
+
+        } else {
+            this.worldHolidays.previous();
+        }
+    }
+
+    holidaySrc(): String {
+        return "assets/imgs/world-holiday/" + this.worldHolidays.current().title.toLowerCase() + ".jpg";
     }
 
 }

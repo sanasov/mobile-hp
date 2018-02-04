@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, NgZone, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -21,30 +21,33 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     listPage: any = ListPage;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translateService: TranslateService, public storage: Storage) {
+    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translateService: TranslateService, public storage: Storage, private zone: NgZone) {
         this.initializeApp();
 
     }
 
     initializeApp() {
-        this.platform.ready().then(() => {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            this.statusBar.styleLightContent();
-            this.splashScreen.hide();
-            this.defineLanguage();
-        });
+        this.defineLanguage().then(() => {
+            this.platform.ready().then(() => {
+                // Okay, so the platform is ready and our plugins are available.
+                // Here you can do any higher level native things you might need.
+                this.statusBar.styleLightContent();
+               setTimeout(() => this.splashScreen.hide(), 10000);
+            });
+        })
     }
 
     private defineLanguage() {
         let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN)];
-        this.storage.get("device-language").then((result: string) => {
-            if (result) {
-                deviceLanguage = result;
-            } else {
-                this.storage.set("device-language", deviceLanguage);
-            }
-            this.translateService.setDefaultLang(deviceLanguage.toLocaleLowerCase());
+        return this.storage.get("device-language").then((result: string) => {
+            this.zone.run(() => {
+                if (result) {
+                    deviceLanguage = result;
+                } else {
+                    this.storage.set("device-language", deviceLanguage);
+                }
+                this.translateService.use(deviceLanguage.toLocaleLowerCase());
+            });
         });
     }
 

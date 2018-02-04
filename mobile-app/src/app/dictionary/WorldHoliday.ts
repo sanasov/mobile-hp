@@ -1,5 +1,5 @@
 import {CalendarEvent} from 'angular-calendar';
-import {holidayColors} from "./holidayColor";
+import {holidayColors} from "./holidayColors";
 
 export class WorldHoliday {
     holidays: Array<{ title: string, date: string }> = [

@@ -1,23 +1,11 @@
 import {CalendarEvent} from "angular-calendar";
+import {holidayColors} from "../dictionary/holidayColors";
 
 export class HolidayEngine {
 
   pi: string = "3.14159265359";
   exp: string = "2.71828182846";
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    }
-  };
+
 
   hpEvents: Array<{ title: string, date: string }>;
 
@@ -40,7 +28,7 @@ export class HolidayEngine {
         start: this.holidayDate(eventDate, magicNumber.daysAmount),
         end: this.holidayDate(eventDate, magicNumber.daysAmount),
         title: magicNumber.title + "\n" + hpEvent.title + " days: " + magicNumber.daysAmount,
-        color: this.colors.red,
+        color: holidayColors.red,
         actions: null
       }
     });

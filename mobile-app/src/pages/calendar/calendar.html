@@ -30,7 +30,7 @@
         <div class="calendar-month-header">
             <span class="calendar-month-title">{{ viewDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</span>
             <span class="calendar-today" mwlCalendarToday
-               [(viewDate)]="viewDate">
+                  [(viewDate)]="viewDate">
                 {{'TODAY' | translate }}
             </span>
         </div>
@@ -39,12 +39,11 @@
     <br>
     <div (swipe)="changeMonth($event)">
         <mwl-calendar-month-view
-
+                [weekStartsOn]= "weekStartsOn"
                 [viewDate]="viewDate"
                 [events]="events"
                 [refresh]="refresh"
                 [activeDayIsOpen]="activeDayIsOpen"
-                [weekendDays]="weekendDays"
                 [locale]="locale"
                 [headerTemplate]="customHeaderTemplate"
                 (dayClicked)="dayClicked($event.day)"
@@ -67,7 +66,7 @@
                 [class.cal-future]="day.isFuture"
                 [class.cal-weekend]="day.isWeekend"
                 [ngClass]="day.cssClass">
-            {{ day.date | calendarDate:'monthViewColumnHeader':locale }}
+            {{ day.date | date:'E': '' : locale }}
         </div>
 
     </div>

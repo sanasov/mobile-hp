@@ -10,7 +10,7 @@ import {Language} from "../../app/dictionary/language";
     templateUrl: 'list.html'
 })
 export class ListPage {
-    currentLanguage: Language;
+    currentLanguage: Object = {};
     notification: Object = {worldHoliday: true, eventHoliday: true};
 
 
@@ -21,7 +21,7 @@ export class ListPage {
         this.storage
             .get("device-language")
             .then((deviceLanguage) => {
-                this.currentLanguage = deviceLanguage;
+                this.currentLanguage = Language[deviceLanguage];
                 this.translateService.use(deviceLanguage.toLocaleLowerCase())
             })
 
@@ -43,7 +43,7 @@ export class ListPage {
         this.storage
             .get("device-language")
             .then((deviceLanguage) => {
-                this.currentLanguage = deviceLanguage;
+                this.currentLanguage = Language[deviceLanguage];
             })
     }
 

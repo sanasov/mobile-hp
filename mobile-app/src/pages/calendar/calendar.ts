@@ -41,7 +41,7 @@ export class CalendarPage {
         });
         translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.locale = translateService.currentLang;
-            this.weekStartsOn = this.locale === Language.RU.toLowerCase() ? 1 : 0;
+            this.weekStartsOn = this.locale === Language.RU.locale.toLowerCase() ? 1 : 0;
         });
     }
 

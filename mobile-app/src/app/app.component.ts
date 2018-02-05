@@ -7,8 +7,8 @@ import {TranslateService} from "@ngx-translate/core";
 import {ListPage} from '../pages/list/list';
 import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
-import {Language} from "./dictionary/language";
 import {Storage} from '@ionic/storage';
+import {Language} from "./dictionary/language";
 
 
 @Component({
@@ -38,7 +38,7 @@ export class MyApp {
     }
 
     private defineLanguage() {
-        let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN)];
+        let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN.toString())];
         return this.storage.get("device-language").then((result: string) => {
             this.zone.run(() => {
                 if (result) {
@@ -51,9 +51,9 @@ export class MyApp {
         });
     }
 
-    private findDeviceLanguageOrDefaultFromLocalStorage(defaultLanguage: Language): string {
+    private findDeviceLanguageOrDefaultFromLocalStorage(defaultLanguage: string): string {
         const langFromNavigator = Language[navigator.language.substr(0, 2).toUpperCase()];
-        if (langFromNavigator && langFromNavigator !== Language.RU) {
+        if (langFromNavigator && langFromNavigator !== Language.RU.locale) {
             return langFromNavigator;
         }
         return defaultLanguage;

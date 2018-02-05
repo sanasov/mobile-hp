@@ -9,42 +9,37 @@
     <ion-list radio-group *ngIf="deviceLanguage" [(ngModel)]="deviceLanguage" (ionChange)="onLanguageChange()">
         <ion-item>
             <ion-label>English</ion-label>
-            <ion-radio [value]="language.EN"></ion-radio>
+            <ion-radio [value]="language.EN.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Español, Castellano</ion-label>
-            <ion-radio [value]="language.ES"></ion-radio>
+            <ion-radio [value]="language.ES.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Português</ion-label>
-            <ion-radio [value]="language.PT"></ion-radio>
+            <ion-radio [value]="language.PT.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Français</ion-label>
-            <ion-radio [value]="language.FR"></ion-radio>
+            <ion-radio [value]="language.FR.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Русский</ion-label>
-            <ion-radio [value]="language.RU"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>العربية</ion-label>
-            <ion-radio [value]="language.AR"></ion-radio>
+            <ion-radio [value]="language.RU.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Deutsch</ion-label>
-            <ion-radio [value]="language.DE"></ion-radio>
+            <ion-radio [value]="language.DE.locale"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>日本語</ion-label>
-            <ion-radio [value]="language.JA"></ion-radio>
+            <ion-radio [value]="language.JA.locale"></ion-radio>
         </ion-item>
     </ion-list>
 </ion-content>

@@ -11,7 +11,7 @@ import {NavParams} from "ionic-angular";
 })
 export class LanguagePage implements OnInit {
     public language = Language;
-    public deviceLanguage: Language;
+    public deviceLanguage: string;
 
     constructor(private translateService: TranslateService,
                 private zone: NgZone,
@@ -20,7 +20,7 @@ export class LanguagePage implements OnInit {
     }
 
     ngOnInit() {
-        this.storage.get('device-language').then((deviceLanguage: Language) => {
+        this.storage.get('device-language').then((deviceLanguage: string) => {
             this.deviceLanguage = deviceLanguage;
         })
 

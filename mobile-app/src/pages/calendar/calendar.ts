@@ -1,4 +1,4 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {Component, NgZone, TemplateRef, ViewChild} from '@angular/core';
 import {Storage} from '@ionic/storage';
 import {
     CalendarEvent,
@@ -26,10 +26,10 @@ export class CalendarPage {
     holidayEngine: HolidayEngine;
     viewDate: Date = new Date();
     currentYear: Number = new Date().getFullYear();
-    weekStartsOn: number;
+    weekStartsOn: number = 1;
     locale: String;
 
-    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams, private translateService: TranslateService) {
+    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams, private translateService: TranslateService, private zone: NgZone,) {
         storage.get('events').then((result) => {
             this.holidayEngine = new HolidayEngine(result || []);
             this.events = this.holidayEngine.getCalendarEvents(2019)
@@ -39,9 +39,12 @@ export class CalendarPage {
                 .concat(this.holidayEngine.getCalendarEvents(2014))
                 .concat(WorldHoliday.toCalendarEvents(2018))
         });
+
         translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-            this.locale = translateService.currentLang;
-            this.weekStartsOn = this.locale === Language.RU.locale.toLowerCase() ? 1 : 0;
+            this.zone.run(() => {
+                this.locale = translateService.currentLang;
+                this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
+            });
         });
     }
 

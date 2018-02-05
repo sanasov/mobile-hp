@@ -9,6 +9,7 @@ import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
 import {Storage} from '@ionic/storage';
 import {Language} from "./dictionary/language";
+import {Tabs} from "ionic-angular/navigation/nav-interfaces";
 
 
 @Component({
@@ -26,13 +27,19 @@ export class MyApp {
 
     }
 
+    @ViewChild('mainTabs') tabRef: Tabs;
+
+    ionViewDidEnter() {
+        this.tabRef.select(2, null, null);
+    }
+
     initializeApp() {
         this.defineLanguage().then(() => {
             this.platform.ready().then(() => {
                 // Okay, so the platform is ready and our plugins are available.
                 // Here you can do any higher level native things you might need.
                 this.statusBar.styleLightContent();
-               setTimeout(() => this.splashScreen.hide(), 10000);
+                this.splashScreen.hide();
             });
         })
     }

@@ -38,7 +38,7 @@ export class MyApp {
     }
 
     private defineLanguage() {
-        let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN.toString())];
+        let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN.locale)].locale;
         return this.storage.get("device-language").then((result: string) => {
             this.zone.run(() => {
                 if (result) {
@@ -53,8 +53,8 @@ export class MyApp {
 
     private findDeviceLanguageOrDefaultFromLocalStorage(defaultLanguage: string): string {
         const langFromNavigator = Language[navigator.language.substr(0, 2).toUpperCase()];
-        if (langFromNavigator && langFromNavigator !== Language.RU.locale) {
-            return langFromNavigator;
+        if (langFromNavigator && langFromNavigator !== Language.RU) {
+            return langFromNavigator.locale;
         }
         return defaultLanguage;
     }

@@ -31,6 +31,18 @@
     <button class=add-btn (click)="addEvent(event)">
         <ion-icon name="add"></ion-icon>
     </button>
+
+    <ion-list>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="img/thumbnail-totoro.png">
+            </ion-thumbnail>
+            <h2>My Neighbor Totoro</h2>
+            <p>Hayao Miyazaki • 1988</p>
+            <button ion-button clear item-end>View</button>
+        </ion-item>
+    </ion-list>
+
     <div class="first-step-info" [hidden]="events && events.length !== 0">
         <span style="width:90%">Add great events to find your new holidays...</span>
     </div>

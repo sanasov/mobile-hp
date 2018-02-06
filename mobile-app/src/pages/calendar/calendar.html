@@ -30,7 +30,8 @@
         <div class="calendar-month-header">
             <span class="calendar-month-title">{{ viewDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</span>
             <span class="calendar-today" mwlCalendarToday
-                  [(viewDate)]="viewDate">
+                  [(viewDate)]="viewDate"
+                  (click)="updateYear()">
                 {{'TODAY' | translate }}
             </span>
         </div>

@@ -15,14 +15,14 @@
                      mwlCalendarPreviousView
                      [view]="view"
                      [(viewDate)]="viewDate"
-                     (viewDateChange)="activeDayIsOpen = false">
+                     (viewDateChange)="updateYear()">
                     Previous
                 </div>
                 <div id="calendarNextMonth"
                      mwlCalendarNextView
                      [view]="view"
                      [(viewDate)]="viewDate"
-                     (viewDateChange)="activeDayIsOpen = false">
+                     (viewDateChange)="updateYear()">
                     Next
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <span class="calendar-month-title">{{ viewDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</span>
             <span class="calendar-today" mwlCalendarToday
                   [(viewDate)]="viewDate"
-                  (click)="updateYear()">
+                  (viewDateChange)="updateYear()">
                 {{'TODAY' | translate }}
             </span>
         </div>
@@ -48,7 +48,6 @@
                 [locale]="locale"
                 [headerTemplate]="customHeaderTemplate"
                 (dayClicked)="dayClicked($event.day)"
-                (eventClicked)="handleEvent('Clicked', $event.event)"
                 (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
     </div>

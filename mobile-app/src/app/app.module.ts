@@ -25,6 +25,7 @@ import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
 import {CapitalizeFirstPipe} from "./pipes/capitalizefirst.pipe";
 import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
 import {PipesModule} from "./pipes/pipes.module";
+import {ShowFadeComponent} from "./component/show-fade/show-fade.component";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -38,7 +39,8 @@ registerLocaleData(localeRu, localeFrCaExtra);
         EventModalPage,
         LanguagePage,
         HolidayPage,
-        ListPage
+        ListPage,
+        ShowFadeComponent,
     ],
     imports: [
         BrowserModule,

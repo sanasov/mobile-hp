@@ -14,11 +14,10 @@ export class ShowFadeComponent implements OnInit {
 
     constructor() {}
 
-    ngAfterViewInit(){
-
+    ngAfterViewInit() {
     }
 
     ngOnInit() {
-
+      ELEMENT.classList.remove("CLASS_NAME");
     }
 }

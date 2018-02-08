@@ -38,8 +38,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
         EventModalPage,
         LanguagePage,
         HolidayPage,
-        ListPage,
-        CapitalizeFirstPipe
+        ListPage
     ],
     imports: [
         BrowserModule,

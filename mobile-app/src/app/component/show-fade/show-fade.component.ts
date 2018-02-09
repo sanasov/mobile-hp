@@ -6,18 +6,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class ShowFadeComponent implements OnInit {
 
-    @Input() turnOn: boolean = false;
+  @Input() turnOn: boolean = false;
 
-    @Output() clicked: EventEmitter<number> = new EventEmitter<number>();
+  @Output() clicked: EventEmitter<number> = new EventEmitter<number>();
 
-    stars: string[] = [];
+  stars: string[] = [];
+  inited: boolean = false;
 
-    constructor() {}
+  constructor() {
+  }
 
-    ngAfterViewInit() {
-    }
-
-    ngOnInit() {
-      ELEMENT.classList.remove("CLASS_NAME");
-    }
+  ngOnInit() {
+    setTimeout(() => this.inited = true);
+  }
 }

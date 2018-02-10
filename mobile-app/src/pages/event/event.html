@@ -43,7 +43,7 @@
         </ion-item>
     </ion-list>
 
-    <div class="first-step-info" [hidden]="events && events.length !== 0">
+  <show-fade [turnOn] = "!events || events.length === 0"  class="first-step-info">
         <span style="width:90%">Add great events to find your new holidays...</span>
-    </div>
+  </show-fade>
 </ion-content>

@@ -22,7 +22,10 @@ import {HolidayPage} from "../pages/calendar/holiday/holiday";
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
-import {CapitalizeFirstPipe} from "./pipe/capitalizefirst.pipe";
+import {CapitalizeFirstPipe} from "./pipes/capitalizefirst.pipe";
+import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
+import {PipesModule} from "./pipes/pipes.module";
+import {ShowFadeComponent} from "./component/show-fade/show-fade.component";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -37,12 +40,13 @@ registerLocaleData(localeRu, localeFrCaExtra);
         LanguagePage,
         HolidayPage,
         ListPage,
-        CapitalizeFirstPipe
+        ShowFadeComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        PipesModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
         CalendarModule.forRoot(),
@@ -68,6 +72,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
     providers: [
         StatusBar,
         SplashScreen,
+      StorageRepositoryProvider,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })

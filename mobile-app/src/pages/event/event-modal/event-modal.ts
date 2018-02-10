@@ -6,13 +6,14 @@ import {OnInit, Component} from "@angular/core";
 })
 export class EventModalPage implements OnInit {
     event;
+    hints: Array<string>;
 
     constructor(public platform: Platform,
                 public params: NavParams,
                 public viewCtrl: ViewController) {
 
         this.event = this.params.get('event') || {};
-
+        this.initHints();
     }
 
 
@@ -29,5 +30,9 @@ export class EventModalPage implements OnInit {
         if ($event.key === "Enter") {
             document.getElementById("hp-event-title").blur();
         }
+    }
+
+    initHints() {
+        this.hints = ["Last time was in Sochi", "Mom's birthday", "Finish school", "First kiss"];
     }
 }

@@ -26,13 +26,15 @@
                 </ion-datetime>
             </ion-item>
         </ion-list>
-        <hr/>
-        <ion-card-content *ngIf="event.date" style="margin-top: 10px">
-          <div class="event-card-flex-row">
-            <span>Прошедшее кол-во дней:</span>
-            <span class="days-amount">1000</span>
-          </div>
+
+    </ion-card>
+    <ion-card *ngIf="event.date" style="margin-top: 10px">
+        <ion-card-content >
             <div class="event-card-flex-row">
+                <span>Прошедшее кол-во дней:</span>
+                <span class="days-amount">1000</span>
+            </div>
+            <div class="event-card-flex-row" style="margin-bottom: 5px">
                 <span>Ближайший праздники:</span>
             </div>
             <div class="nearest-holiday-flex-row">

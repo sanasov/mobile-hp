@@ -22,7 +22,6 @@ export class EventCardPage implements OnInit {
     openModalEditTitle() {
         let modal = this.modalCtrl.create(EventModalPage, {'event': this.event});
         modal.present();
-        return modal;
     }
 
     ngOnInit(): void {

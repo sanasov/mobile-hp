@@ -4,12 +4,12 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from "@ngx-translate/core";
 
-import {ListPage} from '../pages/list/list';
 import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
 import {Storage} from '@ionic/storage';
 import {Language} from "./dictionary/language";
 import {Tabs} from "ionic-angular/navigation/nav-interfaces";
+import {SettingsPage} from "../pages/settings/settings";
 
 
 @Component({
@@ -20,7 +20,7 @@ export class MyApp {
 
     eventPage: any = EventPage;
     calendarPage: any = CalendarPage;
-    listPage: any = ListPage;
+    settingsPage: any = SettingsPage;
 
     constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translateService: TranslateService, public storage: Storage, private zone: NgZone) {
         this.initializeApp();

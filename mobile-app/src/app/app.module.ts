@@ -4,7 +4,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
-import {ListPage} from '../pages/list/list';
+import {SettingsPage} from '../pages/settings/settings';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -17,16 +17,16 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {LanguagePage} from "../pages/list/launguage-page/language";
+import {LanguagePage} from "../pages/settings/launguage-page/language";
 import {HolidayPage} from "../pages/calendar/holiday/holiday";
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
-import {CapitalizeFirstPipe} from "./pipes/capitalizefirst.pipe";
 import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
 import {PipesModule} from "./pipes/pipes.module";
 import {ShowFadeComponent} from "./component/show-fade/show-fade.component";
 import {EventCardPage} from "../pages/event/event-card/event-card";
+import {ProfileModalPage} from "../pages/settings/profile-modal/profile-modal";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -38,10 +38,11 @@ registerLocaleData(localeRu, localeFrCaExtra);
         CalendarPage,
         EventPage,
         EventModalPage,
+        ProfileModalPage,
         EventCardPage,
         LanguagePage,
         HolidayPage,
-        ListPage,
+        SettingsPage,
         ShowFadeComponent,
     ],
     imports: [
@@ -67,10 +68,11 @@ registerLocaleData(localeRu, localeFrCaExtra);
         CalendarPage,
         EventPage,
         EventModalPage,
+        ProfileModalPage,
         EventCardPage,
         LanguagePage,
         HolidayPage,
-        ListPage
+        SettingsPage
     ],
     providers: [
         StatusBar,

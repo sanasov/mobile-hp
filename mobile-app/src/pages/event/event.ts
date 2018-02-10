@@ -28,12 +28,6 @@ export class EventPage implements OnDestroy {
         this.save();
     }
 
-    openModal(event) {
-        let modal = this.modalCtrl.create(EventModalPage, {'event': event});
-        modal.present();
-        return modal;
-    }
-
     addEvent() {
         var event = {title: "", date: ""};
         let modal = this.modalCtrl.create(EventModalPage, {'event': event});

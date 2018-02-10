@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'SETTINGS' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content id = "settings-content">
+
+    <ion-card>
+        <ion-list>
+            <ion-item>
+                <h2>{{(user.firstName | capitalizeFirst) + " " + (user.lastName | capitalizeFirst)}}</h2>
+                <p>{{user.birth | date :'dd MMM yyyy' : '' : locale}}</p>
+                <ion-icon
+                        (click)="openModalProfile()"
+                        name="nutrition"
+                        item-end
+                        style="font-size: 14px; position: relative; top: 6px;">
+                </ion-icon>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+    <ion-card>
+        <ion-list>
+            <button class="language-btn" ion-item icon-start (click)="openLanguagePage($event)">
+                <ion-icon name='globe' item-start></ion-icon>
+                {{'LANGUAGE' | translate}}
+                <ion-note item-end>
+                    {{currentLanguage.native}}
+                </ion-note>
+            </button>
+        </ion-list>
+    </ion-card>
+    <ion-card>
+        <ion-list>
+            <ion-list-header>
+                {{'NOTIFICATIONS' | translate | uppercase}}
+                <ion-icon name="notifications" item-start></ion-icon>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>
+                    <span class="holiday-icon holiday-yellow-background"></span>
+                    {{'WORLD_HOLIDAYS' | translate }}
+                </ion-label>
+                <ion-toggle [(ngModel)]="notification.worldHoliday"
+                            (ionChange)="saveNotificationSettings()"
+                            color="holiday-main">
+                </ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <span class="holiday-icon holiday-red-background"></span>
+                    {{'EVENT_HOLIDAYS' | translate}}
+                </ion-label>
+                <ion-toggle [(ngModel)]="notification.eventHoliday"
+                            (ionChange)="saveNotificationSettings()"
+                            color="holiday-main">
+                </ion-toggle>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

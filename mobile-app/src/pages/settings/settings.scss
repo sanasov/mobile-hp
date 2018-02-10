@@ -2,6 +2,12 @@
   color: #757575;
 }
 
+#settings-content {
+  .scroll-content {
+    color: #f6f6f6;
+  }
+}
+
 .holiday-icon {
   width: 10px;
   height: 10px;
@@ -23,7 +29,11 @@
     color: #595555;
   }
 
-   .language-btn{
+  .language-btn {
     border-bottom: 1px solid #dedede;
   }
+}
+
+.card-md {
+  margin: 5px 5px
 }

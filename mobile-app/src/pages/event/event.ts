@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {AfterContentInit, Component, OnDestroy} from '@angular/core';
 import {ModalController, NavController, NavParams} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {EventModalPage} from "./event-modal/event-modal";

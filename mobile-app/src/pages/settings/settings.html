@@ -9,6 +9,7 @@
     <ion-card>
         <ion-list>
             <ion-item>
+                <ion-icon name="contact" item-start></ion-icon>
                 <h2>{{(user.firstName | capitalizeFirst) + " " + (user.lastName | capitalizeFirst)}}</h2>
                 <p>{{user.birth | date :'dd MMM yyyy' : '' : locale}}</p>
                 <ion-icon

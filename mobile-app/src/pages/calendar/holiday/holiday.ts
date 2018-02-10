@@ -15,7 +15,6 @@ export class HolidayPage {
     locale: String;
 
     constructor(public platform: Platform,
-                public params: NavParams,
                 private navParams: NavParams,
                 public translateService: TranslateService) {
         this.date = navParams.get('date');

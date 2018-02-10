@@ -26,6 +26,7 @@ import {CapitalizeFirstPipe} from "./pipes/capitalizefirst.pipe";
 import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
 import {PipesModule} from "./pipes/pipes.module";
 import {ShowFadeComponent} from "./component/show-fade/show-fade.component";
+import {EventCardPage} from "../pages/event/event-card/event-card";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -37,6 +38,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
         CalendarPage,
         EventPage,
         EventModalPage,
+        EventCardPage,
         LanguagePage,
         HolidayPage,
         ListPage,
@@ -65,6 +67,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
         CalendarPage,
         EventPage,
         EventModalPage,
+        EventCardPage,
         LanguagePage,
         HolidayPage,
         ListPage

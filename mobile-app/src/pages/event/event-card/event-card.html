@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-list>
+            <ion-item>
+                <ion-label>Наименование:</ion-label>
+                <ion-icon
+                        (click)="openModalEditTitle()"
+                        name="nutrition"
+                        item-end
+                        style="font-size: 14px; position: relative; top: 6px;">
+                </ion-icon>
+            </ion-item>
+            <ion-item >
+                <h2 style="white-space: normal"> {{event.title}}</h2>
+            </ion-item>
+            <ion-item>
+                <ion-label>Дата:</ion-label>
+                <ion-datetime displayFormat=" DD  MMMM YYYY"
+                              placeholder="Select date"
+                              [(ngModel)]="event.date">
+
+                </ion-datetime>
+            </ion-item>
+        </ion-list>
+        <hr/>
+        <ion-card-content *ngIf="event.date" style="margin-top: 10px">
+          <div class="event-card-flex-row">
+            <span>Прошедшее кол-во дней:</span>
+            <span class="days-amount">1000</span>
+          </div>
+            <div class="event-card-flex-row">
+                <span>Ближайший праздники:</span>
+            </div>
+            <div class="nearest-holiday-flex-row">
+                <span style="margin-left: 10px"> 28.02.2018 </span>
+                <span>Holiday title big title</span>
+            </div>
+            <div class="nearest-holiday-flex-row">
+                <span style="margin-left: 10px"> 28.02.2018 </span>
+                <span>1000 days</span>
+            </div>
+            <div class="nearest-holiday-flex-row">
+                <span style="margin-left: 10px"> 28.02.2018 asd</span>
+                <span>Holiday title big title</span>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

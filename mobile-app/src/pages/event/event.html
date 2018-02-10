@@ -10,40 +10,28 @@
 <ion-content>
 
 
-    <ion-card *ngFor="let event of events"
-              (swipe)="preRemoveSwipe($event, event)"
-              style="display: inline-flex; position: relative"
-              [class.close-mode]=event.preClose>
-        <hr [hidden]="!event.preClose" class="close-line"/>
-        <ion-item>
-            <span (click)="openModal(event)">{{event.title}}</span>
-        </ion-item>
-        <ion-item class="ion-item-date-time">
-            <ion-datetime displayFormat="MMM DD YYYY"
-                          placeholder="Select date"
-                          [(ngModel)]="event.date"
-                          (ngModelChange)="save()"
-            ></ion-datetime>
-        </ion-item>
-        <span class="remove-btn" [class.visibility-hidden]=!event.preClose (click)="remove(event)"><ion-icon
-                name="close"></ion-icon></span>
-    </ion-card>
-    <button class=add-btn (click)="addEvent(event)">
+    <ion-list>
+        <ion-item-sliding *ngFor="let event of events">
+            <ion-item (click)="openEventCard(event)">
+                <h2>{{event.title}}</h2>
+                <p item-end>{{event.date | date :'dd MMM yyyy' : '' : locale}}</p>
+            </ion-item>
+
+            <ion-item-options>
+                <button (click)="remove(event)" style="width: 60px" ion-button color="danger" icon-start>
+                    <ion-icon style="color: white" name="trash" ></ion-icon>
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+
+    <button class=add-btn (click)="addEvent()">
         <ion-icon name="add"></ion-icon>
     </button>
 
-    <ion-list>
-        <ion-item>
-            <ion-thumbnail item-start>
-                <img src="img/thumbnail-totoro.png">
-            </ion-thumbnail>
-            <h2>My Neighbor Totoro</h2>
-            <p>Hayao Miyazaki • 1988</p>
-            <button ion-button clear item-end>View</button>
-        </ion-item>
-    </ion-list>
 
-  <show-fade [turnOn] = "!events || events.length === 0"  class="first-step-info">
+    <show-fade [turnOn]="!events || events.length === 0" class="first-step-info">
         <span style="width:90%">Add great events to find your new holidays...</span>
-  </show-fade>
+    </show-fade>
 </ion-content>

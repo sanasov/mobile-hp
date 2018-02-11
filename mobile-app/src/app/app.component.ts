@@ -22,9 +22,13 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     settingsPage: any = SettingsPage;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translateService: TranslateService, public storage: Storage, private zone: NgZone) {
+    constructor(public platform: Platform,
+                public statusBar: StatusBar,
+                public splashScreen: SplashScreen,
+                private translateService: TranslateService,
+                public storage: Storage,
+                private zone: NgZone) {
         this.initializeApp();
-
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;

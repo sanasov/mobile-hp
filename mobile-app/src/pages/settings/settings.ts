@@ -24,7 +24,6 @@ export class SettingsPage {
                 private modalCtrl: ModalController,
                 private translateService: TranslateService,
                 private navCtrl: NavController,
-                private navParams: NavParams,
                 private zone: NgZone) {
 
         this.zone.run(() => {

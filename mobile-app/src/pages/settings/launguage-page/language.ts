@@ -15,8 +15,7 @@ export class LanguagePage implements OnInit {
 
     constructor(private translateService: TranslateService,
                 private zone: NgZone,
-                private storage: Storage,
-                private navParams: NavParams) {
+                private storage: Storage) {
     }
 
     ngOnInit() {

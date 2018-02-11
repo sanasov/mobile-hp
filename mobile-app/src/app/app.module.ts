@@ -74,7 +74,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
     providers: [
         StatusBar,
         SplashScreen,
-      StorageRepositoryProvider,
+        StorageRepositoryProvider,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })

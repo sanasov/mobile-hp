@@ -19,7 +19,7 @@
 
             <ion-item-options>
                 <button (click)="remove(event)" style="width: 60px" ion-button color="danger" icon-start>
-                    <ion-icon style="color: white" name="trash" ></ion-icon>
+                    <ion-icon style="color: white" name="trash"></ion-icon>
                 </button>
             </ion-item-options>
         </ion-item-sliding>
@@ -31,7 +31,9 @@
     </button>
 
 
-    <show-fade [turnOn]="!events || events.length === 0" class="first-step-info">
-        <span style="width:90%">Add great events to find your new holidays...</span>
-    </show-fade>
+    <div class="first-step-info">
+        <show-fade [turnOn]="!events || events.length === 0">
+            <span style="width:90%">Add great events to find your new holidays...</span>
+        </show-fade>
+    </div>
 </ion-content>

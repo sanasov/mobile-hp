@@ -3,7 +3,6 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {MyApp} from './app.component';
-import {HomePage} from '../pages/home/home';
 import {SettingsPage} from '../pages/settings/settings';
 
 import {StatusBar} from '@ionic-native/status-bar';
@@ -34,7 +33,6 @@ registerLocaleData(localeRu, localeFrCaExtra);
 @NgModule({
     declarations: [
         MyApp,
-        HomePage,
         CalendarPage,
         EventPage,
         EventModalPage,
@@ -64,7 +62,6 @@ registerLocaleData(localeRu, localeFrCaExtra);
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        HomePage,
         CalendarPage,
         EventPage,
         EventModalPage,

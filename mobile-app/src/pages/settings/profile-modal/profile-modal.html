@@ -1,13 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            {{'PROFILE' | translate}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon
+                        name="checkmark-circle"
+                        class="main-blue"
+                        style="font-size: 30px; ">
+                </ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
 <ion-content>
     <ion-list inset>
 
         <ion-item>
-            <ion-label>First name</ion-label>
+            <ion-label>First name:</ion-label>
             <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label>Last Name</ion-label>
+            <ion-label>Last Name:</ion-label>
             <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
         </ion-item>
         <ion-item>

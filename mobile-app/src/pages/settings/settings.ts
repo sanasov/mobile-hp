@@ -25,8 +25,8 @@ export class SettingsPage {
                 private translateService: TranslateService,
                 private navCtrl: NavController,
                 private navParams: NavParams) {
-        storageRepository.getUser().then(result => {
-            this.user = result || new User("", "", null);
+        storageRepository.getUser().then((result: User) => {
+            this.user = result;
         });
         this.locale = translateService.currentLang;
     }
@@ -51,8 +51,8 @@ export class SettingsPage {
     openModalProfile() {
         let modal = this.modalCtrl.create(ProfileModalPage, {'user': this.user});
         modal.present();
-        modal.onDidDismiss(data => {
-
+        modal.onDidDismiss((savedUser: User) => {
+            this.user = savedUser;
         });
     }
 

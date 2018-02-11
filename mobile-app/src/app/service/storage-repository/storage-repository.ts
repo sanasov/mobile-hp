@@ -21,11 +21,7 @@ export class StorageRepositoryProvider {
 
     getUser(): Promise<User> {
         return this.storage.get("user").then((user: User) => {
-                return user == null ? null : new User(
-                  user.firstName,
-                  user.lastName,
-                  user.birth
-                );
+                return user == null ? new User("","", null) : User.create(user);
             })
     }
 

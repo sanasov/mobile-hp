@@ -1,5 +1,3 @@
-// import * as moment from 'moment';
-
 import * as moment from "moment";
 
 export default class User {
@@ -27,10 +25,11 @@ export default class User {
     }
 
     get birth(): Date {
-        return this._birth;
+        return new Date(this._birth);
     }
 
     get birthString(): string {
+        console.log(moment(this._birth).format('YYYY-MM-DD'));
         return moment(this._birth).format('YYYY-MM-DD');
     }
 
@@ -47,11 +46,15 @@ export default class User {
     }
 
     set birthString(birth: string) {
-        this._birth = new Date(birth);
+        console.log(moment(birth, "YYYY-MM-DD"));
+        this._birth = moment(birth, "YYYY-MM-DD").toDate();
     }
 
-    static create(user: User) {
-        return new User(user._firstName, user._lastName, new Date(user._birth));
+    public static create(user: User) {
+        if (user._firstName || user._lastName || user._birth) {
+            return new User(user._firstName, user._lastName, new Date(user._birth)); // ios
+        }
+        return new User(user.firstName, user.lastName, new Date(user.birth)); // android
     }
 
     toJSON() {

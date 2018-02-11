@@ -32,7 +32,11 @@ export class CalendarPage {
     events: CalendarEvent[] = [];
     activeDayIsOpen: boolean = false;
 
-    constructor(private storage: Storage, private navCtrl: NavController, private navParams: NavParams, private translateService: TranslateService, private zone: NgZone,) {
+    constructor(private storage: Storage,
+                private navCtrl: NavController,
+                private navParams: NavParams,
+                private translateService: TranslateService,
+                private zone: NgZone) {
         storage.get('events').then((result) => {
             this.holidayEngine = new HolidayEngine(result || []);
             this.generateCalendarEvents(this.currentYear);

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {LanguagePage} from "./launguage-page/language";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
@@ -24,11 +24,15 @@ export class SettingsPage {
                 private modalCtrl: ModalController,
                 private translateService: TranslateService,
                 private navCtrl: NavController,
-                private navParams: NavParams) {
-        storageRepository.getUser().then((result: User) => {
-            this.user = result;
+                private navParams: NavParams,
+                private zone: NgZone) {
+
+        this.zone.run(() => {
+            storageRepository.getUser().then((result: User) => {
+                this.user = result;
+            });
+            this.locale = translateService.currentLang;
         });
-        this.locale = translateService.currentLang;
     }
 
     ngOnInit() {

@@ -25,16 +25,20 @@
         </ion-item>
 
         <ion-item>
-            <ion-label>Last Name:</ion-label>
+            <ion-label>Last name:</ion-label>
             <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Birthday:</ion-label>
-            <ion-datetime displayFormat=" DD  MMMM YYYY"
-                          placeholder="Select date"
-                          [(ngModel)]="user.birth">
-
+            <ion-label><img style="width: 120px; height: 30px; margin-bottom: 10px"
+                            src="assets/imgs/birthday.jpg">
+            </ion-label>
+            <ion-datetime
+                    item-end
+                    displayFormat="DD MMMM YYYY"
+                    placeholder="Select date"
+                    [(ngModel)]="user.birthString">
             </ion-datetime>
         </ion-item>
+
     </ion-list>
 </ion-content>

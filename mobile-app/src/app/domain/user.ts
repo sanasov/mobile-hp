@@ -1,3 +1,7 @@
+// import * as moment from 'moment';
+
+import * as moment from "moment";
+
 export default class User {
     private _firstName: String;
     private _lastName: String;
@@ -26,6 +30,9 @@ export default class User {
         return this._birth;
     }
 
+    get birthString(): string {
+        return moment(this._birth).format('YYYY-MM-DD');
+    }
 
     set firstName(firstName: String) {
         this._firstName = firstName;
@@ -37,6 +44,10 @@ export default class User {
 
     set birth(birth: Date) {
         this._birth = birth;
+    }
+
+    set birthString(birth: string) {
+        this._birth = new Date(birth);
     }
 
     static create(user: User) {

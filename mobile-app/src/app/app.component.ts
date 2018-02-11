@@ -10,6 +10,7 @@ import {Storage} from '@ionic/storage';
 import {Language} from "./dictionary/language";
 import {Tabs} from "ionic-angular/navigation/nav-interfaces";
 import {SettingsPage} from "../pages/settings/settings";
+import {NotificationService} from "./service/NotificationService";
 
 
 @Component({
@@ -27,6 +28,7 @@ export class MyApp {
                 public splashScreen: SplashScreen,
                 private translateService: TranslateService,
                 public storage: Storage,
+                private notificationService: NotificationService,
                 private zone: NgZone) {
         this.initializeApp();
     }
@@ -44,6 +46,7 @@ export class MyApp {
                 // Here you can do any higher level native things you might need.
                 this.statusBar.styleLightContent();
                 this.splashScreen.hide();
+                this.notificationService.initNotificatons(null);
             });
         })
     }

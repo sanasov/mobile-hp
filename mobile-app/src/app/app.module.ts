@@ -26,6 +26,8 @@ import {PipesModule} from "./pipes/pipes.module";
 import {ShowFadeComponent} from "./component/show-fade/show-fade.component";
 import {EventCardPage} from "../pages/event/event-card/event-card";
 import {ProfileModalPage} from "../pages/settings/profile-modal/profile-modal";
+import {NotificationService} from "./service/NotificationService";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -75,6 +77,8 @@ registerLocaleData(localeRu, localeFrCaExtra);
         StatusBar,
         SplashScreen,
         StorageRepositoryProvider,
+        LocalNotifications,
+        NotificationService,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })

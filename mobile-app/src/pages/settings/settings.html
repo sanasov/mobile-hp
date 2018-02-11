@@ -8,12 +8,11 @@
 
     <ion-card>
         <ion-list>
-            <ion-item>
+            <ion-item (click)="openModalProfile()">
                 <ion-icon name="contact" item-start></ion-icon>
                 <h2>{{(user.firstName | capitalizeFirst) + " " + (user.lastName | capitalizeFirst)}}</h2>
                 <p>{{user.birth ? (user.birth | date :'dd MMM yyyy' : '' : locale) : ""}}</p>
                 <ion-icon
-                        (click)="openModalProfile()"
                         name="nutrition"
                         item-end
                         style="font-size: 14px; position: relative; top: 6px;">

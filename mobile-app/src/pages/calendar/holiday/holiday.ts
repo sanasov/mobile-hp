@@ -10,7 +10,6 @@ import {TranslateService} from "@ngx-translate/core";
 export class HolidayPage {
 
     date: Date;
-    events: CalendarEvent[];
     worldHolidays: WorldHoliday;
     locale: String;
 
@@ -18,7 +17,6 @@ export class HolidayPage {
                 private navParams: NavParams,
                 public translateService: TranslateService) {
         this.date = navParams.get('date');
-        this.events = navParams.get('events');
         this.worldHolidays = new WorldHoliday(this.date);
         this.locale = translateService.currentLang;
     }

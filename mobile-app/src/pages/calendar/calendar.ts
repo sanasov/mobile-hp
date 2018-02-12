@@ -12,6 +12,8 @@ import {NavController, NavParams} from "ionic-angular";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
 import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
 import {Language} from "../../app/dictionary/language";
+import {NotificationService} from "../../app/service/NotificationService";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 @Component({
     selector: 'page-calendar',
@@ -36,6 +38,8 @@ export class CalendarPage {
                 private navCtrl: NavController,
                 private navParams: NavParams,
                 private translateService: TranslateService,
+                private notificationService: NotificationService,
+                private localNotifications: LocalNotifications,
                 private zone: NgZone) {
         storage.get('events').then((result) => {
             this.holidayEngine = new HolidayEngine(result || []);
@@ -47,13 +51,22 @@ export class CalendarPage {
             this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
             this.refresh.next();
         });
+
+        this.notificationService.initNotifications(null);
+        this.localNotifications.on('click', this.openHoliday.bind(this));
     }
 
 
-    dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
+    dayClicked({date} : {date: Date}): void {
         this.navCtrl.push(HolidayPage, {
-            date: date,
-            events: events
+            date: date
+        });
+    }
+
+
+    public openHoliday(): void {
+        this.navCtrl.push(HolidayPage, {
+            date: new Date()
         });
     }
 

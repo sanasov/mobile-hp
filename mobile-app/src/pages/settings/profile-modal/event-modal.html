@@ -1,0 +1,18 @@
+<ion-content>
+    <ion-item>
+        <input id="hp-event-title" placeholder="Describe your event"
+               (keyup) = "readyAddEvent($event)"
+               [(ngModel)]="event.title">
+        <ion-icon
+                (click)="dismiss()"
+                name="checkmark-circle"
+                class="main-blue"
+                item-end>
+        </ion-icon>
+    </ion-item>
+    <ion-item>
+        <p *ngFor="let hint of hints" (click)="event.title = hint" style="margin-top: 10px;">
+            {{hint}}
+        </p>
+    </ion-item>
+</ion-content>

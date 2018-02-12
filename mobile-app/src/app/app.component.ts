@@ -30,15 +30,11 @@ export class MyApp {
                 public splashScreen: SplashScreen,
                 private translateService: TranslateService,
                 public storage: Storage,
-                private notificationService: NotificationService,
-                private localNotifications: LocalNotifications,
-                // private navCtrl: NavController,
                 private zone: NgZone) {
         this.initializeApp();
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;
-    @ViewChild('carguardNav') navCtrl: NavController
 
     ionViewDidEnter() {
         this.tabRef.select(2, null, null);
@@ -46,13 +42,11 @@ export class MyApp {
 
     initializeApp() {
         this.platform.ready().then(() => {
-          // Okay, so the platform is ready and our plugins are available.
-          // Here you can do any higher level native things you might need.
-          this.statusBar.styleLightContent();
-          this.splashScreen.hide();
-          this.notificationService.initNotifications(null);
-          this.localNotifications.on('click', this.openHoliday);
-          this.defineLanguage();
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            this.statusBar.styleLightContent();
+            this.splashScreen.hide();
+            this.defineLanguage();
         });
     }
 
@@ -78,11 +72,5 @@ export class MyApp {
         return defaultLanguage;
     }
 
-    public openHoliday() {
-      this.navCtrl.push(HolidayPage, {
-        date: new Date(),
-        events: {title: "FOOTBALL", date: "10.12"}
-      });
-    }
 
 }

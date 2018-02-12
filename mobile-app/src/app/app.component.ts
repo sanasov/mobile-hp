@@ -1,5 +1,5 @@
 import {Component, NgZone, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {Nav, NavController, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from "@ngx-translate/core";
@@ -11,6 +11,8 @@ import {Language} from "./dictionary/language";
 import {Tabs} from "ionic-angular/navigation/nav-interfaces";
 import {SettingsPage} from "../pages/settings/settings";
 import {NotificationService} from "./service/NotificationService";
+import {LocalNotifications} from "@ionic-native/local-notifications";
+import {HolidayPage} from "../pages/calendar/holiday/holiday";
 
 
 @Component({
@@ -29,31 +31,34 @@ export class MyApp {
                 private translateService: TranslateService,
                 public storage: Storage,
                 private notificationService: NotificationService,
+                private localNotifications: LocalNotifications,
+                // private navCtrl: NavController,
                 private zone: NgZone) {
         this.initializeApp();
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;
+    @ViewChild('carguardNav') navCtrl: NavController
 
     ionViewDidEnter() {
         this.tabRef.select(2, null, null);
     }
 
     initializeApp() {
-        this.defineLanguage().then(() => {
-            this.platform.ready().then(() => {
-                // Okay, so the platform is ready and our plugins are available.
-                // Here you can do any higher level native things you might need.
-                this.statusBar.styleLightContent();
-                this.splashScreen.hide();
-                this.notificationService.initNotifications(null);
-            });
-        })
+        this.platform.ready().then(() => {
+          // Okay, so the platform is ready and our plugins are available.
+          // Here you can do any higher level native things you might need.
+          this.statusBar.styleLightContent();
+          this.splashScreen.hide();
+          this.notificationService.initNotifications(null);
+          this.localNotifications.on('click', this.openHoliday);
+          this.defineLanguage();
+        });
     }
 
     private defineLanguage() {
         let deviceLanguage = Language[this.findDeviceLanguageOrDefaultFromLocalStorage(Language.EN.locale)].locale;
-        return this.storage.get("device-language").then((result: string) => {
+        this.storage.get("device-language").then((result: string) => {
             this.zone.run(() => {
                 if (result) {
                     deviceLanguage = result;
@@ -71,6 +76,13 @@ export class MyApp {
             return langFromNavigator.locale;
         }
         return defaultLanguage;
+    }
+
+    public openHoliday() {
+      this.navCtrl.push(HolidayPage, {
+        date: new Date(),
+        events: {title: "FOOTBALL", date: "10.12"}
+      });
     }
 
 }

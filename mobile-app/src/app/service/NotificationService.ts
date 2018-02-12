@@ -1,23 +1,13 @@
 import {Injectable} from "@angular/core";
 import {LocalNotifications} from "@ionic-native/local-notifications";
-import {HolidayPage} from "../../pages/calendar/holiday/holiday";
 import {NavController} from "ionic-angular";
 
 @Injectable()
 export class NotificationService {
 
 
-    constructor(public localNotifications: LocalNotifications, private navCtrl: NavController) {
-      this.localNotifications.on('click', this.openHoliday);
+    constructor(public localNotifications: LocalNotifications) {
     }
-
-    private openHoliday() {
-      this.navCtrl.push(HolidayPage, {
-        date: new Date(),
-        events: {title: "FOOTBALL", date: "10.12"}
-      });
-    }
-
 
     public initNotifications(holidays): void {
         this.localNotifications.schedule([

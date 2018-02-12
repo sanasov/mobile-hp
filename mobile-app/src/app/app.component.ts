@@ -46,7 +46,7 @@ export class MyApp {
                 // Here you can do any higher level native things you might need.
                 this.statusBar.styleLightContent();
                 this.splashScreen.hide();
-                this.notificationService.initNotificatons(null);
+                this.notificationService.initNotifications(null);
             });
         })
     }

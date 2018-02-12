@@ -53,18 +53,20 @@ export class CalendarPage {
         });
 
         this.notificationService.initNotifications(null);
+        this.notificationService.initCordovaNotifications(null);
         this.localNotifications.on('click', this.openHoliday.bind(this));
     }
 
 
-    dayClicked({date} : {date: Date}): void {
+    dayClicked({date}: { date: Date }): void {
         this.navCtrl.push(HolidayPage, {
             date: date
         });
     }
 
 
-    public openHoliday(): void {
+    public openHoliday($event): void {
+        alert(JSON.stringify($event));
         this.navCtrl.push(HolidayPage, {
             date: new Date()
         });

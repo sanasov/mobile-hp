@@ -50,7 +50,10 @@ registerLocaleData(localeRu, localeFrCaExtra);
         BrowserAnimationsModule,
         HttpClientModule,
         PipesModule,
-        IonicModule.forRoot(MyApp),
+        IonicModule.forRoot(MyApp,{
+          backButtonText: '',
+          swipeBackEnabled: true
+        }),
         IonicStorageModule.forRoot(),
         CalendarModule.forRoot(),
         TranslateModule.forRoot({

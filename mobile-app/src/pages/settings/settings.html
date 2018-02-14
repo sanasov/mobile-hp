@@ -13,7 +13,7 @@
                 <h2>{{(user.firstName | capitalizeFirst) + " " + (user.lastName | capitalizeFirst)}}</h2>
                 <p>{{user.birth ? (user.birth | date :'dd MMM yyyy' : '' : locale) : ""}}</p>
                 <ion-icon
-                        name="nutrition"
+                        name="md-create"
                         item-end
                         style="font-size: 14px; position: relative; top: 6px;">
                 </ion-icon>
@@ -24,7 +24,7 @@
     <ion-card>
         <ion-list>
             <button class="language-btn" ion-item icon-start (click)="openLanguagePage($event)">
-                <ion-icon name='globe' item-start></ion-icon>
+                <ion-icon name='ios-globe' item-start></ion-icon>
                 {{'LANGUAGE' | translate}}
                 <ion-note item-end>
                     {{currentLanguage.native}}

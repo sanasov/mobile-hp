@@ -39,14 +39,20 @@ $colors: (
         holiday-green: #01DC3F,
 );
 
+//
+//$toolbar-ios-background: #0DA5F3;
+//$toolbar-md-background: #0DA5F3;
+//$toolbar-wp-background: #0DA5F3;
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$tabs-ios-tab-icon-color-active: #0DA5F3;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$tabs-md-tab-icon-color-active: #0DA5F3;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

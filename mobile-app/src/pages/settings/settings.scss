@@ -4,7 +4,7 @@
 
 #settings-content {
   .scroll-content {
-    color: #f6f6f6;
+    background-color: #f1f1f1;
   }
 }
 
@@ -36,4 +36,9 @@
 
 .card-md {
   margin: 5px 5px
+}
+
+ion-card {
+  width: 100% !important;
+  margin: 20px 0px !important;
 }

@@ -15,11 +15,13 @@
 @import "../../node_modules/angular-calendar/scss/angular-calendar.scss";
 @import "../assets/styles/common.scss";
 
+$main-color: #0da5f3;
+
 ion-title {
   text-align: center;
   .toolbar-title-md,
   .toolbar-title-ios {
-    color: #0da5f3;
+    color: $main-color;
     font-size: 28px;
     font-weight: 300;
   }
@@ -49,5 +51,3 @@ ion-title {
   //color: #FA0061;
   //color: #FA2A61; норм
 }
-
-

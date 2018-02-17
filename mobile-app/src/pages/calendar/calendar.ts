@@ -46,11 +46,11 @@ export class CalendarPage {
             this.generateCalendarEvents(this.currentYear);
         });
 
-        translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-            this.locale = translateService.currentLang;
-            this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
-            this.refresh.next();
-        });
+        // translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+        //     this.locale = translateService.currentLang;
+        //     this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
+        //     this.refresh.next();
+        // });
 
         this.notificationService.initNotifications(null);
         this.notificationService.initCordovaNotifications(null);

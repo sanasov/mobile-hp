@@ -4,16 +4,93 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>{{ currentDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</ion-title>
+        <span end class="calendar-today"
+              (click)="today()">
+                {{'TODAY' | translate }}
+            </span>
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <calendar
-            [currentDate]="currentDate"
-            [eventSource]="eventSource"
-            [startingDayWeek]="weekStartsOn"
-            (onCurrentDateChanged)="onCurrentDateChanged($event)"
-            (onEventSelected)="onEventSelected($event)"
-            (onTimeSelected)="onTimeSelected($event)"
-            step="30">
-    </calendar>
+    {{slides.getActiveIndex()}} <span>{{locale}}</span>
+    <ion-slides (ionSlideDidChange)="slideChanged()" initialSlide = 1>
+        <ion-slide>
+            <mwl-calendar-month-view
+                    [weekStartsOn]= "weekStartsOn"
+                    [viewDate]="slide3.date"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    [locale]="locale"
+                    [headerTemplate]="customHeaderTemplate"
+                    (dayClicked)="dayClicked($event.day)">
+            </mwl-calendar-month-view>
+        </ion-slide>
+        <ion-slide>
+            <mwl-calendar-month-view
+                    [weekStartsOn]= "weekStartsOn"
+                    [viewDate]="slide1.date"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    [locale]="locale"
+                    [headerTemplate]="customHeaderTemplate"
+                    (dayClicked)="dayClicked($event.day)">
+            </mwl-calendar-month-view>
+        </ion-slide>
+        <ion-slide>
+            <mwl-calendar-month-view
+                    [weekStartsOn]= "weekStartsOn"
+                    [viewDate]="slide2.date"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    [locale]="locale"
+                    [headerTemplate]="customHeaderTemplate"
+                    (dayClicked)="dayClicked($event.day)">
+            </mwl-calendar-month-view>
+        </ion-slide>
+        <ion-slide>
+            <mwl-calendar-month-view
+                    [weekStartsOn]= "weekStartsOn"
+                    [viewDate]="slide3.date"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    [locale]="locale"
+                    [headerTemplate]="customHeaderTemplate"
+                    (dayClicked)="dayClicked($event.day)">
+            </mwl-calendar-month-view>
+        </ion-slide>
+        <ion-slide>
+            <mwl-calendar-month-view
+                    [weekStartsOn]= "weekStartsOn"
+                    [viewDate]="slide1.date"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    [locale]="locale"
+                    [headerTemplate]="customHeaderTemplate"
+                    (dayClicked)="dayClicked($event.day)">
+            </mwl-calendar-month-view>
+        </ion-slide>
+    </ion-slides>
+
 </ion-content>
+
+<ng-template
+        #customHeaderTemplate
+        let-days="days"
+        let-locale="locale">
+    <div class="cal-cell-row cal-header">
+        <div
+                class="cal-cell"
+                *ngFor="let day of days"
+                [class.cal-past]="day.isPast"
+                [class.cal-today]="day.isToday"
+                [class.cal-future]="day.isFuture"
+                [class.cal-weekend]="day.isWeekend"
+                [ngClass]="day.cssClass">
+            {{ day.date | date:'E': '' : locale }}
+        </div>
+    </div>
+</ng-template>

@@ -1,6 +1,8 @@
-import {Component, NgZone, ViewChild} from "@angular/core";
+import {Component, TemplateRef, ViewChild} from "@angular/core";
 import {Language} from "../../app/dictionary/language";
 import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
+import {Slides} from "ionic-angular";
+import {Subject} from "rxjs/Subject";
 
 
 @Component({
@@ -10,66 +12,66 @@ import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
 
 export class IonCalendarPage {
 
-    currentDate: Date = new Date()
-    eventSource: [];
+    currentDate: Date = new Date();
     locale: String;
     weekStartsOn: number = 1;
+    refresh: Subject<any> = new Subject();
+    slide1 = {date: new Date()};
+    slide2 = {date: new Date()};
+    slide3 = {date: new Date()};
 
-    constructor( private translateService: TranslateService) {
-        this.eventSource = this.createRandomEvents();
+
+    @ViewChild(Slides) slides: Slides;
+    @ViewChild('customHeaderTemplate') customHeaderTemplate: TemplateRef<any>;
+
+    constructor(private translateService: TranslateService) {
+        this.initSlides();
         translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.locale = translateService.currentLang;
             this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
+            this.refresh.next();
         });
     }
 
-    private onEventSelected($event): void {
-        // alert("onEventSelected" + "\n" + JSON.stringify($event));
-    }
-
-    private onTimeSelected($event): void {
-        // alert("onTimeSelected" + "\n" + JSON.stringify($event));
-    }
-
-    private onCurrentDateChanged(date): void {
-        this.currentDate = date;
-    }
-
-    createRandomEvents() {
-        var events = [];
-        for (var i = 0; i < 50; i += 1) {
-            var date = new Date();
-            var eventType = Math.floor(Math.random() * 2);
-            var startDay = Math.floor(Math.random() * 90) - 45;
-            var endDay = Math.floor(Math.random() * 2) + startDay;
-            var startTime;
-            var endTime;
-            if (eventType === 0) {
-                startTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + startDay));
-                if (endDay === startDay) {
-                    endDay += 1;
-                }
-                endTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + endDay));
-                events.push({
-                    title: 'All Day - ' + i,
-                    startTime: startTime,
-                    endTime: endTime,
-                    allDay: true
-                });
-            } else {
-                var startMinute = Math.floor(Math.random() * 24 * 60);
-                var endMinute = Math.floor(Math.random() * 180) + startMinute;
-                startTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + startDay, 0, date.getMinutes() + startMinute);
-                endTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + endDay, 0, date.getMinutes() + endMinute);
-                events.push({
-                    title: 'Event - ' + i,
-                    startTime: startTime,
-                    endTime: endTime,
-                    allDay: false
-                });
+    private slideChanged() {
+        let currentIndex = this.slides.getActiveIndex();
+        if (currentIndex === 1 || currentIndex === 4) {
+            this.currentDate = this.slide1.date;
+            this.slide2.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
+            this.slide3.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
+            if (currentIndex === 4) {
+                this.slides.slideTo(1, 0, false);
+            }
+        } else if (currentIndex === 2) {
+            this.currentDate = this.slide2.date;
+            this.slide1.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
+            this.slide3.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
+        } else if (currentIndex === 3 || currentIndex === 0) {
+            this.currentDate = this.slide3.date;
+            this.slide1.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
+            this.slide2.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
+            if (currentIndex === 0) {
+                this.slides.slideTo(3, 0, false);
             }
         }
-        return events;
+    }
+
+    private today() {
+        this.currentDate = new Date();
+        this.initSlides();
+        this.slides.slideTo(1, 0, false);
+    }
+
+    private initSlides() {
+        this.slide1.date = this.currentDate;
+        this.slide2.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
+        this.slide3.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
+    }
+
+    private withMonths(date: Date, monthNumber) {
+        let result = new Date(date)
+        result.setMonth(monthNumber);
+        return result;
     }
 
 }

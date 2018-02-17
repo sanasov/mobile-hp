@@ -13,6 +13,7 @@ import {SettingsPage} from "../pages/settings/settings";
 import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {HolidayPage} from "../pages/calendar/holiday/holiday";
+import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
 
 
 @Component({
@@ -23,6 +24,7 @@ export class MyApp {
 
     eventPage: any = EventPage;
     calendarPage: any = CalendarPage;
+    ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
 
     constructor(public platform: Platform,

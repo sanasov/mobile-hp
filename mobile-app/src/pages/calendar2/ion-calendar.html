@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ currentDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <calendar
+            [currentDate]="currentDate"
+            [eventSource]="eventSource"
+            [startingDayWeek]="weekStartsOn"
+            (onCurrentDateChanged)="onCurrentDateChanged($event)"
+            (onEventSelected)="onEventSelected($event)"
+            (onTimeSelected)="onTimeSelected($event)"
+            step="30">
+    </calendar>
+</ion-content>

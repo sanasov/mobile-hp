@@ -1,5 +1,5 @@
 import {Component, NgZone, ViewChild} from '@angular/core';
-import {Nav, NavController, Platform} from 'ionic-angular';
+import {Nav, NavController, Platform, Slides} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from "@ngx-translate/core";
@@ -40,6 +40,7 @@ export class MyApp {
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;
+    @ViewChild(Slides) slides: Slides;
 
     ionViewDidEnter() {
         this.tabRef.select(2, null, null);
@@ -79,5 +80,10 @@ export class MyApp {
         return defaultLanguage;
     }
 
-
+    private finishInstruction(): void {
+        if (this.slides.isEnd()) {
+            this.firstOpening = false;
+            // this.storage.set("firstOpening", this.firstOpening);
+        }
+    }
 }

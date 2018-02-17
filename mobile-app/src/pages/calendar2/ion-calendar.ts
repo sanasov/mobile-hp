@@ -3,6 +3,7 @@ import {Language} from "../../app/dictionary/language";
 import {LangChangeEvent, TranslateService} from "@ngx-translate/core";
 import {Slides} from "ionic-angular";
 import {Subject} from "rxjs/Subject";
+import {CommonSettings} from "../../app/service/CommonSettings";
 
 
 @Component({
@@ -24,13 +25,10 @@ export class IonCalendarPage {
     @ViewChild(Slides) slides: Slides;
     @ViewChild('customHeaderTemplate') customHeaderTemplate: TemplateRef<any>;
 
-    constructor(private translateService: TranslateService) {
+    constructor(private translateService: TranslateService, private commonSettings: CommonSettings) {
+        this.locale = commonSettings.locale;
+        this.weekStartsOn = commonSettings.weekStartsOn();
         this.initSlides();
-        translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-            this.locale = translateService.currentLang;
-            this.weekStartsOn = this.locale === Language.EN.locale.toLowerCase() ? 0 : 1;
-            this.refresh.next();
-        });
     }
 
     private slideChanged() {

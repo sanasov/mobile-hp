@@ -14,6 +14,7 @@ import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {HolidayPage} from "../pages/calendar/holiday/holiday";
 import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
+import {CommonSettings} from "./service/CommonSettings";
 
 
 @Component({
@@ -32,6 +33,7 @@ export class MyApp {
                 public splashScreen: SplashScreen,
                 private translateService: TranslateService,
                 public storage: Storage,
+                private commonSettings: CommonSettings,
                 private zone: NgZone) {
         this.initializeApp();
     }
@@ -61,6 +63,7 @@ export class MyApp {
                 } else {
                     this.storage.set("device-language", deviceLanguage);
                 }
+                this.commonSettings.locale = deviceLanguage.toLocaleLowerCase()
                 this.translateService.use(deviceLanguage.toLocaleLowerCase());
             });
         });

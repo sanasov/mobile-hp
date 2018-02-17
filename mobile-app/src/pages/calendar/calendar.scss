@@ -70,3 +70,18 @@
   font-size: 24px;
   font-weight: 300;
 }
+
+ion-slides {
+  .cal-header {
+    display: none !important;
+  }
+  ion-slide.swiper-slide {
+    align-items: flex-start;
+  }
+}
+
+.week-header {
+  .cal-days {
+    display: none;
+  }
+}

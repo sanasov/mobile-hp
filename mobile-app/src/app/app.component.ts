@@ -27,6 +27,7 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
+    firstOpening: boolean = true;
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
@@ -51,6 +52,7 @@ export class MyApp {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.defineLanguage();
+            this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
         });
     }
 

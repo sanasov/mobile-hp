@@ -1,5 +1,20 @@
 <ion-content>
-    <ion-tabs #mainTabs class="tabs-basic">
+
+    <ion-slides  *ngIf="firstOpening">
+        <ion-slide>
+            <show-fade [turnOn]="true" style="width:100%">
+                <h1>Hello! What's our name?</h1>
+            </show-fade>
+        </ion-slide>
+        <ion-slide>
+            <h1>When you were born?</h1>
+        </ion-slide>
+        <ion-slide>
+            <h1>Add events and i help you to discover your new holidays</h1>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-tabs #mainTabs class="tabs-basic"  *ngIf="!firstOpening">
         <ion-tab tabIcon="calendar" [root]="calendarPage"></ion-tab>
         <ion-tab tabIcon="calendar" [root]="ionCalendarPage"></ion-tab>
         <ion-tab tabIcon="bookmarks" [root]="eventPage"></ion-tab>

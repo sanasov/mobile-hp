@@ -11,11 +11,23 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    {{slides.getActiveIndex()}} <span>{{locale}}</span>
-    <ion-slides (ionSlideDidChange)="slideChanged()" initialSlide = 1>
+        <mwl-calendar-month-view
+                class = "week-header"
+                [weekStartsOn]="weekStartsOn"
+                [viewDate]="mockDateForWeekHeader"
+                [locale]="locale"
+                [headerTemplate]="customHeaderTemplate">
+        </mwl-calendar-month-view>
+    <ion-slides
+                (ionSlideWillChange)="slideWillChange()"
+                (ionSlideNextStart)="slideNextStart()"
+                (ionSlidePrevStart)="slidePrevStart()"
+                (ionSlideNextEnd)="slideNextEnd()"
+                (ionSlidePrevEnd)="slidePrevEnd()"
+                initialSlide=1>
         <ion-slide>
             <mwl-calendar-month-view
-                    [weekStartsOn]= "weekStartsOn"
+                    [weekStartsOn]="weekStartsOn"
                     [viewDate]="slide3.date"
                     [events]="events"
                     [refresh]="refresh"
@@ -27,7 +39,7 @@
         </ion-slide>
         <ion-slide>
             <mwl-calendar-month-view
-                    [weekStartsOn]= "weekStartsOn"
+                    [weekStartsOn]="weekStartsOn"
                     [viewDate]="slide1.date"
                     [events]="events"
                     [refresh]="refresh"
@@ -39,7 +51,7 @@
         </ion-slide>
         <ion-slide>
             <mwl-calendar-month-view
-                    [weekStartsOn]= "weekStartsOn"
+                    [weekStartsOn]="weekStartsOn"
                     [viewDate]="slide2.date"
                     [events]="events"
                     [refresh]="refresh"
@@ -51,7 +63,7 @@
         </ion-slide>
         <ion-slide>
             <mwl-calendar-month-view
-                    [weekStartsOn]= "weekStartsOn"
+                    [weekStartsOn]="weekStartsOn"
                     [viewDate]="slide3.date"
                     [events]="events"
                     [refresh]="refresh"
@@ -63,7 +75,7 @@
         </ion-slide>
         <ion-slide>
             <mwl-calendar-month-view
-                    [weekStartsOn]= "weekStartsOn"
+                    [weekStartsOn]="weekStartsOn"
                     [viewDate]="slide1.date"
                     [events]="events"
                     [refresh]="refresh"

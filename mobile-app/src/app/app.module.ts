@@ -28,7 +28,6 @@ import {EventCardPage} from "../pages/event/event-card/event-card";
 import {ProfileModalPage} from "../pages/settings/profile-modal/profile-modal";
 import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
-import {NgCalendarModule} from "ionic2-calendar";
 import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
 import {CommonSettings} from "./service/CommonSettings";
 
@@ -61,7 +60,6 @@ registerLocaleData(localeRu, localeFrCaExtra);
         }),
         IonicStorageModule.forRoot(),
         CalendarModule.forRoot(),
-        NgCalendarModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

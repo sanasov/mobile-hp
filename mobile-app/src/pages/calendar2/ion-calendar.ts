@@ -111,6 +111,10 @@ export class IonCalendarPage {
             .concat(WorldHoliday.toCalendarEvents(year));
     }
 
+    clickYearPicker() {
+        this.currentYear = this.currentDate.getFullYear();
+    }
+
     private selectYear() {
         this.currentDate.setFullYear(this.currentYear);
         this.toDate(new Date(this.currentDate));
@@ -125,7 +129,6 @@ export class IonCalendarPage {
     private today() {
         this.toDate(new Date());
         this.currentYear = new Date().getFullYear();
-        // document.getElementsByClassName("year-picker").item(0).dispatchEvent(new Event('ngModelChange'));
         this.zone.run(() => {
         });
     }

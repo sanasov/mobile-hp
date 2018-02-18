@@ -4,7 +4,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>{{ currentDate | date :'LLLL yyyy' : '' : locale | capitalizeFirst }}</ion-title>
-        <ion-datetime class="year-picker" displayFormat="YYYY" min="1500" max="2050" [(ngModel)]="currentYear" (ngModelChange)="selectYear()"></ion-datetime>
+        <ion-datetime class="year-picker" displayFormat="YYYY" min="1500" max="2050" [(ngModel)]="currentYear" (ngModelChange)="selectYear()" (click)="clickYearPicker()"></ion-datetime>
         <span end class="calendar-today"
               (click)="today()">
                 {{'TODAY' | translate }}

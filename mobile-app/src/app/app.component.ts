@@ -29,9 +29,9 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
-    firstOpening: boolean = true;
+    firstOpening: boolean = false;
+    appReady: boolean = false;
     user: User = new User("", "", undefined);
-
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
@@ -58,7 +58,7 @@ export class MyApp {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.defineLanguage();
-            this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
+            // this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
         });
     }
 
@@ -73,6 +73,7 @@ export class MyApp {
                 }
                 this.commonSettings.locale = deviceLanguage.toLocaleLowerCase()
                 this.translateService.use(deviceLanguage.toLocaleLowerCase());
+                this.appReady = true;
             });
         });
     }

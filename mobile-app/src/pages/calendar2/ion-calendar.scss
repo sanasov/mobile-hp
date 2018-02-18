@@ -27,8 +27,26 @@ mwl-calendar-month-cell {
   }
 }
 
+.year-picker {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 90px);
+  width: 190px;
+  .datetime-text {
+    display: none !important;
+  }
+}
+
 .cal-month-view .cal-day-badge {
   display: none !important;
+}
+
+.week-header {
+  .cal-month-view {
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
 }
 
 .calendar-today {

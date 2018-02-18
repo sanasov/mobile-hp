@@ -2,6 +2,7 @@
 
     <ion-slides id="introduction" *ngIf="firstOpening"
                 (ionSlideDidChange)="slideChanged()"
+                style="position: absolute;"
                 pager>
         <ion-slide>
             <ion-list>
@@ -34,9 +35,9 @@
         </ion-slide>
     </ion-slides>
 
-    <ion-tabs #mainTabs class="tabs-basic" *ngIf="!firstOpening">
-        <ion-tab tabIcon="calendar" [root]="calendarPage"></ion-tab>
+    <ion-tabs #mainTabs class="tabs-basic" *ngIf="appReady&&!firstOpening">
         <ion-tab tabIcon="calendar" [root]="ionCalendarPage"></ion-tab>
+        <ion-tab tabIcon="calendar" [root]="calendarPage"></ion-tab>
         <ion-tab tabIcon="bookmarks" [root]="eventPage"></ion-tab>
         <ion-tab tabIcon="settings" [root]="settingsPage"></ion-tab>
     </ion-tabs>

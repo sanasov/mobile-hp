@@ -1,4 +1,4 @@
-import {Component, TemplateRef, ViewChild} from "@angular/core";
+import {Component, TemplateRef, ViewChild, NgZone} from "@angular/core";
 import {NavController, Slides} from "ionic-angular";
 import {Subject} from "rxjs/Subject";
 import {CommonSettings} from "../../app/service/CommonSettings";
@@ -33,6 +33,7 @@ export class IonCalendarPage {
 
     constructor(private storage: Storage,
                 private navCtrl: NavController,
+                private zone: NgZone,
                 private commonSettings: CommonSettings) {
         this.locale = commonSettings.locale;
         this.weekStartsOn = commonSettings.weekStartsOn();
@@ -110,10 +111,23 @@ export class IonCalendarPage {
             .concat(WorldHoliday.toCalendarEvents(year));
     }
 
-    private today() {
-        this.currentDate = new Date();
+    private selectYear() {
+        this.currentDate.setFullYear(this.currentYear);
+        this.toDate(new Date(this.currentDate));
+    }
+
+    toDate(date) {
+        this.currentDate = date;
         this.initSlides();
         this.slides.slideTo(1, 0, false);
+    }
+
+    private today() {
+        this.toDate(new Date());
+        this.currentYear = new Date().getFullYear();
+        // document.getElementsByClassName("year-picker").item(0).dispatchEvent(new Event('ngModelChange'));
+        this.zone.run(() => {
+        });
     }
 
     private initSlides() {

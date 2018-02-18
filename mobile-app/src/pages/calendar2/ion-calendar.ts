@@ -7,6 +7,7 @@ import {HolidayEngine} from "../../app/service/HolidayEngine";
 import {CalendarEvent} from "angular-calendar";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
 import {Storage} from '@ionic/storage';
+import * as moment from "moment";
 
 @Component({
     selector: 'page-ion-calendar',
@@ -22,6 +23,7 @@ export class IonCalendarPage {
     holidayEngine: HolidayEngine;
     events: CalendarEvent[] = [];
     currentYear: number = new Date().getFullYear();
+    yearPickerDate: string = new Date().toISOString();
     slide1 = {date: new Date()};
     slide2 = {date: new Date()};
     slide3 = {date: new Date()};
@@ -52,6 +54,7 @@ export class IonCalendarPage {
             return;
         }
         this.currentYear = this.currentDate.getFullYear();
+        this.yearPickerDate = null;
         this.generateCalendarEvents(this.currentYear);
     }
 
@@ -111,12 +114,8 @@ export class IonCalendarPage {
             .concat(WorldHoliday.toCalendarEvents(year));
     }
 
-    clickYearPicker() {
-        this.currentYear = this.currentDate.getFullYear();
-    }
-
     private selectYear() {
-        this.currentDate.setFullYear(this.currentYear);
+        this.currentDate.setFullYear(moment(this.yearPickerDate.substring(0, 10), "YYYY-MM-DD").year());
         this.toDate(new Date(this.currentDate));
     }
 
@@ -128,9 +127,6 @@ export class IonCalendarPage {
 
     private today() {
         this.toDate(new Date());
-        this.currentYear = new Date().getFullYear();
-        this.zone.run(() => {
-        });
     }
 
     private initSlides() {

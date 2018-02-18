@@ -4,6 +4,12 @@
   transition: opacity 1s, visibility 1s;
 }
 
+.show-slow {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 3s, visibility 3s;
+}
+
 .fade {
   opacity: 0;
   visibility: hidden;

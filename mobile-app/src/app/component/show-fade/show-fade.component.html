@@ -1,3 +1,3 @@
-<span id="show-fade" class="fade content" [ngClass]="{fade: !turnOn || !inited, show: turnOn&&inited}">
+<span id="show-fade" class="fade content" [ngClass]="{fade: !turnOn || !inited, show: turnOn&&inited&&!slow, 'show-slow': turnOn&&inited&&slow}">
   <ng-content></ng-content>
 </span>

@@ -1,9 +1,12 @@
 <ion-content>
 
     <ion-slides *ngIf="firstOpening"
-                (ionSlideNextStart)="finishInstruction()">
+                (ionSlideNextStart)="finishInstruction()"
+                pager
+                centeredSlides="true"
+                effect="fade" >
         <ion-slide>
-            <show-fade [turnOn]="true" style="width:100%">
+            <show-fade [turnOn]="true" [slow]="true" style="width:100%">
                 <h1>Hello! What's our name?</h1>
             </show-fade>
         </ion-slide>
@@ -12,8 +15,6 @@
         </ion-slide>
         <ion-slide>
             <h1>Add events and i help you to discover your new holidays</h1>
-        </ion-slide>
-        <ion-slide>
         </ion-slide>
     </ion-slides>
 

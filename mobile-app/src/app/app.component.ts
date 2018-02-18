@@ -82,8 +82,10 @@ export class MyApp {
 
     private finishInstruction(): void {
         if (this.slides.isEnd()) {
-            this.firstOpening = false;
-            // this.storage.set("firstOpening", this.firstOpening);
+            setTimeout(() => {
+                this.firstOpening = false;
+                // this.storage.set("firstOpening", this.firstOpening);
+            }, 1500)
         }
     }
 }

@@ -7,16 +7,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class ShowFadeComponent implements OnInit {
 
   @Input() turnOn: boolean = false;
+  @Input() delay: number = 0;
+  @Input() slow: boolean = false;
 
   @Output() clicked: EventEmitter<number> = new EventEmitter<number>();
 
-  stars: string[] = [];
   inited: boolean = false;
 
   constructor() {
   }
 
   ngOnInit() {
-    setTimeout(() => this.inited = true);
+    setTimeout(() => this.inited = true, this.delay);
   }
 }

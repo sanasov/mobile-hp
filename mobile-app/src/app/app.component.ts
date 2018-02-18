@@ -15,6 +15,8 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import {HolidayPage} from "../pages/calendar/holiday/holiday";
 import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
 import {CommonSettings} from "./service/CommonSettings";
+import User from "./domain/user";
+import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
 
 
 @Component({
@@ -28,11 +30,14 @@ export class MyApp {
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
     firstOpening: boolean = true;
+    user: User = new User("", "", undefined);
+
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
                 public splashScreen: SplashScreen,
                 private translateService: TranslateService,
+                public storageRepository: StorageRepositoryProvider,
                 public storage: Storage,
                 private commonSettings: CommonSettings,
                 private zone: NgZone) {
@@ -80,12 +85,46 @@ export class MyApp {
         return defaultLanguage;
     }
 
-    private finishInstruction(): void {
+    private slideChanged(): void {
+        if (this.slides.getActiveIndex() === 0) {
+            this.slides.lockSwipeToNext(false);
+        }
+        if (this.slides.getActiveIndex() === 1) {
+            this.slides.lockSwipeToNext(true);
+        }
+        if (this.slides.getActiveIndex() > 1) {
+            this.slides.lockSwipes(true);
+        }
         if (this.slides.isEnd()) {
             setTimeout(() => {
                 this.firstOpening = false;
-                // this.storage.set("firstOpening", this.firstOpening);
-            }, 1500)
+                // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
+                this.storageRepository.setUser(this.user);
+            }, 2000)
         }
+    }
+
+    ngAfterViewInit() {
+        if (this.firstOpening) {
+            setTimeout(() => document.getElementById("introduction-name").focus(), 100);
+        }
+    }
+
+    nextSlide() {
+        this.slides.slideNext(300, false);
+    }
+
+    ionCancel() {
+        if (!this.user.birthString) {
+            this.slides.lockSwipeToNext(true);
+        }
+    }
+
+    selectDate() {
+        setTimeout(() => {
+            this.slides.lockSwipeToNext(false);
+            this.nextSlide();
+            this.slideChanged();
+        }, 300);
     }
 }

@@ -1,17 +1,33 @@
 <ion-content>
 
-    <ion-slides *ngIf="firstOpening"
-                (ionSlideNextStart)="finishInstruction()"
-                pager
-                centeredSlides="true"
-                effect="fade" >
+    <ion-slides id="introduction" *ngIf="firstOpening"
+                (ionSlideDidChange)="slideChanged()"
+                pager>
         <ion-slide>
-            <show-fade [turnOn]="true" [slow]="true" style="width:100%">
-                <h1>Hello! What's our name?</h1>
-            </show-fade>
+            <ion-list>
+                <textarea id="introduction-name"
+                          cols="40" rows="2"
+                          placeholder="Hello! What's your name?"
+                          (keyup)="$event.key === 'Enter' && nextSlide($event)"
+                          style="border:none; width:300px; font-size: 26px"
+                          [(ngModel)]="user.firstName"> </textarea>
+            </ion-list>
         </ion-slide>
         <ion-slide>
-            <h1>When you were born?</h1>
+            <ion-list>
+                <h1>When you were born?</h1>
+                <show-fade [turnOn]="slides && slides.getActiveIndex() === 1 && !user.birthString" [slow]="true"
+                           style="width:100%">
+                    <p style="color:grey">I need to know even more than your name :)</p>
+                </show-fade>
+                <ion-datetime
+                        align-items-center
+                        (ngModelChange)="selectDate()"
+                        displayFormat="DD MMMM YYYY"
+                        placeholder="Select date"
+                        [(ngModel)]="user.birthString">
+                </ion-datetime>
+            </ion-list>
         </ion-slide>
         <ion-slide>
             <h1>Add events and i help you to discover your new holidays</h1>

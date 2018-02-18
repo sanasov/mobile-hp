@@ -29,7 +29,9 @@ export default class User {
     }
 
     get birthString(): string {
-        console.log(moment(this._birth).format('YYYY-MM-DD'));
+        if (!this._birth) {
+            return "";
+        }
         return moment(this._birth).format('YYYY-MM-DD');
     }
 

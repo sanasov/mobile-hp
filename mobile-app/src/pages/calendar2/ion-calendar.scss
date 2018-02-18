@@ -18,6 +18,15 @@
   }
 }
 
+mwl-calendar-month-cell {
+  position: relative;
+  .cal-events {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+}
+
 .cal-month-view .cal-day-badge {
   display: none !important;
 }

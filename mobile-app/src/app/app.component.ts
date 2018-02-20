@@ -29,7 +29,7 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
-    firstOpening: boolean = true;
+    firstOpening: boolean = false;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
 

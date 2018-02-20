@@ -37,9 +37,9 @@
     </ion-slides>
 
     <ion-tabs #mainTabs class="tabs-basic" *ngIf="appReady&&!firstOpening">
-        <ion-tab tabIcon="calendar" [root]="ionCalendarPage"></ion-tab>
+        <ion-tab tabIcon="ios-calendar" [root]="ionCalendarPage"></ion-tab>
         <ion-tab tabIcon="calendar" [root]="calendarPage"></ion-tab>
-        <ion-tab tabIcon="bookmarks" [root]="eventPage"></ion-tab>
-        <ion-tab tabIcon="settings" [root]="settingsPage"></ion-tab>
+        <ion-tab tabIcon="ios-list-box" [root]="eventPage"></ion-tab>
+        <ion-tab tabIcon="ios-settings" [root]="settingsPage"></ion-tab>
     </ion-tabs>
 </ion-content>

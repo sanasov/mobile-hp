@@ -10,7 +10,7 @@
 <ion-content>
 
 
-    <ion-list>
+    <ion-list style="max-height: 90%">
         <ion-item-sliding *ngFor="let event of events">
             <ion-item (click)="openEventCard(event)">
                 <h2>{{event.title}}</h2>

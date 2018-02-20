@@ -16,6 +16,8 @@
 @import "../assets/styles/common.scss";
 
 $main-color: #0da5f3;
+$yellow-color: #FEE40C;
+$red-color: #FA2A61;
 
 ion-title {
   text-align: center;
@@ -32,22 +34,26 @@ ion-title {
 }
 
 .holiday-yellow-background {
-  background-color: #FEE40C;
+  background-color: $yellow-color;
   //color: #C0B90E;
   //color: #DCF30D;
   //color: #F0F32B; норм
 }
 
 .holiday-yellow {
-  color: #FEE40C;
+  color: $yellow-color;
   //color: #C0B90E;
   //color: #DCF30D;
   //color: #F0F32B; норм
 }
 
 .holiday-red-background {
-  background-color: #FA2A61;
+  background-color: $red-color;
   //color: #C0B90E;
   //color: #FA0061;
   //color: #FA2A61; норм
+}
+
+.scroll-content {
+  overflow-y: auto !important;
 }

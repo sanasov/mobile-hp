@@ -55,7 +55,9 @@ export class SettingsPage {
         let modal = this.modalCtrl.create(ProfileModalPage, {'user': this.user});
         modal.present();
         modal.onDidDismiss((savedUser: User) => {
+          if(savedUser) {
             this.user = savedUser;
+          }
         });
     }
 

@@ -2,7 +2,7 @@
 
     <ion-slides id="introduction" *ngIf="firstOpening"
                 (ionSlideDidChange)="slideChanged()"
-                style="position: absolute;"
+                [style.height]="screenHeight()"
                 pager>
         <ion-slide>
             <ion-list>

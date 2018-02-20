@@ -29,7 +29,7 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
-    firstOpening: boolean = false;
+    firstOpening: boolean = true;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
 
@@ -50,6 +50,10 @@ export class MyApp {
     ionViewDidEnter() {
         this.tabRef.select(2, null, null);
     }
+
+   screenHeight() : any {
+    return window.screen.height + "px";
+  }
 
     initializeApp() {
         this.platform.ready().then(() => {

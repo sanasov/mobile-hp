@@ -28,6 +28,7 @@ import {EventCardPage} from "../pages/event/event-card/event-card";
 import {ProfileModalPage} from "../pages/settings/profile-modal/profile-modal";
 import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import {AnimationsComponent} from "./component/animations/animations.component";
 
 registerLocaleData(localeRu, localeFrCaExtra);
 
@@ -44,6 +45,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
         HolidayPage,
         SettingsPage,
         ShowFadeComponent,
+        AnimationsComponent
     ],
     imports: [
         BrowserModule,

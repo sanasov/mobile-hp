@@ -91,15 +91,10 @@ export class MyApp {
     }
 
     private slideChanged(): void {
-        if (this.slides.getActiveIndex() === 0) {
-            this.slides.lockSwipeToNext(false);
-        }
-        if (this.slides.getActiveIndex() === 1) {
-            this.slides.lockSwipeToNext(true);
-        }
-        if (this.slides.getActiveIndex() > 1) {
-            this.slides.lockSwipes(true);
-        }
+      if (this.slides.getActiveIndex() >=1) {
+        this.slides.lockSwipes(true);
+      }
+      this.slides.slideNext(500, false);
         if (this.slides.isEnd()) {
             setTimeout(() => {
                 this.firstOpening = false;
@@ -111,12 +106,14 @@ export class MyApp {
 
     ngAfterViewInit() {
         if (this.firstOpening) {
-            setTimeout(() => document.getElementById("introduction-name").focus(), 100);
+            setTimeout(() => {document.getElementById("introduction-name").focus()}, 100);
         }
     }
 
     nextSlide() {
-        this.slides.slideNext(300, false);
+        document.getElementById("introduction-name").blur()
+        this.slides.slideNext(500, false);
+        this.slides.lockSwipes(true);
     }
 
     ionCancel() {
@@ -130,6 +127,6 @@ export class MyApp {
             this.slides.lockSwipeToNext(false);
             this.nextSlide();
             this.slideChanged();
-        }, 300);
+        }, 800);
     }
 }

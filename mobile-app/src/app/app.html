@@ -6,15 +6,16 @@
                 pager>
         <ion-slide>
             <ion-list>
-                <textarea id="introduction-name"
-                          cols="40" rows="2"
+                <input id="introduction-name"
                           placeholder="Hello! What's your name?"
-                          (keyup)="$event.key === 'Enter' && nextSlide($event)"
-                          style="border:none; width:300px; font-size: 26px"
-                          [(ngModel)]="user.firstName"> </textarea>
+                          (keyup)="$event.key === 'Enter' && user.firstName.trim().length>0 && nextSlide($event)"
+                          [style.width]="user.firstName.length === 0 ? '295px' : (user.firstName.length + 1) * 16 + 'px'"
+                          style="border:none; max-width:300px; font-size: 26px"
+                          [(ngModel)]="user.firstName"/>
             </ion-list>
         </ion-slide>
         <ion-slide>
+
             <ion-list>
                 <h1>When you were born?</h1>
                 <show-fade [turnOn]="slides && slides.getActiveIndex() === 1 && !user.birthString" [slow]="true"

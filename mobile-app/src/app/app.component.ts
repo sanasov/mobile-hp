@@ -32,7 +32,7 @@ export class MyApp {
     firstOpening: boolean = true;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
-    deltaHeight: number = 0;
+    deltaHeight: number;
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
@@ -43,6 +43,11 @@ export class MyApp {
                 private commonSettings: CommonSettings,
                 private zone: NgZone) {
         this.initializeApp();
+      // this.screenOrientation.onChange().subscribe(
+      //   () => {
+      //     this.deltaHeight =  window.screen.availHeight - document.getElementById("introduction").offsetHeight;
+      //   }
+      // );
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;
@@ -53,7 +58,10 @@ export class MyApp {
     }
 
    screenHeight() : any {
-    return window.screen.availHeight + "px";
+    if(!this.deltaHeight) {
+      return "calc(100%)";
+    }
+    return window.screen.availHeight - this.deltaHeight + "px";
   }
 
     initializeApp() {
@@ -104,6 +112,7 @@ export class MyApp {
 
     ngAfterViewInit() {
         if (this.firstOpening) {
+            this.deltaHeight =  window.screen.availHeight - document.getElementById("introduction").offsetHeight;
             setTimeout(() => {document.getElementById("introduction-name").focus()}, 100);
             this.slides.lockSwipes(true)
         }

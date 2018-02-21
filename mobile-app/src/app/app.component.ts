@@ -29,9 +29,10 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
-    firstOpening: boolean = false;
+    firstOpening: boolean = true;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
+    deltaHeight: number = 0;
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
@@ -52,7 +53,7 @@ export class MyApp {
     }
 
    screenHeight() : any {
-    return window.screen.height + "px";
+    return window.screen.availHeight + "px";
   }
 
     initializeApp() {
@@ -91,27 +92,26 @@ export class MyApp {
     }
 
     private slideChanged(): void {
-      if (this.slides.getActiveIndex() >=1) {
-        this.slides.lockSwipes(true);
-      }
       this.slides.slideNext(500, false);
-        if (this.slides.isEnd()) {
-            setTimeout(() => {
-                this.firstOpening = false;
-                // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
-                this.storageRepository.setUser(this.user);
-            }, 2000)
-        }
+      if (this.slides.isEnd()) {
+          setTimeout(() => {
+              this.firstOpening = false;
+              // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
+              this.storageRepository.setUser(this.user);
+          }, 2000)
+      }
     }
 
     ngAfterViewInit() {
         if (this.firstOpening) {
             setTimeout(() => {document.getElementById("introduction-name").focus()}, 100);
+            this.slides.lockSwipes(true)
         }
     }
 
     nextSlide() {
         document.getElementById("introduction-name").blur()
+        this.slides.lockSwipes(false);
         this.slides.slideNext(500, false);
         this.slides.lockSwipes(true);
     }

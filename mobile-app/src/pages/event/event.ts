@@ -4,6 +4,7 @@ import {Storage} from '@ionic/storage';
 import {EventModalPage} from "./event-modal/event-modal";
 import {TranslateService} from "@ngx-translate/core";
 import {EventCardPage} from "./event-card/event-card";
+import HolidayEvent from "../../app/domain/holiday-event";
 
 @Component({
     selector: 'page-event',
@@ -12,7 +13,7 @@ import {EventCardPage} from "./event-card/event-card";
 export class EventPage implements OnDestroy {
     locale: string;
     eventSegment: string = "ALL";
-    events: Array<{ title: string, date: string }>;
+    events: HolidayEvent[];
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -30,7 +31,7 @@ export class EventPage implements OnDestroy {
     }
 
     addEvent() {
-        var event = {title: "", date: ""};
+        var event = new HolidayEvent("", new Date(), new Date());
         let modal = this.modalCtrl.create(EventModalPage, {'event': event});
         modal.present();
         modal.onDidDismiss(data => {
@@ -56,6 +57,16 @@ export class EventPage implements OnDestroy {
         });
     }
 
+    filteredEvents() {
+     return this.events.filter(event => this.showableEvent(event.date));
+    }
+
+    private showableEvent(date: Date) {
+      return !date ||
+        this.eventSegment === "ALL" ||
+        (this.eventSegment === "PAST" && date < new Date()) ||
+        (this.eventSegment === "FUTURE" && date >= new Date());
+    }
 
     save() {
         this.storage.set('events', this.events);

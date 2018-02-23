@@ -6,12 +6,12 @@
 }
 
 .add-btn {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 25px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  position: absolute;
+  bottom: 65px;
+  right: 15px;
   float: right;
   color: #fff;
   background-color: #0da5f3;
@@ -89,3 +89,7 @@ ion-modal .modal-wrapper {
 }
 
 
+.events-segment {
+  margin-bottom: 20px;
+  margin-top: 5px;
+}

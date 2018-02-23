@@ -1,27 +1,19 @@
-<ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-      <ion-segment [(ngModel)]="eventSegment" color="secondary">
-        <ion-segment-button value="ALL">
-          All
-        </ion-segment-button>
-        <ion-segment-button value="PAST">
-          Past
-        </ion-segment-button>
-        <ion-segment-button value="FUTURE">
-          Future
-        </ion-segment-button>
-      </ion-segment>
-    </ion-navbar>
-</ion-header>
-
 <ion-content>
 
+  <ion-segment [(ngModel)]="eventSegment" color="holiday-main" class="events-segment">
+  <ion-segment-button value="ALL">
+    All
+  </ion-segment-button>
+  <ion-segment-button value="PAST">
+    Past
+  </ion-segment-button>
+  <ion-segment-button value="FUTURE">
+    Future
+  </ion-segment-button>
+</ion-segment>
 
 
-    <ion-list style="max-height: 90%">
+    <ion-list style="max-height: calc(100% - 150px); overflow-y: auto;">
         <ion-item-sliding *ngFor="let event of events">
             <ion-item (click)="openEventCard(event)">
                 <h2>{{event.title}}</h2>

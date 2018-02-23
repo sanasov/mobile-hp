@@ -11,6 +11,7 @@ import {EventCardPage} from "./event-card/event-card";
 })
 export class EventPage implements OnDestroy {
     locale: string;
+    eventSegment: string = "ALL";
     events: Array<{ title: string, date: string }>;
 
     constructor(public navCtrl: NavController,

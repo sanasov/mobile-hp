@@ -3,11 +3,22 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title id="event-title">{{'EVENTS' | translate }}</ion-title>
+      <ion-segment [(ngModel)]="eventSegment" color="secondary">
+        <ion-segment-button value="ALL">
+          All
+        </ion-segment-button>
+        <ion-segment-button value="PAST">
+          Past
+        </ion-segment-button>
+        <ion-segment-button value="FUTURE">
+          Future
+        </ion-segment-button>
+      </ion-segment>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
+
 
 
     <ion-list style="max-height: 90%">

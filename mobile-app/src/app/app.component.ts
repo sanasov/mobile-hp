@@ -29,7 +29,11 @@ export class MyApp {
     calendarPage: any = CalendarPage;
     ionCalendarPage: any = IonCalendarPage;
     settingsPage: any = SettingsPage;
-    firstOpening: boolean = true;
+    calendarTitle: string = "Calendar";
+    eventsTitle: string = "Events";
+    settingsTitle: string = "Settings";
+
+    firstOpening: boolean = false;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
     deltaHeight: number;
@@ -86,9 +90,16 @@ export class MyApp {
                 }
                 this.commonSettings.locale = deviceLanguage.toLocaleLowerCase()
                 this.translateService.use(deviceLanguage.toLocaleLowerCase());
+                this.initTabTitle();
                 this.appReady = true;
             });
         });
+    }
+
+    initTabTitle() {
+     this.translateService.get("SETTINGS").subscribe(result =>  this.settingsTitle = result);
+     this.translateService.get("EVENTS").subscribe(result =>  this.eventsTitle = result);
+     this.translateService.get("CALENDAR").subscribe(result =>  this.calendarTitle = result);
     }
 
     private findDeviceLanguageOrDefaultFromLocalStorage(defaultLanguage: string): string {

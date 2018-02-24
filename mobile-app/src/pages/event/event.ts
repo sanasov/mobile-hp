@@ -5,6 +5,7 @@ import {EventModalPage} from "./event-modal/event-modal";
 import {TranslateService} from "@ngx-translate/core";
 import {EventCardPage} from "./event-card/event-card";
 import HolidayEvent from "../../app/domain/holiday-event";
+import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 
 @Component({
     selector: 'page-event',
@@ -18,10 +19,11 @@ export class EventPage implements OnDestroy {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private storage: Storage,
+                private repository: StorageRepositoryProvider,
                 public modalCtrl: ModalController,
                 private translateService: TranslateService) {
-        storage.get('events').then((result) => {
-            this.events = result || [];
+        repository.getHolidayEvents().then((result: HolidayEvent[]) => {
+          this.events = result;
         });
         this.locale = translateService.currentLang;
     }
@@ -58,7 +60,7 @@ export class EventPage implements OnDestroy {
     }
 
     filteredEvents() {
-     return this.events.filter(event => this.showableEvent(event.date));
+     return (this.events || []).filter(event => this.showableEvent(event.date));
     }
 
     private showableEvent(date: Date) {
@@ -69,7 +71,7 @@ export class EventPage implements OnDestroy {
     }
 
     save() {
-        this.storage.set('events', this.events);
+        this.repository.setHolidayEvents(this.events);
     }
 
 }

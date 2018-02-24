@@ -2,12 +2,13 @@ import {ModalController, NavParams, Platform, ViewController} from "ionic-angula
 import {OnInit, Component} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
+import HolidayEvent from "../../../app/domain/holiday-event";
 
 @Component({
     templateUrl: 'event-card.html'
 })
 export class EventCardPage implements OnInit {
-    event;
+    private event: HolidayEvent;
     private locale: string;
 
     constructor(public platform: Platform,

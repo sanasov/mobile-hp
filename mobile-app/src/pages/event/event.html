@@ -14,7 +14,7 @@
 
 
     <ion-list style="max-height: calc(100% - 150px); overflow-y: auto;">
-        <ion-item-sliding *ngFor="let event of events" >
+        <ion-item-sliding *ngFor="let event of  filteredEvents()" >
             <ion-item (click)="openEventCard(event)">
                 <h2>{{event.title}}</h2>
                 <p item-end>{{event.date | date :'dd MMM yyyy' : '' : locale}}</p>
@@ -22,7 +22,7 @@
 
             <ion-item-options>
                 <button (click)="remove(event)" style="width: 60px" ion-button color="danger" icon-start>
-                    <ion-icon style="color: white" name="trash"></ion-icon>
+                    <ion-icon style="color: white; margin-top: 5px;" name="close"></ion-icon>
                 </button>
             </ion-item-options>
         </ion-item-sliding>

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import User from "../../domain/user";
 import {Storage} from "@ionic/storage";
+import HolidayEvent from "../../domain/holiday-event";
 
 @Injectable()
 export class StorageRepositoryProvider {
@@ -28,4 +29,15 @@ export class StorageRepositoryProvider {
     setUser(user: User): void {
         this.storage.set("user", user);
     }
+
+
+  getHolidayEvents(): Promise<HolidayEvent[]> {
+    return this.storage.get("events").then((events: HolidayEvent[]) => {
+      return !events ? [] : events.map(event => event == null ? new HolidayEvent("",null, null) : HolidayEvent.create(event));
+    });
+  }
+
+    setHolidayEvents(events: HolidayEvent[]): void {
+        this.storage.set("events", events);
+  }
 }

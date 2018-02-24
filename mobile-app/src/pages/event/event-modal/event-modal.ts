@@ -1,11 +1,12 @@
 import {NavParams, Platform, ViewController} from "ionic-angular";
 import {OnInit, Component} from "@angular/core";
+import HolidayEvent from "../../../app/domain/holiday-event";
 
 @Component({
     templateUrl: 'event-modal.html'
 })
 export class EventModalPage implements OnInit {
-    event;
+    event: HolidayEvent;
     hints: Array<string>;
 
     constructor(public platform: Platform,

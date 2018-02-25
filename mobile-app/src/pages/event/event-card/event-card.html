@@ -14,30 +14,35 @@
                         style="font-size: 17px; position: relative; top: 4px;">
                 </ion-icon>
             </ion-item>
-            <ion-item >
+            <ion-item   (click)="openModalEditTitle()">
                 <h1 style="white-space: normal"> {{event.title}}</h1>
             </ion-item>
             <ion-item>
             <ion-icon name="ios-calendar-outline" item-start></ion-icon>
                 <ion-label>Дата:</ion-label>
-                <ion-datetime displayFormat=" DD  MMMM YYYY"
+                <ion-datetime displayFormat=" DD MMM YYYY"
                               placeholder="Specify date"
                               [(ngModel)]="event.dateString">
 
                 </ion-datetime>
             </ion-item>
-          <ion-item>
+          <ion-item *ngIf = "isFutureEvent()">
             <ion-icon name="ios-notifications-outline" item-start></ion-icon>
                 <ion-label>Напомнить:</ion-label>
-                <ion-datetime displayFormat=" DD  MMMM YYYY"
+                <ion-datetime displayFormat=" DD MMM YYYY  HH:mm"
+                              pickerFormat=" DD MMM YYYY HH:mm"
                               placeholder="Specify date"
+                              min="2018-02-25"
+                              max="2199-12-31"
                               [(ngModel)]="event.notifyDateString">
 
                 </ion-datetime>
             </ion-item>
         </ion-list>
-
     </ion-card>
+
+  {{event.toIso(event.today())}}
+  {{minNotifyDate}}
     <ion-card *ngIf="event.date" style="margin-top: 10px">
         <ion-card-content >
             <div class="event-card-flex-row">

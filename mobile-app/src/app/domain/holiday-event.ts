@@ -29,14 +29,20 @@ export default class HolidayEvent {
     }
 
     get notifyDate(): Date {
-        return new Date(this._date);
+        return new Date(this._notifyDate);
     }
 
     get notifyDateString(): string {
-        if (!this._notifyDate) {
-            return "";
+      if(!this._notifyDate) {
+        this._notifyDate = this._date;
+        this._notifyDate.setHours(9);
+        this._notifyDate.setMinutes(0);
+        if(this.isPast()) {
+          this._notifyDate.setFullYear(new Date().getFullYear());
         }
-        return moment(this._notifyDate).format('YYYY-MM-DD');
+      }
+      console.log(moment(this._notifyDate).format('YYYY-MM-DDTHH:mm'));
+      return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
     }
 
     set title(title: String) {
@@ -56,7 +62,26 @@ export default class HolidayEvent {
     }
 
     set notifyDateString(notifyDate: string) {
-        this._notifyDate = moment(notifyDate, "YYYY-MM-DD").toDate();
+        this._notifyDate = moment(notifyDate, "YYYY-MM-DDTHH:mm").toDate();
+    }
+
+    public isFuture() : boolean {
+      return moment(this.date, "YYYY-MM-DD").isAfter(moment(this.today(), "YYYY-MM-DD"));
+    }
+
+    public isToday() : boolean {
+      return moment(this.date, "YYYY-MM-DD").isSame(moment(this.today(), "YYYY-MM-DD"));
+    }
+    public isPast() : boolean {
+      return !moment(this.date, "YYYY-MM-DD").isSameOrAfter(moment(this.today(), "YYYY-MM-DD"));
+    }
+
+    public today() : Date {
+      return  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0);
+    }
+
+    toIso(date: Date): string {
+      return moment(date).format('YYYY-MM-DD');
     }
 
     public static create(event: HolidayEvent) {

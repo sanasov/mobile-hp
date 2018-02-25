@@ -3,6 +3,7 @@ import {OnInit, Component} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";
+import * as moment from "moment";
 
 @Component({
     templateUrl: 'event-card.html'
@@ -10,8 +11,8 @@ import HolidayEvent from "../../../app/domain/holiday-event";
 export class EventCardPage implements OnInit {
     private event: HolidayEvent;
     private locale: string;
-
-    constructor(public platform: Platform,
+    private minNotifyDate: string = moment(new Date()).format('YYYY-MM-DD');
+  constructor(public platform: Platform,
                 public navParams: NavParams,
                 public translateService: TranslateService,
                 public modalCtrl: ModalController,
@@ -27,5 +28,15 @@ export class EventCardPage implements OnInit {
 
     ngOnInit(): void {
 
+    }
+
+    private isFutureEvent() : boolean {
+      return this.event.date > this.yesterday();
+    }
+
+    private yesterday() {
+      let date = new Date();
+      date.setDate(date.getDate() - 1);
+      return date;
     }
 }

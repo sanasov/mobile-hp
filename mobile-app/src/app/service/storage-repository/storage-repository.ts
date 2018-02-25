@@ -33,7 +33,7 @@ export class StorageRepositoryProvider {
 
   getHolidayEvents(): Promise<HolidayEvent[]> {
     return this.storage.get("events").then((events: HolidayEvent[]) => {
-      return !events ? [] : events.map(event => event == null ? new HolidayEvent("",null, null) : HolidayEvent.create(event));
+      return !events ? [] : events.map(event => event == null ? new HolidayEvent("",null, null,false ) : HolidayEvent.create(event));
     });
   }
 

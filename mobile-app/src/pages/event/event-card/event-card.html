@@ -26,7 +26,7 @@
 
                 </ion-datetime>
             </ion-item>
-          <ion-item *ngIf = "isFutureEvent()">
+          <ion-item>
             <ion-icon name="ios-notifications-outline" item-start></ion-icon>
                 <ion-label>Напомнить:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY  HH:mm"
@@ -41,9 +41,27 @@
         </ion-list>
     </ion-card>
 
-  {{event.toIso(event.today())}}
-  {{minNotifyDate}}
-    <ion-card *ngIf="event.date" style="margin-top: 10px">
+  <ion-card *ngIf="!event.magicEvent"
+            style="margin-top: 10px"
+            (click)="calculateHolidays()">
+    <img style="width: 40%; margin: 20px auto auto;" src = "assets/imgs/wand.jpg">
+    <ion-card-content>
+      <h2 style="color:grey; margin: auto;">
+        Discover new holidays
+      </h2>
+    </ion-card-content>
+  </ion-card>
+
+    <ion-card *ngIf="event.magicEvent"
+              style="margin-top: 10px">
+      <ion-item>
+        <ion-icon
+          (click)="event.magicEvent = false"
+          name="ios-close"
+          item-end
+          style="font-size: 38px; position: relative; top:-5px; color: grey">
+        </ion-icon>
+      </ion-item>
         <ion-card-content >
             <div class="event-card-flex-row">
                 <span>Прошедшее кол-во дней:</span>

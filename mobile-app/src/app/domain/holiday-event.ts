@@ -4,12 +4,14 @@ export default class HolidayEvent {
     private _title: String;
     private _date: Date;
     private _notifyDate: Date;
+    private _magicEvent: boolean;
 
 
-    constructor(_title: String, _date: Date, _notifyDate: Date) {
+    constructor(_title: String, _date: Date, _notifyDate: Date, _magicEvent: boolean) {
         this._title = _title;
         this._date = _date;
         this._notifyDate = _notifyDate;
+        this._magicEvent = _magicEvent;
     }
 
     get title(): String {
@@ -19,6 +21,10 @@ export default class HolidayEvent {
 
     get date(): Date {
         return new Date(this._date);
+    }
+
+    get magicEvent(): boolean {
+        return this._magicEvent;
     }
 
     get dateString(): string {
@@ -47,6 +53,9 @@ export default class HolidayEvent {
 
     set title(title: String) {
         this._title = title;
+    }
+    set magicEvent(magicEvent: boolean) {
+        this._magicEvent = magicEvent;
     }
 
     set date(date: Date) {
@@ -80,15 +89,11 @@ export default class HolidayEvent {
       return  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0);
     }
 
-    toIso(date: Date): string {
-      return moment(date).format('YYYY-MM-DD');
-    }
-
     public static create(event: HolidayEvent) {
         if (event._title || event._date || event._notifyDate) {
-            return new HolidayEvent(event._title, new Date(event._date), new Date(event._notifyDate)); // ios
+            return new HolidayEvent(event._title, new Date(event._date), new Date(event._notifyDate), event._magicEvent); // ios
         }
-        return new HolidayEvent(event.title,  new Date(event.date), new Date(event.notifyDate)); // android
+        return new HolidayEvent(event.title,  new Date(event.date), new Date(event.notifyDate), event.magicEvent); // android
     }
 
     toJSON() {
@@ -96,6 +101,7 @@ export default class HolidayEvent {
             title: this._title,
             date: this._date,
             notifyDate: this._notifyDate,
+            magicEvent: this._magicEvent,
         };
     }
 

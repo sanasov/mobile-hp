@@ -25,18 +25,12 @@ export class EventCardPage implements OnInit {
         let modal = this.modalCtrl.create(EventModalPage, {'event': this.event});
         modal.present();
     }
-
+c
     ngOnInit(): void {
 
     }
 
-    private isFutureEvent() : boolean {
-      return this.event.date > this.yesterday();
-    }
-
-    private yesterday() {
-      let date = new Date();
-      date.setDate(date.getDate() - 1);
-      return date;
+    calculateHolidays(): void {
+      this.event.magicEvent = true;
     }
 }

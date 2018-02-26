@@ -92,3 +92,11 @@ ion-modal .modal-wrapper {
   margin-bottom: 20px;
   margin-top: 5px;
 }
+
+
+.event-ion-list {
+  max-height: calc(100% - 150px);
+  overflow-y: auto;
+  position: relative;
+  z-index: 50;
+}

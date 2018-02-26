@@ -13,7 +13,7 @@
 </ion-segment>
 
 
-    <ion-list style="max-height: calc(100% - 150px); overflow-y: auto;">
+    <ion-list class="event-ion-list">
         <ion-item-sliding *ngFor="let event of  filteredEvents()" >
             <ion-item (click)="openEventCard(event)">
                 <h2>{{event.title}}</h2>

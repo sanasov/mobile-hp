@@ -24,3 +24,9 @@
   margin: 20px auto auto;
 }
 
+#event-card {
+  ion-card {
+    z-index: 50;
+    position: relative;
+  }
+}

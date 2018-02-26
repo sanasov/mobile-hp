@@ -6,6 +6,10 @@
   .scroll-content {
     background-color: #f1f1f1;
   }
+  ion-card {
+    position: relative;
+    z-index: 50;
+  }
 }
 
 .holiday-icon {
@@ -42,3 +46,13 @@ ion-card {
   width: 100% !important;
   margin: 20px 0px !important;
 }
+
+//.vase-background {
+//  width:100%;
+//  height:100%;
+//  background-size: contain;
+//  background: url("/assets/imgs/background/leave.jpg") repeat-x center bottom;
+//  opacity: 0.1;
+//  position: absolute;
+//  bottom: 0;
+//}

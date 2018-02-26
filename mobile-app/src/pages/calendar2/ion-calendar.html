@@ -19,7 +19,7 @@
                 [locale]="locale"
                 [headerTemplate]="customHeaderTemplate">
         </mwl-calendar-month-view>
-    <ion-slides
+    <ion-slides style="height: calc(100% - 85px);"
                 (ionSlideWillChange)="slideWillChange()"
                 (ionSlideNextStart)="slideNextStart()"
                 (ionSlidePrevStart)="slidePrevStart()"
@@ -89,7 +89,10 @@
             </mwl-calendar-month-view>
         </ion-slide>
     </ion-slides>
-  <div class="spring-bicycle-background"></div>
+  <div *ngIf="season() === 'winter'" class="winter-rabbit-background"></div>
+  <div *ngIf="season() === 'spring'" class="spring-bicycle-background"></div>
+  <div *ngIf="season() === 'summer'" class="autumn-background"></div>
+  <div *ngIf="season() === 'autumn'" class="autumn-background"></div>
 </ion-content>
 
 <ng-template

@@ -1,6 +1,4 @@
-import {MagicNumberUtils} from "./MagicNumberUtils";
-
-export class RoundNumber {
+export abstract class RoundNumber {
   delta: number;
   eventDate: Date;
 
@@ -12,8 +10,8 @@ export class RoundNumber {
       let result = [];
       const firstDayOfYear = new Date(year, 0, 1);
       const lastDayOfYear = new Date(year, 11, 31);
-      const diffDaysStartYear = MagicNumberUtils.diffHours(this.eventDate, firstDayOfYear);
-      const diffDaysEndYear = MagicNumberUtils.diffHours(this.eventDate, lastDayOfYear);
+      const diffDaysStartYear = this.diff(this.eventDate, firstDayOfYear);
+      const diffDaysEndYear = this.diff(this.eventDate, lastDayOfYear);
       let currentRoundNumber = this.firstRoundNumberAfter(diffDaysStartYear);
       if(currentRoundNumber <= diffDaysEndYear) {
         result.push(this.nextRoundNumber(currentRoundNumber));
@@ -23,7 +21,7 @@ export class RoundNumber {
 
     public firstFive() : number[] {
       let result = [];
-      const firstRoundNumber =  this.firstRoundNumberAfter(MagicNumberUtils.diffHours(new Date(), this.eventDate));
+      const firstRoundNumber =  this.firstRoundNumberAfter(this.diff(new Date(), this.eventDate));
       result.push(firstRoundNumber);
       for(let i = 0; i < 4; i++) {
         const currentRoundNumber = result[i];
@@ -31,6 +29,8 @@ export class RoundNumber {
       }
       return result;
     }
+
+    abstract diff(date1, date2): number;
 
     private firstRoundNumberAfter(currentNumber: number) : number {
       if(currentNumber >= 0 && currentNumber <= this.delta) {

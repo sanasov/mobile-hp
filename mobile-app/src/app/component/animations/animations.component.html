@@ -1,7 +1,7 @@
 <!-- From: -->
-<div class="container color-light">
+<div class="container color-light" [@turnOn]="turnOn" (click)="animate()">
   <h1>Title1</h1>
 </div>
 
 <!-- To: -->
-<div class="container color-light" [@goals]="goals"><h1>Title2</h1></div>
+<div class="container color-light" [@turnOn]="turnOn" ><h1>Title2</h1></div>

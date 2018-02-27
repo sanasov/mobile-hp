@@ -1,6 +1,6 @@
 export class SameNumberDays {
 
-  public numbers(): number[] {
+  public static numbers(): number[] {
     return [
       1111, 11111, 111111,
       2222, 22222, 222222,

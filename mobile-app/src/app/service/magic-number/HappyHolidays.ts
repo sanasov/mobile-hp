@@ -13,9 +13,13 @@ import {CalendarEvent} from "angular-calendar";
 export class HappyHolidays {
 
   constructor(public hEvents: Array<HolidayEvent>, public birthday: Date, public year: number) {
-    this.happyHolidays = _.union(
-      _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
-      this.birthDayHolidays()
+    this.happyHolidays = _.uniq(
+      _.union(
+        _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
+        this.birthDayHolidays()
+      ),
+      false,
+      (hp) => hp.title
     );
   }
 
@@ -41,7 +45,10 @@ export class HappyHolidays {
   }
 
   private eventHappyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
-    return _.flatten(this.magicNumbers(hEvent).map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)), true);
+    return _.flatten(
+      this.magicNumbers(hEvent)
+        .map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)),
+      true);
   }
 
   private birthDayHolidays(): HappyHoliday[] {

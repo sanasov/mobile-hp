@@ -10,6 +10,7 @@ export class RoundNumberCalculation {
     const diffDaysStartYear = this.diff(this.date, firstDayOfYear);
     const diffDaysEndYear = this.diff(this.date, lastDayOfYear);
     let currentRoundNumber = this.firstRoundNumberAfter(diffDaysStartYear);
+    result.push(currentRoundNumber);
     if (currentRoundNumber <= diffDaysEndYear) {
       result.push(this.nextRoundNumber(currentRoundNumber));
     }

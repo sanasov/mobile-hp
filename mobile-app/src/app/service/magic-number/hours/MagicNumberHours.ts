@@ -20,8 +20,8 @@ export class MagicNumberHours extends MagicNumber {
     return magicNumber + " hours";
   }
 
-  public birthDayTitle(): string {
-    return "birthday in hours"
+  public birthDayTitle(magicNumber: number): string {
+    return "Today you turned " + magicNumber + " hours"
   }
 
   public holidayDate(date1: Date, daysAmount: number): Date {

@@ -8,11 +8,18 @@ import {MagicNumber} from "./MagicNumber";
 import {SameNumberDays} from "./days/SameNumberDays";
 import {SameNumberMinutes} from "./minutes/SameNumberMinutes";
 import {SameNumberSeconds} from "./seconds/SameNumberSeconds";
+import {CalendarEvent} from "angular-calendar";
 
 export class HappyHolidays {
 
-  constructor(public hEvents: Array<HolidayEvent>, public birthDay: Date, public year: number) {
+  constructor(public hEvents: Array<HolidayEvent>, public birthday: Date, public year: number) {
+    this.happyHolidays = _.union(
+      _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
+      this.birthDayHolidays()
+    );
   }
+
+  happyHolidays: HappyHoliday[];
 
   private magicNumbers(hEvent: HolidayEvent): MagicNumber[] {
     return [
@@ -25,19 +32,24 @@ export class HappyHolidays {
     ];
   }
 
-  public all(): HappyHoliday[] {
-    let eventHappyHolidays = _.flatten(this.hEvents.map(hEvent => this.happyHolidays(hEvent)), true);
-    let birthdayHappyHolidays = _.flatten(this.hEvents.map(hEvent => this.birthDayHolidays(hEvent)), true);
-    return _.union(eventHappyHolidays, birthdayHappyHolidays);
+  public get(): HappyHoliday[] {
+    return this.happyHolidays;
   }
 
+  public toCalendarEvents(): Array<CalendarEvent> {
+    return this.happyHolidays.map(hh => hh.toCalendarEvent());
+  }
 
-  private happyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
+  private eventHappyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
     return _.flatten(this.magicNumbers(hEvent).map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)), true);
   }
 
-  private birthDayHolidays(hEvent: HolidayEvent): HappyHoliday[] {
-    return _.flatten(this.magicNumbers(hEvent).map(magicNumber => magicNumber.birthdayHolidays(hEvent, this.year)), true);
+  private birthDayHolidays(): HappyHoliday[] {
+    return _.flatten(
+      this.magicNumbers(new HolidayEvent("", this.birthday, this.birthday, true))
+        .map(magicNumber => magicNumber.birthdayHolidays(this.birthday, this.year)),
+      true
+    );
   }
 
 }

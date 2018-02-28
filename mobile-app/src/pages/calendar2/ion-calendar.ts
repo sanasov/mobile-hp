@@ -8,6 +8,9 @@ import {CalendarEvent} from "angular-calendar";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
 import {Storage} from '@ionic/storage';
 import * as moment from "moment";
+import {HappyHolidays} from "../../app/service/magic-number/HappyHolidays";
+import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
+import HolidayEvent from "../../app/domain/holiday-event";
 
 @Component({
     selector: 'page-ion-calendar',
@@ -16,11 +19,11 @@ import * as moment from "moment";
 
 export class IonCalendarPage {
     mockDateForWeekHeader: Date = new Date();
+    hEvents: HolidayEvent[] = [];
     currentDate: Date = new Date();
     locale: String;
     weekStartsOn: number = 1;
     refresh: Subject<any> = new Subject();
-    holidayEngine: HolidayEngine;
     events: CalendarEvent[] = [];
     currentYear: number = new Date().getFullYear();
     yearPickerDate: string = new Date().toISOString();
@@ -33,14 +36,15 @@ export class IonCalendarPage {
     @ViewChild('customHeaderTemplate') customHeaderTemplate: TemplateRef<any>;
     private slidesNotInited: boolean = true;
 
-    constructor(private storage: Storage,
+    constructor(
+                private repository: StorageRepositoryProvider,
                 private navCtrl: NavController,
                 private zone: NgZone,
                 private commonSettings: CommonSettings) {
         this.locale = commonSettings.locale;
         this.weekStartsOn = commonSettings.weekStartsOn();
-        storage.get('events').then((result) => {
-            this.holidayEngine = new HolidayEngine(result || []);
+        repository.getHolidayEvents().then((result: HolidayEvent[]) => {
+            this.hEvents = result || [];
             this.generateCalendarEvents(this.currentYear);
         });
         this.initSlides();
@@ -110,7 +114,7 @@ export class IonCalendarPage {
     }
 
     private generateCalendarEvents(year: number): void {
-        this.events = this.holidayEngine.getCalendarEvents(year)
+        this.events = new HappyHolidays(this.hEvents, this.commonSettings.user.birth, year).toCalendarEvents()
             .concat(WorldHoliday.toCalendarEvents(year));
     }
 

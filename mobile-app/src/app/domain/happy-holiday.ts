@@ -1,16 +1,18 @@
 import * as moment from "moment";
+import {holidayColors} from "../dictionary/holidayColors";
+import {CalendarEvent} from "angular-calendar";
 
 export default class HappyHoliday {
-    private _title: String;
+    private _title: string;
     private _date: Date;
 
 
-    constructor(_title: String, _date: Date) {
+    constructor(_title: string, _date: Date) {
         this._title = _title;
         this._date = _date;
     }
 
-    get title(): String {
+    get title(): string {
         return this._title;
     }
 
@@ -24,7 +26,7 @@ export default class HappyHoliday {
         }
         return moment(this._date).format('YYYY-MM-DD');
     }
-    set title(title: String) {
+    set title(title: string) {
       this._title = title;
     }
 
@@ -48,6 +50,16 @@ export default class HappyHoliday {
             title: this._title,
             date: this._date
         };
+    }
+
+    public toCalendarEvent() : CalendarEvent {
+     return {
+        start: this.date,
+        end: this.date,
+        title: this.title,
+        color: holidayColors.red,
+        actions: null
+      }
     }
 
 }

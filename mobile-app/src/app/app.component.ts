@@ -75,6 +75,8 @@ export class MyApp {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.defineLanguage();
+            this.storageRepository.getUser().then((result: User) =>  this.commonSettings.user = result);
+
             // this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
         });
     }
@@ -88,7 +90,7 @@ export class MyApp {
                 } else {
                     this.storage.set("device-language", deviceLanguage);
                 }
-                this.commonSettings.locale = deviceLanguage.toLocaleLowerCase()
+                this.commonSettings.locale = deviceLanguage.toLocaleLowerCase();
                 this.translateService.use(deviceLanguage.toLocaleLowerCase());
                 this.initTabTitle();
                 this.appReady = true;

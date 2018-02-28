@@ -16,8 +16,8 @@ export class MagicNumberHours extends MagicNumber {
     return MagicNumberUtils.diffHours(date1, date2);
   };
 
-  public title(): string {
-    return "hours";
+  public title(magicNumber: number): string {
+    return magicNumber + " hours";
   }
 
   public birthDayTitle(): string {

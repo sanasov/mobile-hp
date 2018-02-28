@@ -3,9 +3,11 @@ import HolidayEvent from "../../domain/holiday-event";
 import * as _ from 'underscore'
 import {RoundNumberDays} from "./days/RoundNumberDays";
 import {RoundNumberMinutes} from "./minutes/RoundNumberMinutes";
-import {RoundNumberSeconds} from "./seconds/RoundNumberSeconds";
 import {RoundNumberHours} from "./hours/RoundNumberHours";
 import {MagicNumber} from "./MagicNumber";
+import {SameNumberDays} from "./days/SameNumberDays";
+import {SameNumberMinutes} from "./minutes/SameNumberMinutes";
+import {SameNumberSeconds} from "./seconds/SameNumberSeconds";
 
 export class HappyHolidays {
 
@@ -17,7 +19,9 @@ export class HappyHolidays {
       new RoundNumberDays(hEvent),
       new RoundNumberHours(hEvent),
       new RoundNumberMinutes(hEvent),
-      new RoundNumberSeconds(hEvent)
+      new SameNumberDays(hEvent),
+      new SameNumberMinutes(hEvent),
+      new SameNumberSeconds(hEvent)
     ];
   }
 

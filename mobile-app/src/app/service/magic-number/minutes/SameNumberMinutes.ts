@@ -1,4 +1,6 @@
-export class SameNumberMinutes {
+import {MagicNumberMinutes} from "./MagicNumberMinutes";
+
+export class SameNumberMinutes extends MagicNumberMinutes{
 
   public numbers(): number[] {
     return [
@@ -10,7 +12,7 @@ export class SameNumberMinutes {
       666666, 6666666, 66666666,
       777777, 7777777, 77777777,
       888888, 8888888, 88888888,
-    ]
+    ];
   }
 
 }

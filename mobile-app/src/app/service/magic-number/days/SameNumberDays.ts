@@ -1,4 +1,6 @@
-export class SameNumberDays {
+import {MagicNumberDays} from "./MagicNumberDays";
+
+export class SameNumberDays extends MagicNumberDays{
 
   public numbers(): number[] {
     return [
@@ -10,7 +12,7 @@ export class SameNumberDays {
       6666, 66666,
       7777, 77777,
       8888, 88888,
-    ]
+    ];
   }
 
 }

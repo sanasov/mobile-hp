@@ -9,21 +9,21 @@ export abstract class  MagicNumber {
 
   public happyHolidays(hpEvent: HolidayEvent, year: number): HappyHoliday[] {
     return this.numbers(year)
-      .map(roundNumber => new HappyHoliday(this.title(), this.holidayDate(hpEvent.date, roundNumber)));
+      .map(roundNumber => new HappyHoliday(this.title(roundNumber), this.holidayDate(hpEvent.date, roundNumber)));
   }
 
   public birthdayHolidays(hpEvent: HolidayEvent, year: number): HappyHoliday[] {
     return this.numbers(year)
-      .map(roundNumber => new HappyHoliday(this.birthDayTitle(), this.holidayDate(hpEvent.date, roundNumber)));
+      .map(roundNumber => new HappyHoliday(this.birthDayTitle(roundNumber), this.holidayDate(hpEvent.date, roundNumber)));
   }
 
    abstract numbers(year: number): number[];
 
    abstract diff(date1, date2): number;
 
-   abstract title(): string;
+   abstract title(magicNumber: number): string;
 
-   abstract birthDayTitle(): string;
+   abstract birthDayTitle(magicNumber: number): string;
 
    abstract holidayDate(date1, date2): Date;
 

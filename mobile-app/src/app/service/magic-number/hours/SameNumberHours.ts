@@ -1,6 +1,6 @@
 export class SameNumberHours {
 
-  public static numbers(): number[] {
+  public numbers(): number[] {
     return [
        11111, 111111, 1111111,
        22222, 222222, 2222222,

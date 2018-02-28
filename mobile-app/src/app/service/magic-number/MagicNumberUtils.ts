@@ -1,4 +1,3 @@
-
 export class MagicNumberUtils {
 
   public static diffDays(date1: Date, date2: Date) {
@@ -19,6 +18,28 @@ export class MagicNumberUtils {
   public static diffSeconds(date1: Date, date2: Date) {
     var timeDiff = Math.abs(date2.getTime() - date1.getTime());
     return Math.ceil(timeDiff / 1000);
+  }
+
+  public static calcDateByDays(eventDate: Date, daysAmount: number): Date {
+    let result = new Date(eventDate);
+    if (eventDate < new Date) {
+      result.setDate(eventDate.getDate() + daysAmount);
+    } else {
+      result.setDate(eventDate.getDate() - daysAmount);
+    }
+    return result;
+  }
+
+  public static calcDateByHours(eventDate: Date, hoursAmount: number): Date {
+    return this.calcDateByDays(eventDate, Math.floor(hoursAmount / 24));
+  }
+
+  public static calcDateByMinutes(eventDate: Date, minutesAmount: number): Date {
+    return this.calcDateByDays(eventDate, Math.floor(minutesAmount / (24 * 60)));
+  }
+
+  public static calcDateBySeconds(eventDate: Date, secondsAmount: number): Date {
+    return this.calcDateByDays(eventDate, Math.floor(secondsAmount / (24 * 3600)));
   }
 
 }

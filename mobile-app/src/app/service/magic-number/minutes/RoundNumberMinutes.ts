@@ -1,13 +1,16 @@
-import {RoundNumber} from "../RoundNumber";
-import {MagicNumberUtils} from "../MagicNumberUtils";
+import HolidayEvent from "../../../domain/holiday-event";
+import {MagicNumberMinutes} from "./MagicNumberMinutes";
+import {RoundNumberCalculation} from "../RoundNumberCalculation";
 
-export class RoundNumberMinutes extends RoundNumber {
-  constructor(eventDate: Date) {
-    super(eventDate);
+export class RoundNumberMinutes extends MagicNumberMinutes {
+  delta: number;
+
+  constructor(public holidayEvent: HolidayEvent) {
+    super(holidayEvent);
     this.delta = 1000000;
   }
 
-  diff(date1, date2): number {
-    return MagicNumberUtils.diffMinutes(date1, date2);
+  public numbers(year: number): number[] {
+    return new RoundNumberCalculation(this.holidayEvent.date,  this.delta, this.diff).numbers(year);
   }
 }

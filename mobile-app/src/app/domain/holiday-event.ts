@@ -47,7 +47,6 @@ export default class HolidayEvent {
           this._notifyDate.setFullYear(new Date().getFullYear());
         }
       }
-      console.log(moment(this._notifyDate).format('YYYY-MM-DDTHH:mm'));
       return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
     }
 

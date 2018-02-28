@@ -1,20 +1,20 @@
 import * as moment from "moment";
 
 export default class HolidayEvent {
-    private _title: String;
+    private _title: string;
     private _date: Date;
     private _notifyDate: Date;
     private _magicEvent: boolean;
 
 
-    constructor(_title: String, _date: Date, _notifyDate: Date, _magicEvent: boolean) {
+    constructor(_title: string, _date: Date, _notifyDate: Date, _magicEvent: boolean) {
         this._title = _title;
         this._date = _date;
         this._notifyDate = _notifyDate;
         this._magicEvent = _magicEvent;
     }
 
-    get title(): String {
+    get title(): string {
         return this._title;
     }
 
@@ -50,7 +50,7 @@ export default class HolidayEvent {
       return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
     }
 
-    set title(title: String) {
+    set title(title: string) {
         this._title = title;
     }
     set magicEvent(magicEvent: boolean) {

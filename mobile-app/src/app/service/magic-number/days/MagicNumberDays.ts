@@ -17,7 +17,7 @@ export class MagicNumberDays extends MagicNumber {
   };
 
   public title(magicNumber: number): string {
-    return magicNumber + " days";
+    return this.holidayEvent.title+". " + magicNumber + " days have passed";
   }
 
   public birthDayTitle(magicNumber: number): string {

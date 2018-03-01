@@ -13,52 +13,63 @@ import {MagicNumberYears} from "./MagicNumberYears";
 
 export class HappyHolidays {
 
-  constructor(public hEvents: Array<HolidayEvent>, public birthday: Date, public year: number) {
-    this.happyHolidays = _.uniq(
-      _.union(
-        _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
-        this.birthDayHolidays()
-      ),
-      false,
-      (hp) => hp.title
-    );
-  }
+    constructor(public hEvents: Array<HolidayEvent>, public birthday: Date, public year: number) {
+        this.birthdayHolidays = this.birthDayHolidays();
+        this.eventHolidays = _.uniq(
+            _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
+            false,
+            (hp) => hp.title
+        );
 
-  happyHolidays: HappyHoliday[];
+    }
 
-  private magicNumbers(hEvent: HolidayEvent): MagicNumber[] {
-    return [
-      new MagicNumberYears(hEvent),
-      new RoundNumberDays(hEvent),
-      new RoundNumberHours(hEvent),
-      new RoundNumberMinutes(hEvent),
-      new SameNumberDays(hEvent),
-      new SameNumberMinutes(hEvent),
-      new SameNumberSeconds(hEvent)
-    ];
-  }
+    private eventHolidays: HappyHoliday[];
+    private birthdayHolidays: HappyHoliday[];
 
-  public get(): HappyHoliday[] {
-    return this.happyHolidays;
-  }
+    private magicNumbers(hEvent: HolidayEvent): MagicNumber[] {
+        if (!hEvent.magicEvent) {
+            return [];
+        }
+        return [
+            new MagicNumberYears(hEvent),
+            new RoundNumberDays(hEvent),
+            new RoundNumberHours(hEvent),
+            new RoundNumberMinutes(hEvent),
+            new SameNumberDays(hEvent),
+            new SameNumberMinutes(hEvent),
+            new SameNumberSeconds(hEvent)
+        ];
+    }
 
-  public toCalendarEvents(): Array<CalendarEvent> {
-    return this.happyHolidays.map(hh => hh.toCalendarEvent());
-  }
+    public all(): HappyHoliday[] {
+        return _.union(this.birthdayHolidays, this.eventHolidays);
+    }
 
-  private eventHappyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
-    return _.flatten(
-      this.magicNumbers(hEvent)
-        .map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)),
-      true);
-  }
+    public getEventHolidays(): HappyHoliday[] {
+        return this.eventHolidays;
+    }
 
-  private birthDayHolidays(): HappyHoliday[] {
-    return _.flatten(
-      this.magicNumbers(new HolidayEvent("", this.birthday, this.birthday, true))
-        .map(magicNumber => magicNumber.birthdayHolidays(this.birthday, this.year)),
-      true
-    );
-  }
+    public getBirthdayHolidays(): HappyHoliday[] {
+        return this.birthdayHolidays;
+    }
+
+    public toCalendarEvents(): Array<CalendarEvent> {
+        return this.all().map(hh => hh.toCalendarEvent());
+    }
+
+    private eventHappyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
+        return _.flatten(
+            this.magicNumbers(hEvent)
+                .map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)),
+            true);
+    }
+
+    private birthDayHolidays(): HappyHoliday[] {
+        return _.flatten(
+            this.magicNumbers(new HolidayEvent("", this.birthday, this.birthday, true))
+                .map(magicNumber => magicNumber.birthdayHolidays(this.birthday, this.year)),
+            true
+        );
+    }
 
 }

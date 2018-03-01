@@ -112,7 +112,7 @@ export class IonCalendarPage {
 
     private generateCalendarEvents(year: number): void {
         let happyHolidays = new HappyHolidays(this.hEvents, this.commonSettings.user.birth, year);
-        this.customHolidays = happyHolidays.get();
+        this.customHolidays = happyHolidays.all();
         this.events = happyHolidays.toCalendarEvents()
             .concat(WorldHoliday.toCalendarEvents(year));
     }

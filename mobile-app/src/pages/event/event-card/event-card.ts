@@ -4,6 +4,9 @@ import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";
 import * as moment from "moment";
+import * as _ from 'underscore'
+import {HappyHolidays} from "../../../app/service/magic-number/HappyHolidays";
+import HappyHoliday from "../../../app/domain/happy-holiday";
 
 @Component({
     templateUrl: 'event-card.html'
@@ -12,7 +15,9 @@ export class EventCardPage implements OnInit {
     private event: HolidayEvent;
     private locale: string;
     private minNotifyDate: string = moment(new Date()).format('YYYY-MM-DD');
-  constructor(public platform: Platform,
+    private nearestHolidays: Array<HappyHoliday>
+
+    constructor(public platform: Platform,
                 public navParams: NavParams,
                 public translateService: TranslateService,
                 public modalCtrl: ModalController,
@@ -25,12 +30,21 @@ export class EventCardPage implements OnInit {
         let modal = this.modalCtrl.create(EventModalPage, {'event': this.event});
         modal.present();
     }
-c
+
+
     ngOnInit(): void {
 
     }
 
     calculateHolidays(): void {
-      this.event.magicEvent = true;
+        this.event.magicEvent = true;
+        this.nearestHolidays = _.union(
+            new HappyHolidays([this.event], new Date(), new Date().getFullYear()).getEventHolidays(),
+            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 1).getEventHolidays(),
+            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 2).getEventHolidays(),
+            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 3).getEventHolidays(),
+            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 4).getEventHolidays()
+        )
+        ;
     }
 }

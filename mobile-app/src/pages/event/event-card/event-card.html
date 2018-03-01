@@ -62,7 +62,7 @@
           style="font-size: 38px; position: relative; top:-5px; color: grey">
         </ion-icon>
       </ion-item>
-        <ion-card-content >
+        <ion-card-content>
             <div class="event-card-flex-row">
                 <span>Прошедшее кол-во дней:</span>
                 <span class="days-amount">1000</span>
@@ -70,17 +70,9 @@
             <div class="event-card-flex-row" style="margin-bottom: 5px">
                 <span>Ближайший праздники:</span>
             </div>
-            <div class="nearest-holiday-flex-row">
-                <span style="margin-left: 10px"> 28.02.2018 </span>
-                <span>Holiday title big title</span>
-            </div>
-            <div class="nearest-holiday-flex-row">
-                <span style="margin-left: 10px"> 28.02.2018 </span>
-                <span>1000 days</span>
-            </div>
-            <div class="nearest-holiday-flex-row">
-                <span style="margin-left: 10px"> 28.02.2018 asd</span>
-                <span>Holiday title big title</span>
+            <div class="nearest-holiday-flex-row"  *ngFor="let holiday of nearestHolidays">
+                <span>{{holiday.description}}</span>
+                <span style="margin-left: 10px">{{ holiday.dateString}} </span>
             </div>
         </ion-card-content>
     </ion-card>

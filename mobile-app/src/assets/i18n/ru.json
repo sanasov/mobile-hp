@@ -15,23 +15,23 @@
     "DESCRIPTION": "Самое время пересмотреть 'Индиана Джонс'"
   },
   "BLONDE": {
-    "TITLE": "Blonde",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День блондинок",
+    "DESCRIPTION": "Сегодня блондинкам можно простить все, даже крашенным :)"
   },
   "BOSS": {
-    "TITLE": "Boss",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День босса",
+    "DESCRIPTION": "Самое время поднять своему начальнику настроение, особенно если он уже давно ждет от вас годовой отчет :)"
   },
   "CHOCOLATE": {
-    "TITLE": "Chocolate",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День шоколада",
+    "DESCRIPTION": "Только не лопните"
   },
   "CHRISTMAS": {
-    "TITLE": "Christmas",
+    "TITLE": "Рождество",
     "DESCRIPTION": "Time to collect sweets"
   },
   "FAMILY": {
-    "TITLE": "Family",
+    "TITLE": "День семьи",
     "DESCRIPTION": "Time to collect sweets"
   },
   "FOOTBALL": {
@@ -52,7 +52,7 @@
   },
   "KIT": {
     "TITLE": "День кита",
-    "DESCRIPTION": "Обязательно поздравьте знакомого кита с праздником"
+    "DESCRIPTION": "Обязательно поздравьте знакомого кита с праздником, им будет приятно"
   },
   "LAUGHT": {
     "TITLE": "Laught",
@@ -63,12 +63,12 @@
     "DESCRIPTION": "Time to collect sweets"
   },
   "MOUNTIN": {
-    "TITLE": "Mountin",
+    "TITLE": "День гор",
     "DESCRIPTION": "Time to collect sweets"
   },
   "MOVIE": {
-    "TITLE": "Movie",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День кино",
+    "DESCRIPTION": "Всех с праздником и хороших вам фильмов"
   },
   "MUSEUM": {
     "TITLE": "Museum",
@@ -92,7 +92,7 @@
   },
   "SLEEPCAT": {
     "TITLE": "Сегодня день сна и кота",
-    "DESCRIPTION": "Обязательно аргументируйте этим событием, если куда-то опоздали"
+    "DESCRIPTION": "Хороший аргумент на случай, если вы опаздываете"
   },
   "SUN": {
     "TITLE": "День солнца",

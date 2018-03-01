@@ -39,16 +39,16 @@
     "DESCRIPTION": "Time to collect sweets"
   },
   "FRIENDS": {
-    "TITLE": "Friends",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День дружбы",
+    "DESCRIPTION": "Хороший повод встретиься с друзьями"
   },
   "HALLOWEEN": {
     "TITLE": "Halloween",
-    "DESCRIPTION": "Time to collect sweets"
+    "DESCRIPTION": ""
   },
   "HUGS": {
-    "TITLE": "Hugs",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День объятий",
+    "DESCRIPTION": "Самое время обнять родных и близких"
   },
   "KIT": {
     "TITLE": "День кита",
@@ -91,11 +91,11 @@
     "DESCRIPTION": "Time to collect sweets"
   },
   "SLEEPCAT": {
-    "TITLE": "Sleepcat",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "Сегодня день сна и кота",
+    "DESCRIPTION": "Обязательно аргументируйте этим событием, если куда-то опоздали"
   },
   "SUN": {
-    "TITLE": "Sun",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День солнца",
+    "DESCRIPTION": "Возможно оно сейчас спряталось за тучи. Но в этот день солнцу можно все"
   }
 }

@@ -1,8 +1,16 @@
 .card-background-page {
 
+  .scroll-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
   ion-card {
     position: relative;
     text-align: center;
+    margin-bottom: 60px !important;
   }
 
   .card-title {
@@ -15,7 +23,7 @@
   }
 
   .card-subtitle {
-    font-size: 1.0em;
+    font-size: 2.0em;
     position: absolute;
     top: 52%;
     width: 100%;
@@ -30,6 +38,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 40px;
+
+
+  .holiday-img {
+    border-radius: 1%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-height: 70%;
+    min-height: 35%;
+}
 
   .holiday-card-title {
     color: grey;
@@ -39,7 +57,8 @@
 
   .holiday-card-description {
     color: grey;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
+    max-width: 90%;
   }
 }

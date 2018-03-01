@@ -20,6 +20,16 @@ export class MagicNumberUtils {
     return Math.ceil(timeDiff / 1000);
   }
 
+  public static calcDateByYears(eventDate: Date, years: number): Date {
+    let result = new Date(eventDate);
+    if (eventDate < new Date) {
+      result.setFullYear(eventDate.getFullYear() + years);
+    } else {
+        result.setFullYear(eventDate.getFullYear() - years);
+    }
+    return result;
+  }
+
   public static calcDateByDays(eventDate: Date, daysAmount: number): Date {
     let result = new Date(eventDate);
     if (eventDate < new Date) {

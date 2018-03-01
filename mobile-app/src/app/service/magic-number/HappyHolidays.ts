@@ -9,6 +9,7 @@ import {SameNumberDays} from "./days/SameNumberDays";
 import {SameNumberMinutes} from "./minutes/SameNumberMinutes";
 import {SameNumberSeconds} from "./seconds/SameNumberSeconds";
 import {CalendarEvent} from "angular-calendar";
+import {MagicNumberYears} from "./MagicNumberYears";
 
 export class HappyHolidays {
 
@@ -27,6 +28,7 @@ export class HappyHolidays {
 
   private magicNumbers(hEvent: HolidayEvent): MagicNumber[] {
     return [
+      new MagicNumberYears(hEvent),
       new RoundNumberDays(hEvent),
       new RoundNumberHours(hEvent),
       new RoundNumberMinutes(hEvent),

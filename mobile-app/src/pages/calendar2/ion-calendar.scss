@@ -2,10 +2,6 @@
   display: flex;
 }
 
-.cal-month-view .cal-cell-row .cal-cell:hover, .cal-month-view .cal-cell.cal-has-events.cal-open {
-  background-color: #f9f9f9;
-}
-
 .cal-month-view {
   .cal-days {
     border: none;
@@ -13,6 +9,7 @@
       border-bottom: none;
       .cal-cell:hover, .cal-cell.cal-has-events.cal-open {
         background-color: #f9f9f9;
+        opacity: 0.5;
       }
     }
     .cal-cell-row:hover {

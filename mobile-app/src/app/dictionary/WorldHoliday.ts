@@ -1,91 +1,78 @@
-import {CalendarEvent} from 'angular-calendar';
-import {holidayColors} from "./holidayColors";
 import {_} from 'underscore'
+import HappyHoliday from "../domain/happy-holiday";
+import {TranslateService} from "@ngx-translate/core";
+import {holidayColors} from "./holidayColors";
+import {CalendarEvent} from "angular-calendar";
 
 export class WorldHoliday {
-    static holidays: Array<{ title: string, date: string }> = [
-        {title: "ARCHAEOLOGIST", date: "15.08"},
-        {title: "BLONDE", date: "31.05"},
-        {title: "BOSS", date: "16.10"},
-        {title: "CHOCOLATE", date: "11.07"},
-        {title: "CHRISTMAS", date: "25.12"},
-        {title: "CHRISTMAS", date: "7.01"},
-        {title: "FAMILY", date: "15.05"},
-        {title: "FOOTBALL", date: "10.12"},
-        {title: "FRIENDS", date: "30.07"},
-        {title: "HALLOWEEN", date: "31.10"},
-        {title: "HUGS", date: "21.01"},
-        {title: "KIT", date: "19.02"},
-        {title: "LAUGHT", date: "11.04"},
-        {title: "MEN", date: "19.11"},
-        {title: "MOUNTIN", date: "11.12"},
-        {title: "MOVIE", date: "28.12"},
-        {title: "MUSEUM", date: "18.05"},
-        {title: "NOTABAK", date: "31.05"},
-        {title: "NURSE", date: "12.05"},
-        {title: "PI", date: "14.03"},
-        {title: "POLOTENCE", date: "25.05"},
-        {title: "ROCK_N_ROLL", date: "13.04"},
-        {title: "SLEEPCAT", date: "1.03"},
-        {title: "SUN", date: "3.05"}
+    static holidays: Array<{ id: string, date: string }> = [
+        {id: "ARCHAEOLOGIST", date: "15.08"},
+        {id: "BLONDE", date: "31.05"},
+        {id: "BOSS", date: "16.10"},
+        {id: "CHOCOLATE", date: "11.07"},
+        {id: "CHRISTMAS", date: "25.12"},
+        {id: "CHRISTMAS", date: "7.01"},
+        {id: "FAMILY", date: "15.05"},
+        {id: "FOOTBALL", date: "10.12"},
+        {id: "FRIENDS", date: "30.07"},
+        {id: "HALLOWEEN", date: "31.10"},
+        {id: "HUGS", date: "21.01"},
+        {id: "KIT", date: "19.02"},
+        {id: "LAUGHT", date: "11.04"},
+        {id: "MEN", date: "19.11"},
+        {id: "MOUNTIN", date: "11.12"},
+        {id: "MOVIE", date: "28.12"},
+        {id: "MUSEUM", date: "18.05"},
+        {id: "NURSE", date: "12.05"},
+        {id: "PI", date: "14.03"},
+        {id: "POLOTENCE", date: "25.05"},
+        {id: "ROCK_N_ROLL", date: "13.04"},
+        {id: "SLEEPCAT", date: "1.03"},
+        {id: "SUN", date: "3.05"}
     ];
-    date: Date;
-    holiday: { title: string, date: Date }
 
-    constructor(date: Date) {
-        this.date = date;
-        this.holiday = this.init();
+    worldHoliday: HappyHoliday;
+
+    constructor(private date: Date,
+                private translateService: TranslateService) {
+
+        this.initWorldHoliday();
+
     }
 
-    private init(): { title: string, date: Date } {
-        const dayMonth = WorldHoliday.toDayMonth(this.date);
-        return WorldHoliday.holidays
+    public get(): HappyHoliday {
+        return this.worldHoliday;
+    }
+
+    // assume we have max 1 holiday per day
+    private initWorldHoliday(): void {
+        const dayMonth = this.toDayMonth(this.date);
+        const worldHolidayId = WorldHoliday.holidays
             .filter(h => h.date === dayMonth)
-            .map(h => {
-                return {title: h.title, date: this.date}
-            })[0];
+            .map(h => h.id)[0];
+        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3);
+        if(!worldHolidayId) {
+            return;
+        }
+        this.translateService.get(worldHolidayId).subscribe(result =>  {
+            this.worldHoliday.title = result['TITLE'];
+            this.worldHoliday.description = result['DESCRIPTION'];
+        });
     }
 
-    current(): { title: string, date: Date } {
-        return this.holiday || {title: "", date: null};
-    }
-
-    previous(): void {
-        this.holiday = _.max(
-            WorldHoliday.holidays
-                .filter(h => WorldHoliday.toDate(h.date, this.date.getFullYear()) <= this.current().date && h.title !== this.holiday.title)
-                .map(h => {
-                        return {title: h.title, date: WorldHoliday.toDate(h.date, this.date.getFullYear())}
-                    }
-                ),
-            (h) => h.date);
-    }
-
-    next(): void {
-        this.holiday = _.min(
-            WorldHoliday.holidays
-                .filter(h => WorldHoliday.toDate(h.date, this.date.getFullYear()) >= this.current().date && h.title !== this.holiday.title)
-                .map(h => {
-                        return {title: h.title, date: WorldHoliday.toDate(h.date, this.date.getFullYear())}
-                    }
-                ),
-            (h) => h.date);
-    }
-
-    static toDayMonth(date: Date): String {
+    private toDayMonth(date: Date): String {
         return date.getDate() + "." + (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1);
     }
 
-    static toDate(dayMonth: String, year: number): Date {
+    private static toDate(dayMonth: String, year: number): Date {
         return new Date(year, +dayMonth.split(".")[1] - 1, +dayMonth.split(".")[0])
     }
-
     static toCalendarEvents(year: number): Array<CalendarEvent> {
         return WorldHoliday.holidays.map(holiday => {
             return {
                 start: WorldHoliday.toDate(holiday.date, year),
                 end: WorldHoliday.toDate(holiday.date, year),
-                title: holiday.title,
+                title: holiday.id,
                 color: holidayColors.yellow,
                 actions: null
             }

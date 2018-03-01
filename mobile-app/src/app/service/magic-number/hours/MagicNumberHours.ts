@@ -16,11 +16,11 @@ export class MagicNumberHours extends MagicNumber {
     return MagicNumberUtils.diffHours(date1, date2);
   };
 
-  public title(magicNumber: number): string {
+  public description(magicNumber: number): string {
     return this.holidayEvent.title+". \n" + magicNumber + " hours have passed";
   }
 
-  public birthDayTitle(magicNumber: number): string {
+  public birthdayDescription(magicNumber: number): string {
     return "Today you turned " + magicNumber + " hours"
   }
 

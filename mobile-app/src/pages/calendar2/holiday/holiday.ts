@@ -1,8 +1,8 @@
 import {NavParams, Platform} from "ionic-angular";
 import {Component} from "@angular/core";
-import {CalendarEvent} from 'angular-calendar';
-import {WorldHoliday} from "../../../app/dictionary/WorldHoliday";
 import {TranslateService} from "@ngx-translate/core";
+import {CalendarHolidaySlider} from "../../../app/service/CalendarHolidaySlider";
+import HappyHoliday from "../../../app/domain/happy-holiday";
 
 @Component({
     templateUrl: 'holiday.html'
@@ -10,14 +10,14 @@ import {TranslateService} from "@ngx-translate/core";
 export class HolidayPage {
 
     date: Date;
-    worldHolidays: WorldHoliday;
+    holidaySlider: CalendarHolidaySlider;
     locale: String;
 
     constructor(public platform: Platform,
                 private navParams: NavParams,
                 public translateService: TranslateService) {
         this.date = navParams.get('date');
-        this.worldHolidays = new WorldHoliday(this.date);
+        this.holidaySlider = new CalendarHolidaySlider(this.date, translateService);
         this.locale = translateService.currentLang;
     }
 
@@ -26,15 +26,11 @@ export class HolidayPage {
             return;
         }
         if ($event.deltaX < 0) {
-           this.worldHolidays.next();
+           this.holidaySlider.next();
 
         } else {
-            this.worldHolidays.previous();
+            this.holidaySlider.previous();
         }
-    }
-
-    holidaySrc(): String {
-        return "assets/imgs/world-holiday/" + this.worldHolidays.current().title.toLowerCase() + ".jpg";
     }
 
 }

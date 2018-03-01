@@ -7,7 +7,8 @@ export default class HappyHoliday {
     private _title: string;
     private _description: string;
     private _date: Date;
-    private _priority: number
+    private _priority: number;
+    private _imgSrc: string;
 
     constructor(_id: string, _title: string, _description: string, _date: Date, _priority: number) {
         this._id = _id;
@@ -45,9 +46,15 @@ export default class HappyHoliday {
     }
 
     get imgSrc(): string {
-        if (this._priority >= 3) {
-            return "assets/imgs/world-holiday/" + this._id.toLowerCase() + ".jpg";
+        if (this._imgSrc) {
+            return this._imgSrc;
         }
+        if (this._priority >= 3) {
+            this._imgSrc = "assets/imgs/world-holiday/" + this._id.toLowerCase() + ".jpg";
+        } else {
+            this._imgSrc = "assets/imgs/" + this._id.toLowerCase() + "/" + this.randomInt(1, 3) + ".jpg";
+        }
+        return this._imgSrc;
     }
 
     set priority(_priority: number) {
@@ -80,6 +87,11 @@ export default class HappyHoliday {
         }
         return new HappyHoliday(holiday.id, holiday.title, holiday.description, new Date(holiday.date), holiday.priority); // android
     }
+
+    randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
 
     toJSON() {
         return {

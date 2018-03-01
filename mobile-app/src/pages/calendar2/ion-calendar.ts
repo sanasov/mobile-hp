@@ -9,6 +9,7 @@ import * as moment from "moment";
 import {HappyHolidays} from "../../app/service/magic-number/HappyHolidays";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 import HolidayEvent from "../../app/domain/holiday-event";
+import HappyHoliday from "../../app/domain/happy-holiday";
 
 @Component({
     selector: 'page-ion-calendar',
@@ -23,6 +24,7 @@ export class IonCalendarPage {
     weekStartsOn: number = 1;
     refresh: Subject<any> = new Subject();
     events: CalendarEvent[] = [];
+    customHolidays: HappyHoliday[] = [];
     currentYear: number = new Date().getFullYear();
     yearPickerDate: string = new Date().toISOString();
     slide1 = {date: new Date()};
@@ -102,20 +104,16 @@ export class IonCalendarPage {
             return;
         }
         this.navCtrl.push(HolidayPage, {
-            date: date
+            date: date,
+            customHolidays: this.customHolidays.filter(h => moment(date, "YYYY-MM-DD").isSame(moment(h.date, "YYYY-MM-DD")))
         });
     }
 
-
-    private openHoliday($event): void {
-        alert(JSON.stringify($event));
-        this.navCtrl.push(HolidayPage, {
-            date: new Date()
-        });
-    }
 
     private generateCalendarEvents(year: number): void {
-        this.events = new HappyHolidays(this.hEvents, this.commonSettings.user.birth, year).toCalendarEvents()
+        let happyHolidays = new HappyHolidays(this.hEvents, this.commonSettings.user.birth, year);
+        this.customHolidays = happyHolidays.get();
+        this.events = happyHolidays.toCalendarEvents()
             .concat(WorldHoliday.toCalendarEvents(year));
     }
 

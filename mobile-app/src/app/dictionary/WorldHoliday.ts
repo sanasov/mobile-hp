@@ -50,10 +50,10 @@ export class WorldHoliday {
         const worldHolidayId = WorldHoliday.holidays
             .filter(h => h.date === dayMonth)
             .map(h => h.id)[0];
-        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3);
         if(!worldHolidayId) {
             return;
         }
+        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3);
         this.translateService.get(worldHolidayId).subscribe(result =>  {
             this.worldHoliday.title = result['TITLE'];
             this.worldHoliday.description = result['DESCRIPTION'];

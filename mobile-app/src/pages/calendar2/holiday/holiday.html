@@ -3,9 +3,16 @@
         <ion-title>{{holidaySlider.current().date | date :'dd MMM yyyy' : '' : locale}}</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="card-background-page">
 
-    <div class="holiday-card" (swipe) ="swipeHoliday($event)">
+    <ion-card *ngIf="holidaySlider.current().priority<3">
+        <img  [src]="holidaySlider.current().imgSrc"/>
+        <div class="card-title"> {{holidaySlider.current().title}}</div>
+        <div class="card-subtitle">{{holidaySlider.current().description }}</div>
+    </ion-card>
+
+
+    <div *ngIf="holidaySlider.current().priority>= 3" class="holiday-card">
         <div class="holiday-card-title"> {{holidaySlider.current().title}}</div>
         <img class="holiday-img" [src]="holidaySlider.current().imgSrc">
         <div class="holiday-card-description"> {{holidaySlider.current().description }}</div>

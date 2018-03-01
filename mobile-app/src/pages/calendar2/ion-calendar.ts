@@ -2,11 +2,9 @@ import {Component, TemplateRef, ViewChild, NgZone} from "@angular/core";
 import {NavController, Slides} from "ionic-angular";
 import {Subject} from "rxjs/Subject";
 import {CommonSettings} from "../../app/service/CommonSettings";
-import {HolidayPage} from "../calendar/holiday/holiday";
-import {HolidayEngine} from "../../app/service/HolidayEngine";
+import {HolidayPage} from "./holiday/holiday";
 import {CalendarEvent} from "angular-calendar";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
-import {Storage} from '@ionic/storage';
 import * as moment from "moment";
 import {HappyHolidays} from "../../app/service/magic-number/HappyHolidays";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
@@ -36,8 +34,7 @@ export class IonCalendarPage {
     @ViewChild('customHeaderTemplate') customHeaderTemplate: TemplateRef<any>;
     private slidesNotInited: boolean = true;
 
-    constructor(
-                private repository: StorageRepositoryProvider,
+    constructor(private repository: StorageRepositoryProvider,
                 private navCtrl: NavController,
                 private zone: NgZone,
                 private commonSettings: CommonSettings) {
@@ -100,6 +97,10 @@ export class IonCalendarPage {
 
 
     private dayClicked({date}: { date: Date }): void {
+        if (this.events
+                .filter(calendarEvent => moment(date, "YYYY-MM-DD").isSame(moment(calendarEvent.start, "YYYY-MM-DD"))).length === 0) {
+            return;
+        }
         this.navCtrl.push(HolidayPage, {
             date: date
         });
@@ -145,29 +146,27 @@ export class IonCalendarPage {
         return result;
     }
 
+    private season(): string {
+        const month = this.currentDate.getMonth() + 1;
+        switch (month.toString()) {
+            case '12':
+            case '1':
+            case '2':
+                return 'winter';
+            case '3':
+            case '4':
+            case '5':
+                return 'spring';
+            case '6':
+            case '7':
+            case '8':
+                return 'summer';
+            case '9':
+            case '10':
+            case '11':
+                return 'autumn';
 
-
-    private season() : string {
-      const month = this.currentDate.getMonth() + 1;
-      switch(month.toString()) {
-        case '12':
-        case '1':
-        case '2':
-          return 'winter';
-        case '3':
-        case '4':
-        case '5':
-          return 'spring';
-        case '6':
-        case '7':
-        case '8':
-          return 'summer';
-        case '9':
-        case '10':
-        case '11':
-          return 'autumn';
-
-      }
+        }
     }
 
 }

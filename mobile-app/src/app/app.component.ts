@@ -12,7 +12,7 @@ import {Tabs} from "ionic-angular/navigation/nav-interfaces";
 import {SettingsPage} from "../pages/settings/settings";
 import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
-import {HolidayPage} from "../pages/calendar/holiday/holiday";
+import {HolidayPage} from "../pages/calendar2/holiday/holiday";
 import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
 import {CommonSettings} from "./service/CommonSettings";
 import User from "./domain/user";

@@ -5,8 +5,8 @@
   "SETTINGS": "Настройки",
   "LANGUAGE": "Язык",
   "NOTIFICATIONS": "Уведомления",
-  "WORLD_HOLIDAYS": "Ваши праздники",
-  "EVENT_HOLIDAYS": "Всемирные праздники",
+  "WORLD_HOLIDAYS": "Всемирные праздники",
+  "EVENT_HOLIDAYS": "Ваши праздники",
   "TODAY": "Сегодня",
 
 
@@ -72,10 +72,6 @@
   },
   "MUSEUM": {
     "TITLE": "Museum",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "NOTABAK": {
-    "TITLE": "Notabak",
     "DESCRIPTION": "Time to collect sweets"
   },
   "NURSE": {

@@ -17,7 +17,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LanguagePage} from "../pages/settings/launguage-page/language";
-import {HolidayPage} from "../pages/calendar/holiday/holiday";
+import {HolidayPage} from "../pages/calendar2/holiday/holiday";
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
@@ -54,9 +54,9 @@ registerLocaleData(localeRu, localeFrCaExtra);
         BrowserAnimationsModule,
         HttpClientModule,
         PipesModule,
-        IonicModule.forRoot(MyApp,{
-          backButtonText: '',
-          swipeBackEnabled: true
+        IonicModule.forRoot(MyApp, {
+            backButtonText: '',
+            swipeBackEnabled: true
         }),
         IonicStorageModule.forRoot(),
         CalendarModule.forRoot(),

@@ -7,7 +7,7 @@ import {
 } from 'angular-calendar';
 import {Subject} from "rxjs/Subject";
 import {HolidayEngine} from "../../app/service/HolidayEngine";
-import {HolidayPage} from "./holiday/holiday";
+import {HolidayPage} from "../calendar2/holiday/holiday";
 import {NavController, NavParams} from "ionic-angular";
 import {WorldHoliday} from "../../app/dictionary/WorldHoliday";
 import {LangChangeEvent, TranslateService} from "@ngx-translate/core";

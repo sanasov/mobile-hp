@@ -7,6 +7,7 @@ import * as moment from "moment";
 import * as _ from 'underscore'
 import {HappyHolidays} from "../../../app/service/magic-number/HappyHolidays";
 import HappyHoliday from "../../../app/domain/happy-holiday";
+import {MagicNumberUtils} from "../../../app/service/magic-number/MagicNumberUtils";
 
 @Component({
     templateUrl: 'event-card.html'
@@ -35,6 +36,10 @@ export class EventCardPage implements OnInit {
 
     ngOnInit(): void {
 
+    }
+
+    daysPast() {
+        return MagicNumberUtils.diffDays(new Date(), this.event.date);
     }
 
     calculateHolidays(): void {

@@ -18,7 +18,7 @@ export class HappyHolidays {
         this.eventHolidays = _.uniq(
             _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidays(hEvent)), true),
             false,
-            (hp) => hp.title
+            (hp) => hp.title + hp.description
         );
 
     }
@@ -41,8 +41,31 @@ export class HappyHolidays {
         ];
     }
 
+
+    private magicNumbersWithoutAnnual(hEvent: HolidayEvent): MagicNumber[] {
+        if (!hEvent.magicEvent) {
+            return [];
+        }
+        return [
+            new RoundNumberDays(hEvent),
+            new RoundNumberHours(hEvent),
+            new RoundNumberMinutes(hEvent),
+            new SameNumberDays(hEvent),
+            new SameNumberMinutes(hEvent),
+            new SameNumberSeconds(hEvent)
+        ];
+    }
+
     public all(): HappyHoliday[] {
         return _.union(this.birthdayHolidays, this.eventHolidays);
+    }
+
+    public eventHolidaysWithoutAnnual(): HappyHoliday[] {
+        return _.uniq(
+            _.flatten(this.hEvents.map(hEvent => this.eventHappyHolidaysWithoutAnnual(hEvent)), true),
+            false,
+            (hp) => hp.title + hp.description
+        );
     }
 
     public getEventHolidays(): HappyHoliday[] {
@@ -57,6 +80,12 @@ export class HappyHolidays {
         return this.all().map(hh => hh.toCalendarEvent());
     }
 
+    private eventHappyHolidaysWithoutAnnual(hEvent: HolidayEvent): HappyHoliday[] {
+        return _.flatten(
+            this.magicNumbersWithoutAnnual(hEvent)
+                .map(magicNumber => magicNumber.happyHolidays(hEvent, this.year)),
+            true);
+    }
     private eventHappyHolidays(hEvent: HolidayEvent): HappyHoliday[] {
         return _.flatten(
             this.magicNumbers(hEvent)

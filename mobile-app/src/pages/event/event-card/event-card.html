@@ -21,6 +21,7 @@
             <ion-icon name="ios-calendar-outline" item-start></ion-icon>
                 <ion-label>Дата:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY"
+                              (ngModelChange)="event.magicEvent = false"
                               placeholder="Specify date"
                               [(ngModel)]="event.dateString">
 

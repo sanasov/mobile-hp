@@ -24,6 +24,7 @@ export class EventCardPage implements OnInit {
                 public viewCtrl: ViewController) {
         this.event = navParams.get('event');
         this.locale = translateService.currentLang;
+        this.calculateHolidays();
     }
 
     openModalEditTitle() {
@@ -38,13 +39,15 @@ export class EventCardPage implements OnInit {
 
     calculateHolidays(): void {
         this.event.magicEvent = true;
-        this.nearestHolidays = _.union(
-            new HappyHolidays([this.event], new Date(), new Date().getFullYear()).getEventHolidays(),
-            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 1).getEventHolidays(),
-            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 2).getEventHolidays(),
-            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 3).getEventHolidays(),
-            new HappyHolidays([this.event], new Date(), new Date().getFullYear() + 4).getEventHolidays()
-        )
-        ;
+        this.nearestHolidays = [];
+        for (let year = new Date().getFullYear(); year <= new Date().getFullYear() + 10; year++) {
+            console.log(new HappyHolidays([this.event], new Date(), year).eventHolidaysWithoutAnnual());
+            this.nearestHolidays = _.unique(
+                this.nearestHolidays.concat(new HappyHolidays([this.event], new Date(), year).eventHolidaysWithoutAnnual()),
+                false,
+                (hp) => hp.title + hp.description
+            );
+        }
+        this.nearestHolidays = _.sortBy(this.nearestHolidays.filter(h => h.date >= new Date()), (holiday) => holiday.date).slice(0, 4);
     }
 }

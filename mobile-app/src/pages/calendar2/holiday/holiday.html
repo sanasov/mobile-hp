@@ -1,22 +1,27 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{holidaySlider.current().date | date :'dd MMM yyyy' : '' : locale}}</ion-title>
+        <ion-title>{{holidays[0].date | date :'dd MMM yyyy' : '' : locale}}</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
 
-    <ion-card *ngIf="holidaySlider.current().priority<3">
-        <img  [src]="holidaySlider.current().imgSrc"/>
-        <div class="card-title"> {{holidaySlider.current().title}}</div>
-        <div class="card-subtitle">{{holidaySlider.current().description }}</div>
-    </ion-card>
+    <ion-slides  centeredSlides="true">
+        <ion-slide *ngFor="let holiday of holidays" style="align-items: center;">
+            <ion-card *ngIf="holiday.priority<3">
+                <img  [src]="holiday.imgSrc"/>
+                <div class="card-title"> {{holiday.title}}</div>
+                <div class="card-subtitle">{{holiday.description }}</div>
+            </ion-card>
+
+            <div *ngIf="holiday.priority>= 3" class="holiday-card">
+                <div class="holiday-card-title"> {{holiday.title}}</div>
+                <img class="holiday-img" [src]="holiday.imgSrc">
+                <div class="holiday-card-description"> {{holiday.description}}</div>
+            </div>
+        </ion-slide>
+    </ion-slides>
 
 
-    <div *ngIf="holidaySlider.current().priority>= 3" class="holiday-card">
-        <div class="holiday-card-title"> {{holidaySlider.current().title}}</div>
-        <img class="holiday-img" [src]="holidaySlider.current().imgSrc">
-        <div class="holiday-card-description"> {{holidaySlider.current().description }}</div>
-    </div>
 
 </ion-content>
 

@@ -46,9 +46,8 @@ export class EventCardPage implements OnInit {
         this.event.magicEvent = true;
         this.nearestHolidays = [];
         for (let year = new Date().getFullYear(); year <= new Date().getFullYear() + 10; year++) {
-            console.log(new HappyHolidays([this.event], new Date(), year).eventHolidaysWithoutAnnual());
             this.nearestHolidays = _.unique(
-                this.nearestHolidays.concat(new HappyHolidays([this.event], new Date(), year).eventHolidaysWithoutAnnual()),
+                this.nearestHolidays.concat(new HappyHolidays([this.event], new Date(), year).getEventHolidays()),
                 false,
                 (hp) => hp.title + hp.description
             );

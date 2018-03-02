@@ -73,7 +73,7 @@
             </div>
             <div class="nearest-holiday-flex-row"  *ngFor="let holiday of nearestHolidays">
                 <span>{{holiday.description}}</span>
-                <span style="margin-left: 10px">{{ holiday.dateString}} </span>
+                <span style="margin-left: 10px">{{holiday.date | date :'dd MMM yyyy' : '' : locale}} </span>
             </div>
         </ion-card-content>
     </ion-card>

@@ -67,10 +67,12 @@ export class IonCalendarPage {
             return;
         }
         this.currentDate = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
+        this.slides.lockSwipeToNext(true);
     }
 
     private slidePrevStart() {
         this.currentDate = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
+        this.slides.lockSwipeToPrev(true);
     }
 
     private slideNextEnd() {
@@ -83,6 +85,8 @@ export class IonCalendarPage {
             this.slides.slideTo(1, 0, false);
             this.slide2.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
         }
+        setTimeout(()=>  this.slides.lockSwipeToNext(false), 250);
+
     }
 
     private slidePrevEnd() {
@@ -95,6 +99,7 @@ export class IonCalendarPage {
         } else if (currentIndex === 2) {
             this.slide1.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
         }
+        setTimeout(()=>  this.slides.lockSwipeToPrev(false), 250);
     }
 
 

@@ -14,21 +14,22 @@
                         style="font-size: 17px; position: relative; top: 4px;">
                 </ion-icon>
             </ion-item>
-            <ion-item   (click)="openModalEditTitle()">
+            <ion-item (click)="openModalEditTitle()">
                 <h1 style="white-space: normal"> {{event.title}}</h1>
             </ion-item>
             <ion-item>
-            <ion-icon name="ios-calendar-outline" item-start></ion-icon>
+                <ion-icon name="ios-calendar-outline" item-start></ion-icon>
                 <ion-label>Дата:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY"
-                              (ngModelChange)="event.magicEvent = false"
+                              (ngModelChange)="dateChange($event)"
                               placeholder="Specify date"
+                              max="2199-12-31"
                               [(ngModel)]="event.dateString">
 
                 </ion-datetime>
             </ion-item>
-          <ion-item>
-            <ion-icon name="ios-notifications-outline" item-start></ion-icon>
+            <ion-item>
+                <ion-icon name="ios-notifications-outline" item-start></ion-icon>
                 <ion-label>Напомнить:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY  HH:mm"
                               pickerFormat=" DD MMM YYYY HH:mm"
@@ -41,41 +42,44 @@
             </ion-item>
         </ion-list>
     </ion-card>
+    <ion-card>
+        <ion-item>
+            <div class="event-card-flex-row">
+                <span *ngIf="isFuture()">Осталось дней:</span>
+                <span *ngIf="!isFuture()">Прошло дней:</span>
+                <span class="days-amount">{{diffDays()}}</span>
+            </div>
+        </ion-item>
+    </ion-card>
 
-  <ion-card *ngIf="!event.magicEvent"
-            style="margin-top: 10px"
-            (click)="calculateHolidays()">
-    <img class="img-wand" src = "assets/imgs/wand.jpg">
-    <ion-card-content>
-      <h2 style="color:grey; margin: auto;">
-        Discover new holidays
-      </h2>
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngIf="!event.magicEvent"
+              style="margin-top: 10px"
+              (click)="calculateHolidays()">
+        <img class="img-wand" src="assets/imgs/wand.jpg">
+        <ion-card-content>
+            <h2 style="color:grey; margin: auto;">
+                Discover new holidays
+            </h2>
+        </ion-card-content>
+    </ion-card>
 
     <ion-card *ngIf="event.magicEvent"
               style="margin-top: 10px">
-      <ion-item>
-        <ion-icon
-          (click)="event.magicEvent = false"
-          name="ios-close"
-          item-end
-          style="font-size: 38px; position: relative; top:-5px; color: grey">
-        </ion-icon>
-      </ion-item>
+        <ion-item>
+            <ion-label>Ближайшие праздники:</ion-label>
+            <ion-icon
+                    (click)="event.magicEvent = false"
+                    name="ios-close"
+                    item-end
+                    style="font-size: 38px; position: relative; top:-5px; color: grey">
+            </ion-icon>
+        </ion-item>
         <ion-card-content>
-            <div class="event-card-flex-row">
-                <span>Прошедшее кол-во дней:</span>
-                <span class="days-amount">{{daysPast()}}</span>
-            </div>
-            <div class="event-card-flex-row" style="margin-bottom: 5px">
-                <span>Ближайший праздники:</span>
-            </div>
-            <div class="nearest-holiday-flex-row"  *ngFor="let holiday of nearestHolidays">
+            <div class="nearest-holiday-flex-row" *ngFor="let holiday of nearestHolidays">
                 <span>{{holiday.description}}</span>
                 <span style="margin-left: 10px">{{holiday.date | date :'dd MMM yyyy' : '' : locale}} </span>
             </div>
         </ion-card-content>
     </ion-card>
-<img style="position: absolute; bottom:50px; opacity:0.7;" src="assets/imgs/background/prince-planet.jpg">
+    <img style="position: absolute; bottom:50px; opacity:0.7;" src="assets/imgs/background/prince-planet.jpg">
 </ion-content>

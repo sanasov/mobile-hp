@@ -38,14 +38,25 @@ export class EventCardPage implements OnInit {
 
     }
 
-    daysPast() {
+    private diffDays(): number {
         return MagicNumberUtils.diffDays(new Date(), this.event.date);
     }
 
-    calculateHolidays(): void {
+    private isFuture(): boolean {
+        return this.diffDays() === 0 || this.event.date >= new Date();
+    }
+
+    private dateChange(dateString): void{
+        this.event.magicEvent = false;
+        this.event.dateString = dateString;
+        this.event.changeNotifyDateToFutureEventDate();
+    }
+
+    private calculateHolidays(): void {
         this.event.magicEvent = true;
         this.nearestHolidays = [];
-        for (let year = new Date().getFullYear(); year <= new Date().getFullYear() + 10; year++) {
+        const startYear = this.event.date <= new Date() ? new Date().getFullYear() : this.event.date.getFullYear();
+        for (let year = startYear; year <= startYear + 10; year++) {
             this.nearestHolidays = _.unique(
                 this.nearestHolidays.concat(new HappyHolidays([this.event], new Date(), year).getEventHolidays()),
                 false,

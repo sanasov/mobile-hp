@@ -39,20 +39,21 @@ export default class HolidayEvent {
     }
 
     get notifyDateString(): string {
-      if(!this._notifyDate) {
-        this._notifyDate = this._date;
-        this._notifyDate.setHours(9);
-        this._notifyDate.setMinutes(0);
-        if(this.isPast()) {
-          this._notifyDate.setFullYear(new Date().getFullYear());
+        if (!this._notifyDate) {
+            this._notifyDate = this._date;
+            this._notifyDate.setHours(9);
+            this._notifyDate.setMinutes(0);
+            if (this.isPast()) {
+                this._notifyDate.setFullYear(new Date().getFullYear());
+            }
         }
-      }
-      return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
+        return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
     }
 
     set title(title: string) {
         this._title = title;
     }
+
     set magicEvent(magicEvent: boolean) {
         this._magicEvent = magicEvent;
     }
@@ -73,26 +74,27 @@ export default class HolidayEvent {
         this._notifyDate = moment(notifyDate, "YYYY-MM-DDTHH:mm").toDate();
     }
 
-    public isFuture() : boolean {
-      return moment(this.date, "YYYY-MM-DD").isAfter(moment(this.today(), "YYYY-MM-DD"));
+    public isFuture(): boolean {
+        return moment(this.date, "YYYY-MM-DD").isAfter(moment(this.today(), "YYYY-MM-DD"));
     }
 
-    public isToday() : boolean {
-      return moment(this.date, "YYYY-MM-DD").isSame(moment(this.today(), "YYYY-MM-DD"));
-    }
-    public isPast() : boolean {
-      return !moment(this.date, "YYYY-MM-DD").isSameOrAfter(moment(this.today(), "YYYY-MM-DD"));
+    public isToday(): boolean {
+        return moment(this.date, "YYYY-MM-DD").isSame(moment(this.today(), "YYYY-MM-DD"));
     }
 
-    public today() : Date {
-      return  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0);
+    public isPast(): boolean {
+        return !moment(this.date, "YYYY-MM-DD").isSameOrAfter(moment(this.today(), "YYYY-MM-DD"));
+    }
+
+    public today(): Date {
+        return new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0);
     }
 
     public static create(event: HolidayEvent) {
         if (event._title || event._date || event._notifyDate) {
             return new HolidayEvent(event._title, new Date(event._date), new Date(event._notifyDate), event._magicEvent); // ios
         }
-        return new HolidayEvent(event.title,  new Date(event.date), new Date(event.notifyDate), event.magicEvent); // android
+        return new HolidayEvent(event.title, new Date(event.date), new Date(event.notifyDate), event.magicEvent); // android
     }
 
     toJSON() {
@@ -104,4 +106,12 @@ export default class HolidayEvent {
         };
     }
 
+    changeNotifyDateToFutureEventDate(): void {
+        if (this.isPast()) {
+            return
+        }
+        this._notifyDate = this._date;
+        this._notifyDate.setHours(9);
+        this._notifyDate.setMinutes(0);
+    }
 }

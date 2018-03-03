@@ -24,8 +24,35 @@ ion-title {
   .toolbar-title-md,
   .toolbar-title-ios {
     color: $main-color;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 300;
+  }
+}
+
+@media only screen and (min-width: 365px) {
+  ion-title {
+    text-align: center;
+    .toolbar-title-md,
+    .toolbar-title-ios {
+      color: $main-color;
+      font-size: 28px;
+      font-weight: 300;
+    }
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  ion-navbar {
+    min-height: 36px !important
+  }
+  ion-title {
+    text-align: center;
+    .toolbar-title-md,
+    .toolbar-title-ios {
+      color: $main-color;
+      font-size: 20px;
+      font-weight: 300;
+    }
   }
 }
 

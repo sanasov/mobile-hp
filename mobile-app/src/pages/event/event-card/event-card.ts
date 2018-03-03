@@ -1,5 +1,5 @@
 import {ModalController, NavParams, Platform, ViewController} from "ionic-angular";
-import {OnInit, Component} from "@angular/core";
+import {OnInit, Component, OnDestroy} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";
@@ -12,11 +12,11 @@ import {MagicNumberUtils} from "../../../app/service/magic-number/MagicNumberUti
 @Component({
     templateUrl: 'event-card.html'
 })
-export class EventCardPage implements OnInit {
+export class EventCardPage implements OnDestroy {
     private event: HolidayEvent;
     private locale: string;
     private minNotifyDate: string = moment(new Date()).format('YYYY-MM-DD');
-    private nearestHolidays: Array<HappyHoliday>
+    private nearestHolidays: Array<HappyHoliday>;
 
     constructor(public platform: Platform,
                 public navParams: NavParams,
@@ -25,7 +25,9 @@ export class EventCardPage implements OnInit {
                 public viewCtrl: ViewController) {
         this.event = navParams.get('event');
         this.locale = translateService.currentLang;
-        this.calculateHolidays();
+        if (this.event.magicEvent) {
+            this.calculateHolidays();
+        }
     }
 
     openModalEditTitle() {
@@ -34,9 +36,10 @@ export class EventCardPage implements OnInit {
     }
 
 
-    ngOnInit(): void {
+    ngOnDestroy(): void {
 
     }
+
 
     private diffDays(): number {
         return MagicNumberUtils.diffDays(new Date(), this.event.date);
@@ -46,14 +49,18 @@ export class EventCardPage implements OnInit {
         return this.diffDays() === 0 || this.event.date >= new Date();
     }
 
-    private dateChange(dateString): void{
+    private dateChange(dateString): void {
         this.event.magicEvent = false;
         this.event.dateString = dateString;
         this.event.changeNotifyDateToFutureEventDate();
     }
 
-    private calculateHolidays(): void {
+    discoverHolidays() {
         this.event.magicEvent = true;
+        this.calculateHolidays();
+    }
+
+    private calculateHolidays(): void {
         this.nearestHolidays = [];
         const startYear = this.event.date <= new Date() ? new Date().getFullYear() : this.event.date.getFullYear();
         for (let year = startYear; year <= startYear + 10; year++) {

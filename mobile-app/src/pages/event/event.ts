@@ -1,6 +1,5 @@
-import {AfterContentInit, Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ModalController, NavController, NavParams} from 'ionic-angular';
-import {Storage} from '@ionic/storage';
 import {EventModalPage} from "./event-modal/event-modal";
 import {TranslateService} from "@ngx-translate/core";
 import {EventCardPage} from "./event-card/event-card";
@@ -18,12 +17,11 @@ export class EventPage implements OnDestroy {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private storage: Storage,
                 private repository: StorageRepositoryProvider,
                 public modalCtrl: ModalController,
                 private translateService: TranslateService) {
         repository.getHolidayEvents().then((result: HolidayEvent[]) => {
-          this.events = result;
+            this.events = result;
         });
         this.locale = translateService.currentLang;
     }
@@ -37,11 +35,11 @@ export class EventPage implements OnDestroy {
         let modal = this.modalCtrl.create(EventModalPage, {'event': event});
         modal.present();
         modal.onDidDismiss(data => {
-                if (event.title) {
-                    this.events.push(event);
-                    this.openEventCard(event)
-                }
-            });
+            if (event.title) {
+                this.events.push(event);
+                this.openEventCard(event)
+            }
+        });
     }
 
     preRemoveSwipe($event, event) {
@@ -54,20 +52,20 @@ export class EventPage implements OnDestroy {
     }
 
     openEventCard(event) {
-            this.navCtrl.push(EventCardPage, {
+        this.navCtrl.push(EventCardPage, {
             event: event
         });
     }
 
     filteredEvents() {
-     return (this.events || []).filter(event => this.showableEvent(event.date));
+        return (this.events || []).filter(event => this.showableEvent(event.date));
     }
 
     private showableEvent(date: Date) {
-      return !date ||
-        this.eventSegment === "ALL" ||
-        (this.eventSegment === "PAST" && date < new Date()) ||
-        (this.eventSegment === "FUTURE" && date >= new Date());
+        return !date ||
+            this.eventSegment === "ALL" ||
+            (this.eventSegment === "PAST" && date < new Date()) ||
+            (this.eventSegment === "FUTURE" && date >= new Date());
     }
 
     save() {

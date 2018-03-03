@@ -21,7 +21,7 @@
 .img-wand {
   width: 40%;
   max-width: 200px;
-  margin: 20px auto auto;
+  margin: 20px auto 20px;
 }
 
 #event-card {
@@ -29,4 +29,7 @@
     z-index: 50;
     position: relative;
   }
+}
+
+@height(667) {
 }

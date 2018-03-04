@@ -41,11 +41,11 @@ export class MagicNumberUtils {
 
     public static calcDateByDays(eventDate: Date, daysAmount: number): Date {
         let result = new Date(eventDate);
-        if (eventDate < new Date) {
             result.setDate(eventDate.getDate() + daysAmount);
-        } else {
-            result.setDate(eventDate.getDate() - daysAmount);
-        }
+        // if (eventDate < new Date) {
+        // } else {
+        //     result.setDate(eventDate.getDate() - daysAmount);
+        // }
         return result;
     }
 

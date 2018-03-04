@@ -70,6 +70,6 @@ export class EventCardPage implements OnDestroy {
                 (hp) => hp.title + hp.description
             );
         }
-        this.nearestHolidays = _.sortBy(this.nearestHolidays.filter(h => h.date >= new Date()), (holiday) => holiday.date).slice(0, 4);
+        this.nearestHolidays = _.sortBy(this.nearestHolidays.filter(h => h.date >= new Date() && h.date >= this.event.date), (holiday) => holiday.date).slice(0, 4);
     }
 }

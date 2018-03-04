@@ -31,7 +31,7 @@ export class EventPage implements OnDestroy {
     }
 
     addEvent() {
-        var event = new HolidayEvent("", new Date(), null, false);
+        var event = new HolidayEvent(this.events.length + 1, "", new Date(), null, false);
         let modal = this.modalCtrl.create(EventModalPage, {'event': event});
         modal.present();
         modal.onDidDismiss(data => {

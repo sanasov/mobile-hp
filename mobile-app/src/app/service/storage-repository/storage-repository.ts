@@ -22,8 +22,8 @@ export class StorageRepositoryProvider {
 
     getUser(): Promise<User> {
         return this.storage.get("user").then((user: User) => {
-                return user == null ? new User("","", null) : User.create(user);
-            })
+            return user == null ? new User("", "", null) : User.create(user);
+        })
     }
 
     setUser(user: User): void {
@@ -31,13 +31,14 @@ export class StorageRepositoryProvider {
     }
 
 
-  getHolidayEvents(): Promise<HolidayEvent[]> {
-    return this.storage.get("events").then((events: HolidayEvent[]) => {
-      return !events ? [] : events.map(event => event == null ? new HolidayEvent("",null, null,false ) : HolidayEvent.create(event));
-    });
-  }
+    getHolidayEvents(): Promise<HolidayEvent[]> {
+        return this.storage.get("events").then((events: HolidayEvent[]) => {
+            return !events ? [] : events.map(event => event == null ? new HolidayEvent(0, "", null, null, false) : HolidayEvent.create(event));
+        });
+    }
 
     setHolidayEvents(events: HolidayEvent[]): void {
+        events.forEach((event, index) => event.id = index + 1);
         this.storage.set("events", events);
-  }
+    }
 }

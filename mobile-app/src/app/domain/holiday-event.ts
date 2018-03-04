@@ -1,18 +1,25 @@
 import * as moment from "moment";
 
 export default class HolidayEvent {
+    private _id: number;
     private _title: string;
     private _date: Date;
     private _notifyDate: Date;
     private _magicEvent: boolean;
 
 
-    constructor(_title: string, _date: Date, _notifyDate: Date, _magicEvent: boolean) {
+    constructor(_id: number, _title: string, _date: Date, _notifyDate: Date, _magicEvent: boolean) {
+        this._id = _id;
         this._title = _title;
         this._date = _date;
         this._notifyDate = _notifyDate;
         this._magicEvent = _magicEvent;
     }
+
+    get id(): number {
+        return this._id;
+    }
+
 
     get title(): string {
         return this._title;
@@ -48,6 +55,10 @@ export default class HolidayEvent {
             }
         }
         return moment(this._notifyDate).format('YYYY-MM-DDTHH:mm');
+    }
+
+    set id(id: number) {
+        this._id = id;
     }
 
     set title(title: string) {
@@ -92,13 +103,14 @@ export default class HolidayEvent {
 
     public static create(event: HolidayEvent) {
         if (event._title || event._date || event._notifyDate) {
-            return new HolidayEvent(event._title, new Date(event._date), new Date(event._notifyDate), event._magicEvent); // ios
+            return new HolidayEvent(event._id, event._title, new Date(event._date), new Date(event._notifyDate), event._magicEvent); // ios
         }
-        return new HolidayEvent(event.title, new Date(event.date), new Date(event.notifyDate), event.magicEvent); // android
+        return new HolidayEvent(event.id, event.title, new Date(event.date), new Date(event.notifyDate), event.magicEvent); // android
     }
 
     toJSON() {
         return {
+            id: this._id,
             title: this._title,
             date: this._date,
             notifyDate: this._notifyDate,

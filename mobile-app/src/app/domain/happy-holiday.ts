@@ -5,13 +5,14 @@ import {ILocalNotification} from "@ionic-native/local-notifications";
 
 export default class HappyHoliday {
     private _id: string;
+    private _eventId: number;
     private _title: string;
     private _description: string;
     private _date: Date;
     private _priority: number;
     private _imgSrc: string;
 
-    constructor(_id: string, _title: string, _description: string, _date: Date, _priority: number) {
+    constructor(_id: string, _title: string, _description: string, _date: Date, _priority: number, _eventId: number) {
         this._id = _id;
         this._title = _title;
         this._description = _description;
@@ -46,6 +47,10 @@ export default class HappyHoliday {
         return this._priority;
     }
 
+    get eventId(): number {
+        return this._eventId;
+    }
+
     get imgSrc(): string {
         if (this._imgSrc) {
             return this._imgSrc;
@@ -60,6 +65,10 @@ export default class HappyHoliday {
 
     set priority(_priority: number) {
         this._priority = _priority;
+    }
+
+    set eventId(_eventId: number) {
+        this._eventId = _eventId;
     }
 
     set id(id: string) {
@@ -84,9 +93,9 @@ export default class HappyHoliday {
 
     public static create(holiday: HappyHoliday) {
         if (holiday._title || holiday._date) {
-            return new HappyHoliday(holiday._id, holiday._title, holiday._description, new Date(holiday._date), holiday._priority); // ios
+            return new HappyHoliday(holiday._id, holiday._title, holiday._description, new Date(holiday._date), holiday._priority, holiday._eventId); // ios
         }
-        return new HappyHoliday(holiday.id, holiday.title, holiday.description, new Date(holiday.date), holiday.priority); // android
+        return new HappyHoliday(holiday.id, holiday.title, holiday.description, new Date(holiday.date), holiday.priority, holiday.eventId); // android
     }
 
     randomInt(min, max) {
@@ -100,7 +109,8 @@ export default class HappyHoliday {
             title: this._title,
             description: this._description,
             date: this._date,
-            priority: this._priority
+            priority: this._priority,
+            eventId: this._eventId
         };
     }
 

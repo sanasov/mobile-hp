@@ -39,13 +39,20 @@ export class NotificationService {
 
     public initCustomHolidays(holidays: HappyHoliday[]) {
         this.localNotifications.schedule(
-            holidays.map((holiday, i) => holiday.toILocalNotification(i + 1))
+            holidays.map((holiday, i) => holiday.toILocalNotification(holiday.eventId * 10000 + i + 1))
         );
     }
 
     public clearAllWorldHolidays() {
         this.localNotifications.getAllIds().then((ids) => {
             ids.filter((id) => id < 0).forEach((id) => this.localNotifications.clear(id));
+        });
+    }
+
+    // assume that there is no more than 500 holidays belongs to only event
+    public clearAllCustomHolidaysByEventId(eventId) {
+        this.localNotifications.getAllIds().then((ids) => {
+            ids.filter((id) => Math.abs(id - eventId) < 500).forEach((id) => this.localNotifications.clear(id));
         });
     }
 

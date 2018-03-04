@@ -85,7 +85,7 @@ export class IonCalendarPage {
             this.slides.slideTo(1, 0, false);
             this.slide2.date = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1);
         }
-        setTimeout(()=>  this.slides.lockSwipeToNext(false), 250);
+        setTimeout(() => this.slides.lockSwipeToNext(false), 250);
 
     }
 
@@ -99,7 +99,19 @@ export class IonCalendarPage {
         } else if (currentIndex === 2) {
             this.slide1.date = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1);
         }
-        setTimeout(()=>  this.slides.lockSwipeToPrev(false), 250);
+        setTimeout(() => this.slides.lockSwipeToPrev(false), 250);
+    }
+
+
+    public openHoliday(): void {
+        if (this.events
+                .filter(calendarEvent => moment(new Date(), "YYYY-MM-DD").isSame(moment(calendarEvent.start, "YYYY-MM-DD"))).length === 0) {
+            return;
+        }
+        this.navCtrl.push(HolidayPage, {
+            date: new Date(),
+            customHolidays: this.customHolidays.filter(h => moment(new Date(), "YYYY-MM-DD").isSame(moment(h.date, "YYYY-MM-DD")))
+        });
     }
 
 

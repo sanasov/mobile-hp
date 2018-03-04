@@ -1,6 +1,7 @@
 import * as moment from "moment";
 import {holidayColors} from "../dictionary/holidayColors";
 import {CalendarEvent} from "angular-calendar";
+import {ILocalNotification} from "@ionic-native/local-notifications";
 
 export default class HappyHoliday {
     private _id: string;
@@ -110,6 +111,15 @@ export default class HappyHoliday {
             title: this.title + " \n" + this.description,
             color: this.priority < 3 ? holidayColors.red : holidayColors.yellow,
             actions: null
+        }
+    }
+
+    public toILocalNotification(id: number): ILocalNotification {
+        return {
+            id: id,
+            title: this.title,
+            text: this.description,
+            at: this.date
         }
     }
 

@@ -15,7 +15,6 @@ import {CommonSettings} from "./service/CommonSettings";
 import User from "./domain/user";
 import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
 
-
 @Component({
     templateUrl: 'app.html'
 })
@@ -44,11 +43,6 @@ export class MyApp {
                 private commonSettings: CommonSettings,
                 private zone: NgZone) {
         this.initializeApp();
-      // this.screenOrientation.onChange().subscribe(
-      //   () => {
-      //     this.deltaHeight =  window.screen.availHeight - document.getElementById("introduction").offsetHeight;
-      //   }
-      // );
     }
 
     @ViewChild('mainTabs') tabRef: Tabs;
@@ -58,21 +52,26 @@ export class MyApp {
         this.tabRef.select(2, null, null);
     }
 
-   screenHeight() : any {
-    if(!this.deltaHeight) {
-      return "calc(100%)";
+    screenHeight(): any {
+        if (!this.deltaHeight) {
+            return "calc(100%)";
+        }
+        return window.screen.availHeight - this.deltaHeight + "px";
     }
-    return window.screen.availHeight - this.deltaHeight + "px";
-  }
 
     initializeApp() {
         this.platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
-            this.statusBar.styleLightContent();
-            this.splashScreen.hide();
+            if (window['cordova']) {
+                this.statusBar.styleDefault();
+                this.splashScreen.hide();
+                if (screen.availWidth < 580) {
+                    screen['orientation'].lock('portrait');
+                }
+            }
             this.defineLanguage();
-            this.storageRepository.getUser().then((result: User) =>  this.commonSettings.user = result);
+            this.storageRepository.getUser().then((result: User) => this.commonSettings.user = result);
 
             // this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
         });
@@ -96,9 +95,9 @@ export class MyApp {
     }
 
     initTabTitle() {
-     this.translateService.get("SETTINGS").subscribe(result =>  this.settingsTitle = result);
-     this.translateService.get("EVENTS").subscribe(result =>  this.eventsTitle = result);
-     this.translateService.get("CALENDAR").subscribe(result =>  this.calendarTitle = result);
+        this.translateService.get("SETTINGS").subscribe(result => this.settingsTitle = result);
+        this.translateService.get("EVENTS").subscribe(result => this.eventsTitle = result);
+        this.translateService.get("CALENDAR").subscribe(result => this.calendarTitle = result);
     }
 
     private findDeviceLanguageOrDefaultFromLocalStorage(defaultLanguage: string): string {
@@ -110,20 +109,22 @@ export class MyApp {
     }
 
     private slideChanged(): void {
-      this.slides.slideNext(500, false);
-      if (this.slides.isEnd()) {
-          setTimeout(() => {
-              this.firstOpening = false;
-              // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
-              this.storageRepository.setUser(this.user);
-          }, 2000)
-      }
+        this.slides.slideNext(500, false);
+        if (this.slides.isEnd()) {
+            setTimeout(() => {
+                this.firstOpening = false;
+                // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
+                this.storageRepository.setUser(this.user);
+            }, 2000)
+        }
     }
 
     ngAfterViewInit() {
         if (this.firstOpening) {
-            this.deltaHeight =  window.screen.availHeight - document.getElementById("introduction").offsetHeight;
-            setTimeout(() => {document.getElementById("introduction-name").focus()}, 100);
+            this.deltaHeight = window.screen.availHeight - document.getElementById("introduction").offsetHeight;
+            setTimeout(() => {
+                document.getElementById("introduction-name").focus()
+            }, 100);
             this.slides.lockSwipes(true)
         }
     }

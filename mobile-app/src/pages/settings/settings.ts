@@ -7,6 +7,7 @@ import {Language} from "../../app/dictionary/language";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 import User from "../../app/domain/user";
 import {ProfileModalPage} from "./profile-modal/profile-modal";
+import {NotificationService} from "../../app/service/NotificationService";
 
 @Component({
     selector: 'settings',
@@ -23,6 +24,7 @@ export class SettingsPage {
                 private storage: Storage,
                 private modalCtrl: ModalController,
                 private translateService: TranslateService,
+                private notificationService: NotificationService,
                 private navCtrl: NavController,
                 private zone: NgZone) {
 
@@ -55,9 +57,9 @@ export class SettingsPage {
         let modal = this.modalCtrl.create(ProfileModalPage, {'user': this.user});
         modal.present();
         modal.onDidDismiss((savedUser: User) => {
-          if(savedUser) {
-            this.user = savedUser;
-          }
+            if (savedUser) {
+                this.user = savedUser;
+            }
         });
     }
 
@@ -72,6 +74,24 @@ export class SettingsPage {
             .then((deviceLanguage) => {
                 this.currentLanguage = Language[deviceLanguage];
             })
+    }
+
+    toggleWorldHoliday($event) {
+        if ($event.value) {
+            this.notificationService.initNotifications([]);
+        } else {
+            this.notificationService.clearAllWorldHolidays();
+        }
+        this.saveNotificationSettings();
+    }
+
+    toggleEventHoliday($event) {
+        if ($event.value) {
+            this.notificationService.initNotifications([]);
+        } else {
+            this.notificationService.clearAllCustomHolidays();
+        }
+        this.saveNotificationSettings();
     }
 
     saveNotificationSettings() {

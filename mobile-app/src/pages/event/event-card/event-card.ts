@@ -1,5 +1,5 @@
-import {ModalController, NavParams, Platform, ViewController} from "ionic-angular";
-import {OnInit, Component, OnDestroy} from "@angular/core";
+import {ModalController, Navbar, NavController, NavParams, Platform, ViewController} from "ionic-angular";
+import {OnInit, Component, OnDestroy, ViewChild} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";
@@ -8,6 +8,7 @@ import * as _ from 'underscore'
 import {HappyHolidays} from "../../../app/service/magic-number/HappyHolidays";
 import HappyHoliday from "../../../app/domain/happy-holiday";
 import {MagicNumberUtils} from "../../../app/service/magic-number/MagicNumberUtils";
+import {StorageRepositoryProvider} from "../../../app/service/storage-repository/storage-repository";
 
 @Component({
     templateUrl: 'event-card.html'
@@ -17,9 +18,11 @@ export class EventCardPage implements OnDestroy {
     private locale: string;
     private minNotifyDate: string = moment(new Date()).format('YYYY-MM-DD');
     private nearestHolidays: Array<HappyHoliday>;
+    @ViewChild('navbar') navBar: Navbar;
 
-    constructor(public platform: Platform,
-                public navParams: NavParams,
+    constructor(private navParams: NavParams,
+                private navCtrl: NavController,
+                private repository: StorageRepositoryProvider,
                 public translateService: TranslateService,
                 public modalCtrl: ModalController,
                 public viewCtrl: ViewController) {
@@ -40,6 +43,13 @@ export class EventCardPage implements OnDestroy {
 
     }
 
+    ionViewDidEnter() {
+        this.navBar.backButtonClick = () => {
+            this.repository.setHolidayEvents(this.navParams.get('events'));
+            this.navCtrl.pop();
+        };
+
+    }
 
     private diffDays(): number {
         return MagicNumberUtils.diffDays(new Date(), this.event.date);

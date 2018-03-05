@@ -1,10 +1,11 @@
 import {Component, OnDestroy} from '@angular/core';
-import {ModalController, NavController, NavParams} from 'ionic-angular';
+import {ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {EventModalPage} from "./event-modal/event-modal";
 import {TranslateService} from "@ngx-translate/core";
 import {EventCardPage} from "./event-card/event-card";
 import HolidayEvent from "../../app/domain/holiday-event";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
+import {NotificationService} from "../../app/service/NotificationService";
 
 @Component({
     selector: 'page-event',
@@ -17,7 +18,9 @@ export class EventPage implements OnDestroy {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
+                public platform: Platform,
                 private repository: StorageRepositoryProvider,
+                private notificationService: NotificationService,
                 public modalCtrl: ModalController,
                 private translateService: TranslateService) {
         repository.getHolidayEvents().then((result: HolidayEvent[]) => {
@@ -42,18 +45,16 @@ export class EventPage implements OnDestroy {
         });
     }
 
-    preRemoveSwipe($event, event) {
-        event.preClose = $event.deltaX > 0;
-    }
-
-    remove(event) {
+    remove(event: HolidayEvent) {
         this.events.splice(this.events.indexOf(event), 1);
+        this.notificationService.clearAllCustomHolidaysByEventId(event.id);
         this.save();
     }
 
     openEventCard(event) {
         this.navCtrl.push(EventCardPage, {
-            event: event
+            event: event,
+            events: this.events
         });
     }
 

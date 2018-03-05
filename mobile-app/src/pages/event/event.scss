@@ -1,10 +1,3 @@
-
-.remove-btn {
-  margin: auto 0px auto 0px;
-  color: grey;
-  min-width: 25px;
-}
-
 .add-btn {
   width: 50px;
   height: 50px;
@@ -19,22 +12,6 @@
   ion-icon {
     font-size: 1.6em;
   }
-}
-
-.close-mode {
-  ion-input, div {
-    color: grey;
-  }
-  .close-line {
-    z-index: 1;
-  }
-}
-
-.close-line {
-  width: calc(100% - 40px);
-  position: absolute;
-  top: 16px;
-  left: 10px;
 }
 
 .button-inner {

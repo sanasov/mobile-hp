@@ -32,18 +32,27 @@ export class NotificationService {
     }
 
     public initWorldHolidays(holidays: HappyHoliday[]) {
+        if (!window['cordova']) {
+            return;
+        }
         this.localNotifications.schedule(
             holidays.map((holiday, i) => holiday.toILocalNotification(-i - 1))
         );
     }
 
     public initCustomHolidays(holidays: HappyHoliday[]) {
+        if (!window['cordova']) {
+            return;
+        }
         this.localNotifications.schedule(
             holidays.map((holiday, i) => holiday.toILocalNotification(holiday.eventId * 10000 + i + 1))
         );
     }
 
     public clearAllWorldHolidays() {
+        if (!window['cordova']) {
+            return;
+        }
         this.localNotifications.getAllIds().then((ids) => {
             ids.filter((id) => id < 0).forEach((id) => this.localNotifications.clear(id));
         });
@@ -51,12 +60,18 @@ export class NotificationService {
 
     // assume that there is no more than 500 holidays belongs to only event
     public clearAllCustomHolidaysByEventId(eventId) {
+        if (!window['cordova']) {
+            return;
+        }
         this.localNotifications.getAllIds().then((ids) => {
             ids.filter((id) => Math.abs(id - eventId) < 500).forEach((id) => this.localNotifications.clear(id));
         });
     }
 
     public clearAllCustomHolidays() {
+        if (!window['cordova']) {
+            return;
+        }
         this.localNotifications.getAllIds().then((ids) => {
             ids.filter((id) => id > 0).forEach((id) => this.localNotifications.clear(id));
         });

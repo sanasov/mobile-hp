@@ -45,7 +45,7 @@
                     {{'WORLD_HOLIDAYS' | translate }}
                 </ion-label>
                 <ion-toggle [(ngModel)]="notification.worldHoliday"
-                            (ionChange)="saveNotificationSettings()"
+                            (ionChange)="toggleWorldHoliday($event)"
                             color="holiday-main">
                 </ion-toggle>
             </ion-item>
@@ -55,7 +55,7 @@
                     {{'EVENT_HOLIDAYS' | translate}}
                 </ion-label>
                 <ion-toggle [(ngModel)]="notification.eventHoliday"
-                            (ionChange)="saveNotificationSettings()"
+                            (ionChange)="toggleEventHoliday($event)"
                             color="holiday-main">
                 </ion-toggle>
             </ion-item>

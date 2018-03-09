@@ -16,7 +16,7 @@
             <div *ngIf="holiday.priority>= 3" class="holiday-card">
                 <div class="holiday-card-title"> {{holiday.title}}</div>
                 <img class="holiday-img" [src]="holiday.imgSrc">
-                <div class="holiday-card-description"> {{holiday.description}}</div>
+                <div class="holiday-card-description"><div class="holiday-card-description-content">{{holiday.description}}</div></div>
             </div>
         </ion-slide>
     </ion-slides>

@@ -58,5 +58,17 @@
     font-size: 20px;
     font-weight: 300;
     max-width: 90%;
+    overflow-y: auto;
   }
+
+  @media only screen and (max-height: 500px) {
+    .holiday-img {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .holiday-card-description {
+      max-height: 80px;
+    }
+  }
+
 }

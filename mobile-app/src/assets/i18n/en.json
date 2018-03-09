@@ -39,10 +39,10 @@
   "PASSED_YEAR": "Passed 1 year",
   "YEARS_HAVE_PASSED": "{{value}}  years have passed",
 
-  "TODAY_YOU_TURNED_DAYS":    "Today you turned {{value}} дней",
-  "TODAY_YOU_TURNED_HOURS":   "Today you turned {{value}} часов",
-  "TODAY_YOU_TURNED_MINUTES": "Today you turned {{value}} минут",
-  "TODAY_YOU_TURNED_SECONDS": "Today you turned {{value}} секунд",
+  "TODAY_YOU_TURNED_DAYS":    "Today you turned {{value}} days",
+  "TODAY_YOU_TURNED_HOURS":   "Today you turned {{value}} hours",
+  "TODAY_YOU_TURNED_MINUTES": "Today you turned {{value}} minutes",
+  "TODAY_YOU_TURNED_SECONDS": "Today you turned {{value}} seconds",
 
   "HAPPY_BIRTHDAY" : "Happy Birthday!!!",
 

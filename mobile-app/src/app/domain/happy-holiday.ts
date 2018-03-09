@@ -65,7 +65,7 @@ export default class HappyHoliday {
         if (this._priority >= 3) {
             this._imgSrc = "assets/imgs/world-holiday/" + this._id.toLowerCase() + ".jpg";
         } else {
-            this._imgSrc = "assets/imgs/" + this._id.toLowerCase() + "/" + this.randomInt(1, 3) + ".jpg";
+            this._imgSrc = "assets/imgs/custom-event/" + this.randomInt(1, 3) + ".jpg";
         }
         return this._imgSrc;
     }

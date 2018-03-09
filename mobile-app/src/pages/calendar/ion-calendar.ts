@@ -16,7 +16,7 @@ import HappyHoliday from "../../app/domain/happy-holiday";
     templateUrl: 'ion-calendar.html'
 })
 
-export class IonCalendarPage {
+export class CalendarPage {
     mockDateForWeekHeader: Date = new Date();
     hEvents: HolidayEvent[] = [];
     currentDate: Date = new Date();

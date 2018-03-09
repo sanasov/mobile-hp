@@ -16,10 +16,10 @@
             </ion-item>
             <ion-item>
                 <ion-icon name="ios-calendar-outline" item-start></ion-icon>
-                <ion-label>Дата:</ion-label>
+                <ion-label>{{"DATE"| translate}}:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY"
                               (ngModelChange)="dateChange($event)"
-                              placeholder="Specify date"
+                              placeholder="{{'SPECIFY_A_DATE' | translate}}"
                               max="2199-12-31"
                               [(ngModel)]="event.dateString">
 
@@ -27,10 +27,10 @@
             </ion-item>
             <ion-item>
                 <ion-icon name="ios-notifications-outline" item-start></ion-icon>
-                <ion-label>Напомнить:</ion-label>
+                <ion-label>{{"NOTIFY_BY"| translate}}:</ion-label>
                 <ion-datetime displayFormat=" DD MMM YYYY  HH:mm"
                               pickerFormat=" DD MMM YYYY HH:mm"
-                              placeholder="Specify date"
+                              placeholder="{{'SPECIFY_A_DATE_AND_TIME' | translate}}"
                               min="2018-02-25"
                               max="2199-12-31"
                               [(ngModel)]="event.notifyDateString">
@@ -42,8 +42,8 @@
     <ion-card>
         <ion-item>
             <div class="event-card-flex-row">
-                <span *ngIf="isFuture()">Осталось дней:</span>
-                <span *ngIf="!isFuture()">Прошло дней:</span>
+                <span *ngIf="isFuture()">{{"DAYS_LEFT" | translate}}:</span>
+                <span *ngIf="!isFuture()">{{"DAYS_PASSED" | translate}}:</span>
                 <span class="days-amount">{{diffDays()}}</span>
             </div>
         </ion-item>
@@ -54,14 +54,14 @@
               (click)="discoverHolidays()">
         <img class="img-wand" src="assets/imgs/wand.jpg">
         <h2 style="color:grey; position: absolute; bottom: 5px; left: 15px">
-            Discover new holidays
+            {{"DISCOVER_YOUR_NEW_HOLIDAYS" | translate}}
         </h2>
     </ion-card>
 
     <ion-card *ngIf="event.magicEvent"
               style="margin-top: 10px">
         <ion-item>
-            <ion-label>Ближайшие праздники:</ion-label>
+            <ion-label>{{"UPCOMING_HOLIDAYS" | translate}}:</ion-label>
             <ion-icon
                     (click)="event.magicEvent = false"
                     name="ios-close"

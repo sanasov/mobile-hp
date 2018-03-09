@@ -20,12 +20,12 @@
     <ion-list inset  style="position: relative; z-index: 50;">
 
         <ion-item>
-            <ion-label>First name:</ion-label>
+            <ion-label>{{"FIRST_NAME" | translate}}:</ion-label>
             <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label>Last name:</ion-label>
+            <ion-label>{{"LAST_NAME" | translate}}:</ion-label>
             <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
         </ion-item>
         <ion-item>
@@ -35,7 +35,7 @@
             <ion-datetime
                     item-end
                     displayFormat="DD MMMM YYYY"
-                    placeholder="Select date"
+                    placeholder='{{"SPECIFY_A_DATE | translate"}}'
                     [(ngModel)]="user.birthString">
             </ion-datetime>
         </ion-item>

@@ -1,6 +1,6 @@
 <ion-content>
     <ion-item>
-        <input id="hp-event-title" placeholder="Describe your event"
+        <input id="hp-event-title" placeholder='{{"DESCRIBE_YOUR_EVENT" | translate }}'
                (keyup) = "readyAddEvent($event)"
                [(ngModel)]="event.title">
         <ion-icon

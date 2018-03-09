@@ -9,6 +9,26 @@
   "EVENT_HOLIDAYS": "Ваши праздники",
   "TODAY": "Сегодня",
 
+  "ALL": "Все",
+  "PAST": "Прошедшие",
+  "FUTURE": "Будущие",
+
+  "FIRST_NAME": "Имя",
+  "LAST_NAME": "Фамилия",
+
+  "ADD_GREAT_EVENTS_TO_FIND_YOUR_NEW_HOLIDAYS": "Добавьте события, чтобы открыть Ваши новые праздники",
+
+  "DESCRIBE_YOUR_EVENT": "Опишите Ваше событие",
+
+  "SPECIFY_DATE": "Выберите дату",
+  "SPECIFY_DATE_AND_TIME": "Выберите дату и время",
+
+  "DATE": "Дата",
+  "NOTIFY_BY": "Напомнить",
+  "DAYS_LEFT": "Осталось дней",
+  "DAYS_PASSED": "Прошло дней",
+  "DISCOVER_YOUR_NEW_HOLIDAYS": "Открой для себя новые праздники",
+  "UPCOMING_HOLIDAYS": "Ближайшие праздники",
 
   "ARCHAEOLOGIST": {
     "TITLE": "День археолога",

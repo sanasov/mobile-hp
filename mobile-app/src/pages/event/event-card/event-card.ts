@@ -1,5 +1,5 @@
-import {ModalController, Navbar, NavController, NavParams, Platform, ViewController} from "ionic-angular";
-import {OnInit, Component, OnDestroy, ViewChild} from "@angular/core";
+import {ModalController, Navbar, NavController, NavParams, ViewController} from "ionic-angular";
+import {Component, OnDestroy, ViewChild} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";

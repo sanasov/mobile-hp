@@ -9,7 +9,26 @@
   "EVENT_HOLIDAYS": "Your holidays",
   "TODAY": "Today",
 
+  "ALL": "All",
+  "PAST": "Past",
+  "FUTURE": "Future",
 
+  "FIRST_NAME": "First name",
+  "LAST_NAME": "Last name",
+
+  "ADD_GREAT_EVENTS_TO_FIND_YOUR_NEW_HOLIDAYS": "Add great events to find your new holidays",
+
+  "DESCRIBE_YOUR_EVENT": "Describe your event",
+
+  "SPECIFY_A_DATE": "Specify a date",
+  "SPECIFY_A_DATE_AND_TIME": "Выберите дату и время",
+
+  "DATE": "Date",
+  "NOTIFY_BY": "Notify by",
+  "DAYS_LEFT": "Days left",
+  "DAYS_PASSED": "Days passed",
+  "DISCOVER_YOUR_NEW_HOLIDAYS": "Discover your new holidays",
+  "UPCOMING_HOLIDAYS": "Upcoming holidays",
 
   "ARCHAEOLOGIST": {
     "TITLE": "Archaeologist",

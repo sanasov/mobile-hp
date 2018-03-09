@@ -126,6 +126,18 @@
     margin-top: 5px;
     margin-bottom: 3px;
   }
+  .cal-days {
+    display: none;
+  }
+}
+
+ion-slides {
+  .cal-header {
+    display: none !important;
+  }
+  ion-slide.swiper-slide {
+    align-items: flex-start;
+  }
 }
 
 @media only screen and (min-width: 365px) {
@@ -191,3 +203,7 @@
   position: absolute;
   bottom: 0;
 }
+
+
+
+

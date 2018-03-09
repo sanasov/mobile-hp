@@ -37,7 +37,6 @@
 
     <ion-tabs #mainTabs class="tabs-basic" *ngIf="appReady&&!firstOpening">
         <ion-tab tabIcon="ios-calendar" tabTitle = {{calendarTitle}} [root]="ionCalendarPage"></ion-tab>
-        <!--<ion-tab tabIcon="calendar" tabTitle = {{calendarTitle}} [root]="calendarPage"></ion-tab>-->
         <ion-tab tabIcon="ios-list-box" tabTitle = {{eventsTitle}} [root]="eventPage"></ion-tab>
         <ion-tab tabIcon="ios-settings" tabTitle = {{settingsTitle}} [root]="settingsPage"></ion-tab>
     </ion-tabs>

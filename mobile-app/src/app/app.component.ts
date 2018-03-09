@@ -1,16 +1,15 @@
 import {Component, NgZone, ViewChild} from '@angular/core';
-import {Nav, NavController, Platform, Slides} from 'ionic-angular';
+import {Nav, Platform, Slides} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from "@ngx-translate/core";
 
-import {CalendarPage} from "../pages/calendar/calendar";
+import {CalendarPage} from "../pages/calendar/ion-calendar";
 import {EventPage} from "../pages/event/event";
 import {Storage} from '@ionic/storage';
 import {Language} from "./dictionary/language";
 import {Tabs} from "ionic-angular/navigation/nav-interfaces";
 import {SettingsPage} from "../pages/settings/settings";
-import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
 import {CommonSettings} from "./service/CommonSettings";
 import User from "./domain/user";
 import {StorageRepositoryProvider} from "./service/storage-repository/storage-repository";
@@ -22,8 +21,7 @@ export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
     eventPage: any = EventPage;
-    calendarPage: any = CalendarPage;
-    ionCalendarPage: any = IonCalendarPage;
+    ionCalendarPage: any = CalendarPage;
     settingsPage: any = SettingsPage;
     calendarTitle: string = "Calendar";
     eventsTitle: string = "Events";

@@ -7,7 +7,6 @@ import {SettingsPage} from '../pages/settings/settings';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {CalendarPage} from "../pages/calendar/calendar";
 import {EventPage} from "../pages/event/event";
 import {IonicStorageModule} from "@ionic/storage";
 import {EventModalPage} from "../pages/event/event-modal/event-modal";
@@ -17,7 +16,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {LanguagePage} from "../pages/settings/launguage-page/language";
-import {HolidayPage} from "../pages/calendar2/holiday/holiday";
+import {HolidayPage} from "../pages/calendar/holiday/holiday";
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import localeFrCaExtra from '@angular/common/locales/extra/fr-CA';
@@ -28,7 +27,7 @@ import {EventCardPage} from "../pages/event/event-card/event-card";
 import {ProfileModalPage} from "../pages/settings/profile-modal/profile-modal";
 import {NotificationService} from "./service/NotificationService";
 import {LocalNotifications} from "@ionic-native/local-notifications";
-import {IonCalendarPage} from "../pages/calendar2/ion-calendar";
+import {CalendarPage} from "../pages/calendar/ion-calendar";
 import {CommonSettings} from "./service/CommonSettings";
 
 
@@ -39,7 +38,6 @@ registerLocaleData(localeRu, localeFrCaExtra);
     declarations: [
         MyApp,
         CalendarPage,
-        IonCalendarPage,
         EventPage,
         EventModalPage,
         ProfileModalPage,
@@ -72,7 +70,7 @@ registerLocaleData(localeRu, localeFrCaExtra);
     entryComponents: [
         MyApp,
         CalendarPage,
-        IonCalendarPage,
+        CalendarPage,
         EventPage,
         EventModalPage,
         ProfileModalPage,

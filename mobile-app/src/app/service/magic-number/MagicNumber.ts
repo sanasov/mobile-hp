@@ -9,12 +9,12 @@ export abstract class MagicNumber {
 
     public happyHolidays(hpEvent: HolidayEvent, year: number): HappyHoliday[] {
         return this.numbers(year)
-            .map(roundNumber => new HappyHoliday("birthday", this.title(), this.description(roundNumber), this.holidayDate(hpEvent.date, roundNumber), 2, hpEvent.id));
+            .map(roundNumber => new HappyHoliday("birthday", this.title(), this.description(roundNumber), this.holidayDate(hpEvent.date, roundNumber), 2, hpEvent.id, roundNumber));
     }
 
     public birthdayHolidays(birthday: Date, year: number): HappyHoliday[] {
         return this.numbers(year)
-            .map(roundNumber => new HappyHoliday("birthday", this.birthdayTitle(), this.birthdayDescription(roundNumber), this.holidayDate(birthday, roundNumber), 1, 0));
+            .map(roundNumber => new HappyHoliday("birthday", this.birthdayTitle(), this.birthdayDescription(), this.holidayDate(birthday, roundNumber), 1, 0, roundNumber));
     }
 
     abstract numbers(year: number): number[];
@@ -31,7 +31,7 @@ export abstract class MagicNumber {
 
     abstract description(magicNumber: number): string;
 
-    abstract birthdayDescription(magicNumber: number): string;
+    abstract birthdayDescription(): string;
 
 
     abstract holidayDate(date1, date2): Date;

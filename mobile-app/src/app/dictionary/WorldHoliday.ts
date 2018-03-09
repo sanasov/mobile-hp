@@ -53,7 +53,7 @@ export class WorldHoliday {
         if(!worldHolidayId) {
             return;
         }
-        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3, null);
+        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3, null, null);
         this.translateService.get(worldHolidayId).subscribe(result =>  {
             this.worldHoliday.title = result['TITLE'];
             this.worldHoliday.description = result['DESCRIPTION'];

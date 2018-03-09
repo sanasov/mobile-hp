@@ -16,12 +16,12 @@ export class MagicNumberMinutes extends MagicNumber {
     return MagicNumberUtils.diffMinutes(date1, date2);
   };
 
-  public description(magicNumber: number): string {
-    return magicNumber + " minutes have passed";
+  public description(): string {
+    return "MINUTES_HAVE_PASSED";
   }
 
-  public birthdayDescription(magicNumber: number): string {
-    return "Today you turned " + magicNumber + " minutes"
+  public birthdayDescription(): string {
+    return "TODAY_YOU_TURNED_MINUTES";
   }
 
   public holidayDate(date1: Date, daysAmount: number): Date {

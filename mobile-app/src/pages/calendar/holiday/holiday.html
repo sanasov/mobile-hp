@@ -5,22 +5,26 @@
 </ion-header>
 <ion-content class="card-background-page">
 
-    <ion-slides  centeredSlides="true">
+    <ion-slides centeredSlides="true">
         <ion-slide *ngFor="let holiday of holidays" style="align-items: center;">
             <ion-card *ngIf="holiday.priority<3">
-                <img  [src]="holiday.imgSrc"/>
-                <div class="card-title"> {{holiday.title}}</div>
-                <div class="card-subtitle">{{holiday.description }}</div>
+                <img [src]="holiday.imgSrc"/>
+                <div class="card-title"
+                     [translate]="holiday.title"></div>
+                <div class="card-subtitle"
+                     [translate]="holiday.description"
+                     [translateParams]="{value:  holiday.magicNumber}"></div>
             </ion-card>
 
             <div *ngIf="holiday.priority>= 3" class="holiday-card">
                 <div class="holiday-card-title"> {{holiday.title}}</div>
                 <img class="holiday-img" [src]="holiday.imgSrc">
-                <div class="holiday-card-description"><div class="holiday-card-description-content">{{holiday.description}}</div></div>
+                <div class="holiday-card-description">
+                    <div class="holiday-card-description-content">{{holiday.description}}</div>
+                </div>
             </div>
         </ion-slide>
     </ion-slides>
-
 
 
 </ion-content>

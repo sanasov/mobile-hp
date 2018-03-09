@@ -30,6 +30,21 @@
   "DISCOVER_YOUR_NEW_HOLIDAYS": "Открой для себя новые праздники",
   "UPCOMING_HOLIDAYS": "Ближайшие праздники",
 
+
+  "DAYS_HAVE_PASSED": "Прошло {{value}} дней",
+  "HOURS_HAVE_PASSED": "Прошло {{value}} часов",
+  "MINUTES_HAVE_PASSED": "Прошло {{value}} минут",
+  "SECONDS_HAVE_PASSED": "Прошло {{value}} секунд",
+
+  "TODAY_YOU_TURNED_DAYS": "Сегодня Вам исполнилось {{value}} дней",
+  "TODAY_YOU_TURNED_HOURS": "Сегодня Вам исполнилось {{value}} часов",
+  "TODAY_YOU_TURNED_MINUTES": "Сегодня Вам исполнилось {{value}} минут",
+  "TODAY_YOU_TURNED_SECONDS": "Сегодня Вам исполнилось {{value}} секунд",
+
+  "HAPPY_BIRTHDAY" : "С Днем Рождения!!!",
+  "PASSED_YEAR": "Passed 1 year",
+  "YEARS_HAVE_PASSED": "{{value}}  years have passed",
+
   "ARCHAEOLOGIST": {
     "TITLE": "День археолога",
     "DESCRIPTION": "Самое время пересмотреть 'Индиана Джонс'"

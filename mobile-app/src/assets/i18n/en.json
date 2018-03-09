@@ -30,6 +30,22 @@
   "DISCOVER_YOUR_NEW_HOLIDAYS": "Discover your new holidays",
   "UPCOMING_HOLIDAYS": "Upcoming holidays",
 
+
+
+  "DAYS_HAVE_PASSED": "{{value}} days have passed",
+  "HOURS_HAVE_PASSED": "{{value}}  hours have passed",
+  "MINUTES_HAVE_PASSED": "{{value}}  minutes have passed",
+  "SECONDS_HAVE_PASSED": "{{value}}  seconds have passed",
+  "PASSED_YEAR": "Passed 1 year",
+  "YEARS_HAVE_PASSED": "{{value}}  years have passed",
+
+  "TODAY_YOU_TURNED_DAYS":    "Today you turned {{value}} дней",
+  "TODAY_YOU_TURNED_HOURS":   "Today you turned {{value}} часов",
+  "TODAY_YOU_TURNED_MINUTES": "Today you turned {{value}} минут",
+  "TODAY_YOU_TURNED_SECONDS": "Today you turned {{value}} секунд",
+
+  "HAPPY_BIRTHDAY" : "Happy Birthday!!!",
+
   "ARCHAEOLOGIST": {
     "TITLE": "Archaeologist",
     "DESCRIPTION": "Time to collect sweets"

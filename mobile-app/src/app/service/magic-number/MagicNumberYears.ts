@@ -21,14 +21,14 @@ export class MagicNumberYears extends MagicNumber {
 
     public description(magicNumber: number): string {
         if (magicNumber === 1) {
-            return "Passed 1 year";
+            return "PASSED_YEAR";
         } else {
-            return magicNumber + " years have passed";
+            return "YEARS_HAVE_PASSED";
         }
     }
 
-    public birthdayDescription(magicNumber: number): string {
-        return "Happy birthday!!!"
+    public birthdayDescription(): string {
+        return "HAPPY_BIRTHDAY";
     }
 
     public holidayDate(date1: Date, yearsAmount: number): Date {

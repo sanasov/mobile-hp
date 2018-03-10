@@ -7,7 +7,18 @@
 
     <ion-slides centeredSlides="true">
         <ion-slide *ngFor="let holiday of holidays" style="align-items: center;">
-            <ion-card *ngIf="holiday.priority<3">
+            <ion-card *ngIf="holiday.id === 'birthday'">
+                <img [src]="holiday.imgSrc"/>
+                <div>
+                    <div class="card-title"
+                         [translate]="wish"></div>
+                    <div class="card-subtitle"
+                         [translate]="holiday.description"
+                         [translateParams]="{value:  holiday.magicNumber}"></div>
+                </div>
+
+            </ion-card>
+            <ion-card *ngIf="holiday.id === 'event'">
                 <img [src]="holiday.imgSrc"/>
                 <div class="card-title"
                      [translate]="holiday.title"></div>

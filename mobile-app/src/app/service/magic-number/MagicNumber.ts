@@ -26,7 +26,7 @@ export abstract class MagicNumber {
     }
 
     birthdayTitle(): string {
-        return "May your birthday be full of happy!"
+        return "";
     }
 
     abstract description(magicNumber: number): string;

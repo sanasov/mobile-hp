@@ -1,4 +1,4 @@
-import {Component, TemplateRef, ViewChild, NgZone} from "@angular/core";
+import {Component, TemplateRef, ViewChild} from "@angular/core";
 import {NavController, Slides} from "ionic-angular";
 import {Subject} from "rxjs/Subject";
 import {CommonSettings} from "../../app/service/CommonSettings";
@@ -30,6 +30,7 @@ export class CalendarPage {
     slide1 = {date: new Date()};
     slide2 = {date: new Date()};
     slide3 = {date: new Date()};
+    static dateFormat: string = "YYYY-MM-DD";
 
 
     @ViewChild(Slides) slides: Slides;
@@ -38,7 +39,6 @@ export class CalendarPage {
 
     constructor(private repository: StorageRepositoryProvider,
                 private navCtrl: NavController,
-                private zone: NgZone,
                 private commonSettings: CommonSettings) {
         this.locale = commonSettings.locale;
         this.weekStartsOn = commonSettings.weekStartsOn();
@@ -50,9 +50,6 @@ export class CalendarPage {
     }
 
     private slideWillChange() {
-        // this.slides.lockSwipes(true);
-        // setTimeout(() => this.slides.lockSwipes(false), 400);
-
         if (this.currentDate.getFullYear() === this.currentYear) {
             return;
         }
@@ -105,24 +102,24 @@ export class CalendarPage {
 
     public openHoliday(): void {
         if (this.events
-                .filter(calendarEvent => moment(new Date(), "YYYY-MM-DD").isSame(moment(calendarEvent.start, "YYYY-MM-DD"))).length === 0) {
+                .filter(calendarEvent => moment(new Date(), CalendarPage.dateFormat).isSame(moment(calendarEvent.start, CalendarPage.dateFormat))).length === 0) {
             return;
         }
         this.navCtrl.push(HolidayPage, {
             date: new Date(),
-            customHolidays: this.customHolidays.filter(h => moment(new Date(), "YYYY-MM-DD").isSame(moment(h.date, "YYYY-MM-DD")))
+            customHolidays: this.customHolidays.filter(h => moment(new Date(), CalendarPage.dateFormat).isSame(moment(h.date, CalendarPage.dateFormat)))
         });
     }
 
 
     private dayClicked({date}: { date: Date }): void {
         if (this.events
-                .filter(calendarEvent => moment(date, "YYYY-MM-DD").isSame(moment(calendarEvent.start, "YYYY-MM-DD"))).length === 0) {
+                .filter(calendarEvent => moment(date, CalendarPage.dateFormat).isSame(moment(calendarEvent.start, CalendarPage.dateFormat))).length === 0) {
             return;
         }
         this.navCtrl.push(HolidayPage, {
             date: date,
-            customHolidays: this.customHolidays.filter(h => moment(date, "YYYY-MM-DD").isSame(moment(h.date, "YYYY-MM-DD")))
+            customHolidays: this.customHolidays.filter(h => moment(date, CalendarPage.dateFormat).isSame(moment(h.date, CalendarPage.dateFormat)))
         });
     }
 
@@ -135,7 +132,7 @@ export class CalendarPage {
     }
 
     private selectYear() {
-        this.currentDate.setFullYear(moment(this.yearPickerDate.substring(0, 10), "YYYY-MM-DD").year());
+        this.currentDate.setFullYear(moment(this.yearPickerDate.substring(0, 10), CalendarPage.dateFormat).year());
         this.toDate(new Date(this.currentDate));
     }
 

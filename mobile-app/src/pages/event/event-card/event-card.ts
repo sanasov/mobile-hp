@@ -4,7 +4,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {EventModalPage} from "../event-modal/event-modal";
 import HolidayEvent from "../../../app/domain/holiday-event";
 import * as moment from "moment";
-import * as _ from 'underscore'
+import * as _ from 'underscore';
 import {HappyHolidays} from "../../../app/service/magic-number/HappyHolidays";
 import HappyHoliday from "../../../app/domain/happy-holiday";
 import {MagicNumberUtils} from "../../../app/service/magic-number/MagicNumberUtils";

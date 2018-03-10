@@ -71,7 +71,8 @@
         </ion-item>
         <ion-card-content>
             <div class="nearest-holiday-flex-row" *ngFor="let holiday of nearestHolidays">
-                <span>{{holiday.description}}</span>
+                <span [translate]="holiday.description"
+                      [translateParams]="{value:  holiday.magicNumber}"></span>
                 <span style="margin-left: 10px; width: 93px; text-align: end;">{{holiday.date | date :'dd MMM yyyy' : '' : locale}} </span>
             </div>
         </ion-card-content>

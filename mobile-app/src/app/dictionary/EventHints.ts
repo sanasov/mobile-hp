@@ -3,11 +3,11 @@ import HappyHoliday from "../domain/happy-holiday";
 import {Language} from "./language";
 
 /**
- * Пожелания на др на разных языках
+ * Подсказки названий событий
  * отдельно от локализации, т.к не хотелось делать связть между пожеланиями на разных языках, не нужно заниматься переводом.
  * Так получается проще
  */
-export class Wishes {
+export class EventHints {
     static en: Array<string> = [
         "It’s time to enjoy your favourite things and feel happy :)",
         "Let yourself do everything that you like most in life!",
@@ -24,32 +24,13 @@ export class Wishes {
         "С уникальным праздником!"
     ];
 
-    worldHoliday: HappyHoliday;
-
     constructor(private locale: string) {
     }
 
-    public getForAnnualHoliday(): string {
-        switch (this.locale.toUpperCase()) {
-            case Language.RU.locale :
-                return Wishes.ru[this.randomInt(0, Wishes.ru.length - 3)]; // убираем пожелания со словом необычный
-            default:
-                return Wishes.en[this.randomInt(0, Wishes.en.length - 1)];
-        }
+    public hints(): Array<string> {
+        return EventHints[this.locale.toLowerCase()];
     }
 
-    public getAny(): string {
-        switch (this.locale.toUpperCase()) {
-            case Language.RU.locale :
-                return Wishes.ru[this.randomInt(0, Wishes.ru.length - 1)];
-            default:
-                return Wishes.en[this.randomInt(0, Wishes.en.length - 1)];
-        }
-    }
-
-    private randomInt(min, max): number {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 
 }
 

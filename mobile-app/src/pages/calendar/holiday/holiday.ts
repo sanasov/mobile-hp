@@ -5,6 +5,7 @@ import {WorldHoliday} from "../../../app/dictionary/WorldHoliday";
 import HappyHoliday from "../../../app/domain/happy-holiday";
 import {Wishes} from "../../../app/dictionary/Wishes";
 import * as _ from 'underscore';
+import {TimeMeasure} from "../../../app/dictionary/timeMeasure";
 
 @Component({
     templateUrl: 'holiday.html'
@@ -23,7 +24,7 @@ export class HolidayPage {
         this.holidays = this.getHolidays().filter(h => h);
         console.log(JSON.stringify(this.holidays));
         this.locale = translateService.currentLang;
-        this.wish = new Wishes(translateService.currentLang).getAny();
+        this.initWish();
     }
 
     getHolidays(): HappyHoliday[] {
@@ -34,6 +35,14 @@ export class HolidayPage {
             (hp) => hp.title + hp.date
         );
         return customHolidays.concat(worldHoliday);
+    }
+
+    initWish(): void {
+        if (this.holidays.filter(h => h.id === "birthday" && h.timeMeasureType === TimeMeasure.YEAR).length > 0) {
+            this.wish = new Wishes(this.translateService.currentLang).getForAnnualHoliday();
+        } else {
+            this.wish = new Wishes(this.translateService.currentLang).getAny();
+        }
     }
 
 }

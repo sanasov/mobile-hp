@@ -3,6 +3,7 @@ import HappyHoliday from "../domain/happy-holiday";
 import {TranslateService} from "@ngx-translate/core";
 import {holidayColors} from "./holidayColors";
 import {CalendarEvent} from "angular-calendar";
+import {TimeMeasure} from "./timeMeasure";
 
 export class WorldHoliday {
     static holidays: Array<{ id: string, date: string }> = [
@@ -40,7 +41,7 @@ export class WorldHoliday {
 
     }
 
-    public get(): HappyHoliday {
+    public get (): HappyHoliday {
         return this.worldHoliday;
     }
 
@@ -50,11 +51,11 @@ export class WorldHoliday {
         const worldHolidayId = WorldHoliday.holidays
             .filter(h => h.date === dayMonth)
             .map(h => h.id)[0];
-        if(!worldHolidayId) {
+        if (!worldHolidayId) {
             return;
         }
-        this.worldHoliday = new HappyHoliday(worldHolidayId,"", "", this.date, 3, null, null);
-        this.translateService.get(worldHolidayId).subscribe(result =>  {
+        this.worldHoliday = new HappyHoliday(worldHolidayId, "", "", this.date, 3, null, null, TimeMeasure.YEAR);
+        this.translateService.get(worldHolidayId).subscribe(result => {
             this.worldHoliday.title = result['TITLE'];
             this.worldHoliday.description = result['DESCRIPTION'];
         });
@@ -67,6 +68,7 @@ export class WorldHoliday {
     private static toDate(dayMonth: String, year: number): Date {
         return new Date(year, +dayMonth.split(".")[1] - 1, +dayMonth.split(".")[0])
     }
+
     static toCalendarEvents(year: number): Array<CalendarEvent> {
         return WorldHoliday.holidays.map(holiday => {
             return {

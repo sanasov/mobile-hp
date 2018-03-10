@@ -1,6 +1,8 @@
 import {NavParams, Platform, ViewController} from "ionic-angular";
 import {OnInit, Component} from "@angular/core";
 import HolidayEvent from "../../../app/domain/holiday-event";
+import {EventHints} from "../../../app/dictionary/EventHints";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
     templateUrl: 'event-modal.html'
@@ -9,9 +11,9 @@ export class EventModalPage implements OnInit {
     event: HolidayEvent;
     hints: Array<string>;
 
-    constructor(public platform: Platform,
-                public params: NavParams,
-                public viewCtrl: ViewController) {
+    constructor(private params: NavParams,
+                private viewCtrl: ViewController,
+                private translateService: TranslateService) {
 
         this.event = this.params.get('event') || {};
         this.initHints();
@@ -34,6 +36,7 @@ export class EventModalPage implements OnInit {
     }
 
     initHints() {
-        this.hints = ["Last time was in Sochi", "Mom's birthday", "Finish school", "First kiss"];
+        // this.hints = ["Last time was in Sochi", "Mom's birthday", "Finish school", "First kiss"];
+        this.hints = new EventHints(this.translateService.currentLang).hints();
     }
 }

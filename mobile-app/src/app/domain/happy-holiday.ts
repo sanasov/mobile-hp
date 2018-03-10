@@ -2,6 +2,7 @@ import * as moment from "moment";
 import {holidayColors} from "../dictionary/holidayColors";
 import {CalendarEvent} from "angular-calendar";
 import {ILocalNotification} from "@ionic-native/local-notifications";
+import {TimeMeasure} from "../dictionary/timeMeasure";
 
 export default class HappyHoliday {
     private _id: string;
@@ -12,8 +13,9 @@ export default class HappyHoliday {
     private _date: Date;
     private _priority: number;
     private _imgSrc: string;
+    private _timeMeasureType: TimeMeasure; // Y, D, H, M, S
 
-    constructor(_id: string, _title: string, _description: string, _date: Date, _priority: number, _eventId: number, _magicNumber: number) {
+    constructor(_id: string, _title: string, _description: string, _date: Date, _priority: number, _eventId: number, _magicNumber: number, _timeMeasureType: TimeMeasure) {
         this._id = _id;
         this._title = _title;
         this._description = _description;
@@ -21,6 +23,7 @@ export default class HappyHoliday {
         this._priority = _priority;
         this._eventId = _eventId;
         this._magicNumber = _magicNumber;
+        this._timeMeasureType = _timeMeasureType;
     }
 
     get id(): string {
@@ -58,6 +61,10 @@ export default class HappyHoliday {
         return this._magicNumber;
     }
 
+    get timeMeasureType(): TimeMeasure {
+        return this._timeMeasureType;
+    }
+
     get imgSrc(): string {
         if (this._imgSrc) {
             return this._imgSrc;
@@ -90,6 +97,10 @@ export default class HappyHoliday {
         this._title = title;
     }
 
+    set timeMeasureType(timeMeasureType: TimeMeasure) {
+        this._timeMeasureType = timeMeasureType;
+    }
+
     set description(description: string) {
         this._description = description;
     }
@@ -104,9 +115,9 @@ export default class HappyHoliday {
 
     public static create(holiday: HappyHoliday) {
         if (holiday._title || holiday._date) {
-            return new HappyHoliday(holiday._id, holiday._title, holiday._description, new Date(holiday._date), holiday._priority, holiday._eventId, holiday._magicNumber); // ios
+            return new HappyHoliday(holiday._id, holiday._title, holiday._description, new Date(holiday._date), holiday._priority, holiday._eventId, holiday._magicNumber, holiday._timeMeasureType); // ios
         }
-        return new HappyHoliday(holiday.id, holiday.title, holiday.description, new Date(holiday.date), holiday.priority, holiday.eventId, holiday.magicNumber); // android
+        return new HappyHoliday(holiday.id, holiday.title, holiday.description, new Date(holiday.date), holiday.priority, holiday.eventId, holiday.magicNumber, holiday.timeMeasureType); // android
     }
 
     randomInt(min, max) {
@@ -123,6 +134,7 @@ export default class HappyHoliday {
             priority: this._priority,
             eventId: this._eventId,
             magicNumber: this._magicNumber,
+            timeMeasureType: this._timeMeasureType
         };
     }
 

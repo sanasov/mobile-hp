@@ -1,6 +1,7 @@
 import {MagicNumber} from "./MagicNumber";
 import HolidayEvent from "../../domain/holiday-event";
 import {MagicNumberUtils} from "./MagicNumberUtils";
+import {TimeMeasure} from "../../dictionary/timeMeasure";
 
 export class MagicNumberYears extends MagicNumber {
 
@@ -33,6 +34,11 @@ export class MagicNumberYears extends MagicNumber {
 
     public holidayDate(date1: Date, yearsAmount: number): Date {
         return MagicNumberUtils.calcDateByYears(date1, yearsAmount);
+    }
+
+
+    public timeMeasureType(): TimeMeasure {
+        return TimeMeasure.YEAR;
     }
 
 }

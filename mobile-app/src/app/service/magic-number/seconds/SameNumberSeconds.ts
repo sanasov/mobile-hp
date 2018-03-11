@@ -1,4 +1,5 @@
 import {MagicNumberSeconds} from "./MagicNumberSeconds";
+import {HolidayType} from "../../../dictionary/holidayType";
 
 export class SameNumberSeconds extends MagicNumberSeconds{
 
@@ -16,5 +17,9 @@ export class SameNumberSeconds extends MagicNumberSeconds{
       9876543210
     ];
   }
+
+    public holidayType(): HolidayType {
+        return HolidayType.SAME;
+    }
 
 }

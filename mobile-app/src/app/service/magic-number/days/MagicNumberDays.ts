@@ -2,6 +2,7 @@ import {MagicNumber} from "../MagicNumber";
 import {MagicNumberUtils} from "../MagicNumberUtils";
 import HolidayEvent from "../../../domain/holiday-event";
 import {TimeMeasure} from "../../../dictionary/timeMeasure";
+import {HolidayType} from "../../../dictionary/holidayType";
 
 export class MagicNumberDays extends MagicNumber {
 
@@ -32,5 +33,10 @@ export class MagicNumberDays extends MagicNumber {
 
     public timeMeasureType(): TimeMeasure {
         return TimeMeasure.DAY;
+    }
+
+
+    holidayType(): HolidayType {
+        return HolidayType.ROUND;
     }
 }

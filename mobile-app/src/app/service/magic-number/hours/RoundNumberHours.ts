@@ -13,4 +13,5 @@ export class RoundNumberHours extends MagicNumberHours {
   public numbers(year: number): number[] {
     return new RoundNumberCalculation(this.holidayEvent.date, this.delta, this.diff).numbers(year);
   }
+
 }

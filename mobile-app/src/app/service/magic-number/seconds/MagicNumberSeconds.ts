@@ -2,6 +2,7 @@ import {MagicNumber} from "../MagicNumber";
 import {MagicNumberUtils} from "../MagicNumberUtils";
 import HolidayEvent from "../../../domain/holiday-event";
 import {TimeMeasure} from "../../../dictionary/timeMeasure";
+import {HolidayType} from "../../../dictionary/holidayType";
 
 export class MagicNumberSeconds extends MagicNumber {
 
@@ -15,7 +16,7 @@ export class MagicNumberSeconds extends MagicNumber {
 
     public diff(date1, date2): number {
         return MagicNumberUtils.diffSeconds(date1, date2);
-    };
+    }
 
     public description(): string {
         return "SECONDS_HAVE_PASSED";
@@ -33,5 +34,8 @@ export class MagicNumberSeconds extends MagicNumber {
         return TimeMeasure.SECOND;
     }
 
+    public holidayType(): HolidayType {
+        return HolidayType.ROUND;
+    }
 
 }

@@ -1,3 +1,5 @@
+import {HolidayType} from "../../../dictionary/holidayType";
+
 export class SameNumberHours {
 
     public numbers(): number[] {
@@ -12,6 +14,10 @@ export class SameNumberHours {
             88888, 888888,
             123456
         ]
+    }
+
+    holidayType(): HolidayType {
+        return HolidayType.SAME;
     }
 
 }

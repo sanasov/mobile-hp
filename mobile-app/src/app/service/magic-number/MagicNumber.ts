@@ -1,6 +1,7 @@
 import HolidayEvent from "../../domain/holiday-event";
 import HappyHoliday from "../../domain/happy-holiday";
 import {TimeMeasure} from "../../dictionary/timeMeasure";
+import {HolidayType} from "../../dictionary/holidayType";
 
 export abstract class MagicNumber {
 
@@ -23,6 +24,8 @@ export abstract class MagicNumber {
     abstract diff(date1, date2): number;
 
     abstract timeMeasureType(): TimeMeasure;
+
+    abstract holidayType(): HolidayType;
 
     title(): string {
         return this.holidayEvent.title;

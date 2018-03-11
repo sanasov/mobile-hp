@@ -1,4 +1,5 @@
 import {MagicNumberDays} from "./MagicNumberDays";
+import {HolidayType} from "../../../dictionary/holidayType";
 
 export class SameNumberDays extends MagicNumberDays {
 
@@ -13,6 +14,10 @@ export class SameNumberDays extends MagicNumberDays {
             7777, 77777,
             8888, 88888
         ];
+    }
+
+    holidayType(): HolidayType {
+        return HolidayType.SAME;
     }
 
 }

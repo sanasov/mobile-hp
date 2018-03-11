@@ -9,19 +9,24 @@ import {Language} from "./language";
  */
 export class EventHints {
     static en: Array<string> = [
-        "It’s time to enjoy your favourite things and feel happy :)",
-        "Let yourself do everything that you like most in life!",
-        "May your special day be full of magical and unforgettable moments!",
-        "I wish you a fun time and a lifelong happiness!",
-        "May the dream that means most to you, start coming true this year!",
-        "Smiles and laughter, joy and cheer!"
+        "Graduated high school",
+        "First skydiving",
+        "First time saw the sea",
+        "Meeting with a childhood friend",
+        "Last time visited my grandma",
+        "Wedding",
+        "Travelled abroad",
+        "Last time was in the montains"
     ];
     static ru: Array<string> = [
-        "Поздравляю! Это Ваш день :)",
-        "Желаю хорошего настроения и ярких впечатлений :)",
-        "Мечтайте и живите с волшебным настроением!",
-        "Поздравляю с необычным праздником!",
-        "С уникальным праздником!"
+        "Окончание школы",
+        "Первый прыжок с парашютом",
+        "Впервые увидел море",
+        "Встреча с подругой детства",
+        "Был в гостях у бабушки",
+        "Свадьба",
+        "Побывал заграницей",
+        "Последний раз был в горах"
     ];
 
     constructor(private locale: string) {

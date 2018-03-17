@@ -4,6 +4,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {holidayColors} from "./holidayColors";
 import {CalendarEvent} from "angular-calendar";
 import {TimeMeasure} from "./timeMeasure";
+import {ILocalNotification} from "@ionic-native/local-notifications";
 
 export class WorldHoliday {
     static holidays: Array<{ id: string, date: string }> = [
@@ -79,5 +80,24 @@ export class WorldHoliday {
                 actions: null
             }
         });
+    }
+
+    // all world holiday notificationId < 0
+    public static toLocalNotifications(year: number, translateService: TranslateService): Array<ILocalNotification> {
+        let localNotifications = [];
+        for (let i = 0; i < WorldHoliday.holidays.length; i++) {
+            const holiday = WorldHoliday.holidays[i];
+            let date = WorldHoliday.toDate(holiday.date, year);
+            date.setHours(11);
+            if (date < new Date()) continue;
+
+            localNotifications.push({
+                id: -1000 * year - i,
+                title: translateService.instant(holiday.id),
+                text: "",
+                at: date
+            });
+        }
+        return localNotifications;
     }
 }

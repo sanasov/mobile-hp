@@ -1,4 +1,5 @@
 import * as moment from "moment";
+import {ILocalNotification} from "@ionic-native/local-notifications";
 
 export default class HolidayEvent {
     private _id: number;
@@ -125,5 +126,18 @@ export default class HolidayEvent {
         this._notifyDate = this._date;
         this._notifyDate.setHours(9);
         this._notifyDate.setMinutes(0);
+    }
+
+
+    public toILocalNotification(): ILocalNotification {
+        if (this.date.getMonth() !== this.notifyDate.getMonth()
+            || this.date.getDate() !== this.notifyDate.getDate()) {
+            return null;
+        }
+        return {
+            id: 1000 * this.id,
+            title: this.title,
+            at: this.notifyDate
+        };
     }
 }

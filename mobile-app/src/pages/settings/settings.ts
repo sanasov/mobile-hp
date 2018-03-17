@@ -8,6 +8,7 @@ import {StorageRepositoryProvider} from "../../app/service/storage-repository/st
 import User from "../../app/domain/user";
 import {ProfileModalPage} from "./profile-modal/profile-modal";
 import {NotificationService} from "../../app/service/NotificationService";
+import HolidayEvent from "../../app/domain/holiday-event";
 
 @Component({
     selector: 'settings',
@@ -18,9 +19,9 @@ export class SettingsPage {
     currentLanguage: Object = {};
     notification: Object = {worldHoliday: true, eventHoliday: true};
     user: User = new User("", "", null);
+    events: Array<HolidayEvent> = [];
 
-
-    constructor(private storageRepository: StorageRepositoryProvider,
+    constructor(private repository: StorageRepositoryProvider,
                 private storage: Storage,
                 private modalCtrl: ModalController,
                 private translateService: TranslateService,
@@ -29,10 +30,17 @@ export class SettingsPage {
                 private zone: NgZone) {
 
         this.zone.run(() => {
-            storageRepository.getUser().then((result: User) => {
+            repository.getUser().then((result: User) => {
                 this.user = result;
             });
             this.locale = translateService.currentLang;
+        });
+    }
+
+
+    ionViewDidEnter() {
+        this.repository.getHolidayEvents().then((result: HolidayEvent[]) => {
+            this.events = result || [];
         });
     }
 
@@ -78,7 +86,7 @@ export class SettingsPage {
 
     toggleWorldHoliday($event) {
         if ($event.value) {
-            this.notificationService.initNotifications([]);
+            this.notificationService.initWorldNotifications();
         } else {
             this.notificationService.clearAllWorldHolidays();
         }
@@ -87,9 +95,9 @@ export class SettingsPage {
 
     toggleEventHoliday($event) {
         if ($event.value) {
-            this.notificationService.initNotifications([]);
+            this.notificationService.initEventsNotifications(this.events);
         } else {
-            this.notificationService.clearAllCustomHolidays();
+            this.notificationService.clearAllEventNotifications();
         }
         this.saveNotificationSettings();
     }

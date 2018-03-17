@@ -1,54 +1,54 @@
 import {Injectable} from "@angular/core";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import HappyHoliday from "../domain/happy-holiday";
+import HolidayEvent from "../domain/holiday-event";
+import {TranslateService} from "@ngx-translate/core";
+import {HolidayService} from "./HolidayService";
+import {WorldHoliday} from "../dictionary/WorldHoliday";
 
 declare var cordova;
 
 @Injectable()
 export class NotificationService {
 
+    private static NEXT_YEARS_AMOUNT: number = 2;
+    private static EVENT_ID_STEP: number = 1000;
 
-    constructor(public localNotifications: LocalNotifications) {
+    constructor(private localNotifications: LocalNotifications, private translateService: TranslateService) {
     }
 
-    public initNotifications(holidays): void {
-        this.localNotifications.schedule([
-            {
-                id: 1,
-                text: 'This is text 1' + new Date(),
-                title: 'This is title 1',
-                data: {secret: "Some data 1"},
-                at: new Date(new Date().getTime() + 300 * 1000)
-            },
-            {
-                id: 2,
-                text: 'This is text 2' + new Date(),
-                title: 'This is title 2',
-                icon: 'http://example.com/icon.png',
-                at: new Date(new Date().getTime() + 330 * 1000)
-            }
-        ]);
-        this.localNotifications.getAllIds()
-    }
 
-    public initWorldHolidays(holidays: HappyHoliday[]) {
+    public initWorldNotifications(): void {
         if (!window['cordova']) {
             return;
         }
         this.localNotifications.schedule(
-            holidays.map((holiday, i) => holiday.toILocalNotification(-i - 1))
+            WorldHoliday.toLocalNotifications(new Date().getFullYear(), this.translateService)
         );
     }
 
-    public initCustomHolidays(holidays: HappyHoliday[]) {
+    public initEventsNotifications(events: HolidayEvent[]): void {
+        if (!window['cordova']) {
+            return;
+        }
+        events.forEach(event => this.initEventNotifications(event));
+    }
+
+    public initEventNotifications(event: HolidayEvent) {
         if (!window['cordova']) {
             return;
         }
         this.localNotifications.schedule(
-            holidays.map((holiday, i) => holiday.toILocalNotification(holiday.eventId * 10000 + i + 1))
+            new HolidayService(event).happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
+                .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1))
         );
+        const eventNotification = event.toILocalNotification();
+        if (eventNotification) {
+            this.localNotifications.schedule(eventNotification);
+        }
     }
 
+    // all world holiday notificationID < 0
     public clearAllWorldHolidays() {
         if (!window['cordova']) {
             return;
@@ -59,16 +59,16 @@ export class NotificationService {
     }
 
     // assume that there is no more than 500 holidays belongs to only event
-    public clearAllCustomHolidaysByEventId(eventId) {
+    public clearAllByEventId(eventId) {
         if (!window['cordova']) {
             return;
         }
         this.localNotifications.getAllIds().then((ids) => {
-            ids.filter((id) => Math.abs(id - eventId) < 500).forEach((id) => this.localNotifications.clear(id));
+            ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.clear(id));
         });
     }
 
-    public clearAllCustomHolidays() {
+    public clearAllEventNotifications() {
         if (!window['cordova']) {
             return;
         }

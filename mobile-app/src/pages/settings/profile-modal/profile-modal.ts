@@ -1,4 +1,4 @@
-import {NavParams, Platform, ViewController} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
 import {OnInit, Component} from "@angular/core";
 import User from "../../../app/domain/user";
 import {StorageRepositoryProvider} from "../../../app/service/storage-repository/storage-repository";

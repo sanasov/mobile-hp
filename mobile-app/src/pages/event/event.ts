@@ -48,7 +48,7 @@ export class EventPage implements OnDestroy {
 
     remove(event: HolidayEvent) {
         this.events.splice(this.events.indexOf(event), 1);
-        this.notificationService.clearAllCustomHolidaysByEventId(event.id);
+        this.notificationService.clearAllByEventId(event.id);
         this.save();
     }
 

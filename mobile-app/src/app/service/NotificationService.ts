@@ -42,9 +42,9 @@ export class NotificationService {
             new HolidayService(event).happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
                 .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1))
         );
-        const eventNotification = event.toILocalNotification();
-        if (eventNotification) {
-            this.localNotifications.schedule(eventNotification);
+        const eventNotifyAtNotification = event.toILocalNotification();
+        if (eventNotifyAtNotification) {
+            this.localNotifications.schedule(eventNotifyAtNotification);
         }
     }
 

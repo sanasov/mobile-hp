@@ -42,11 +42,14 @@ export class CalendarPage {
                 private commonSettings: CommonSettings) {
         this.locale = commonSettings.locale;
         this.weekStartsOn = commonSettings.weekStartsOn();
-        repository.getHolidayEvents().then((result: HolidayEvent[]) => {
+        this.initSlides();
+    }
+
+    ionViewDidEnter() {
+        this.repository.getHolidayEvents().then((result: HolidayEvent[]) => {
             this.hEvents = result || [];
             this.generateCalendarEvents(this.currentYear);
         });
-        this.initSlides();
     }
 
     private slideWillChange() {

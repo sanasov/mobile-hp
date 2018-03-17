@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import User from "../../domain/user";
 import {Storage} from "@ionic/storage";
 import HolidayEvent from "../../domain/holiday-event";
+import {CommonSettings} from "../CommonSettings";
 
 @Injectable()
 export class StorageRepositoryProvider {
 
-    constructor(public storage: Storage) {
-        console.log('Hello StorageProvider Provider');
+    constructor(private storage: Storage, private commonSettings: CommonSettings,) {
     }
 
     // getPhoneLanguage(): Promise<Language> {
@@ -27,6 +27,7 @@ export class StorageRepositoryProvider {
     }
 
     setUser(user: User): void {
+        this.commonSettings.user = user;
         this.storage.set("user", user);
     }
 

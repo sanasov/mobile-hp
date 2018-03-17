@@ -9,10 +9,9 @@ import {StorageRepositoryProvider} from "../../../app/service/storage-repository
 export class ProfileModalPage implements OnInit {
     user: User;
 
-    constructor(public platform: Platform,
-                public params: NavParams,
-                public storageRepository: StorageRepositoryProvider,
-                public viewCtrl: ViewController) {
+    constructor(private params: NavParams,
+                private storageRepository: StorageRepositoryProvider,
+                private viewCtrl: ViewController) {
         this.user = this.params.get('user');
     }
 

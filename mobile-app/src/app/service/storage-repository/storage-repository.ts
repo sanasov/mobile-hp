@@ -38,7 +38,6 @@ export class StorageRepositoryProvider {
     }
 
     setHolidayEvents(events: HolidayEvent[]): void {
-        events.forEach((event, index) => event.id = index + 1);
         this.storage.set("events", events);
     }
 }

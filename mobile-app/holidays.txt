@@ -52,9 +52,19 @@ Apr 25, 2018 Всемирный день пингвина 					World Penguin Day
 
 
 Сентябрь 2018
-19 день пиратов                     Talk Like a Pirate Day с 2015
-21 Международный день мира          World Peace Day
+
+19 - день пиратов                     Talk Like a Pirate Day с 2015
+     It is parodic holiday when everyone in the world should talk like a pirate
+     Пародийный праздник, в течение которого нужно разговаривать как пират
+
+21 - Международный день мира          World Peace Day
+     holiday is dedicated to world peace
+     праздник посвящен миру во всем мире
+
+
 27 Всемирный день туризма           World Tourism Day
+Perhaps tourism is one of the best ways to spend a vacation
+Пожалуй туризм один из лучших способов провести отпуск
 
 Октябрь 2018
 01 Международный день музыки    	 International Music Day
@@ -71,7 +81,7 @@ Apr 25, 2018 Всемирный день пингвина 					World Penguin Day
 
 Декабрь 2018
 11 Международный день гор 			International Mountain Day
-15 Международный день чая 			International Tea Day
+//15 Международный день чая 			International Tea Day
 28 Международный день кино 			International Cinema Day
 
 

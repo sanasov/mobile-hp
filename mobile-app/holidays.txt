@@ -5,7 +5,7 @@ international holidays
 16 января – Всемирный день «Битлз»  Beatles Day     all you need is love;)
 21 Международный день объятий   International Hug Day   The idea of National Hug Day is to encourage everyone to hug family and friends more often   This is an opportunity to give and to receive  Give a hug, and you automatically receive one in return.
 24 Международный день эскимо    Eskimo Pie Day Прекрасный повод купить любимую всеми сладость Wonderful reason to buy this sweetness loved by everyone
-24 Compliment Day
+// 24 Compliment Day
 
 Февраль 2018/2019/2020
 02 День сурка   Groundhog Day                                                Time to watch wonderful movie Groundhog Day
@@ -15,7 +15,7 @@ international holidays
 27 Международный день полярного медведя - International Polar Bear Day  Если в этот день увидите полярного медведя, обязательно поздравьте
 
 Март 2018
-14 День числа «Пи»   									Pi Day
+14 День числа «Пи»   									Pi Day                          Why today? Because today is 3.14, the value of Pi. Besides today is also the birthday physicist Albert Einstein.
 17 День святого Патрика 								Saint Patrick's Day             It is truly a day of celebrating Irish history, ancestry, traditions and customs.
 20 День Земли  Международный день счастья (c 2012) 		International Day of Happiness  International Earth Day was initiated to make earth inhabitants aware of their responsibility to care for the planet.
 21 Международный день лесов 							International Day of Forests
@@ -24,9 +24,9 @@ international holidays
 01 Международный день птиц								International bird day ?
 01 День дурака							                April Fool's Day                Traditionally, April Fool's Day is an opportunity for playing jokes or tricks on one another
 04 Всемирный день крысы									World Rat Day ?
-10 День братьев и сестер								Brothers and Sisters Day
+10 День братьев и сестер								Siblings Day                     The day to appreciate and cherish your brothers and sisters
 13 Всемирный день рок-н-ролла							World Rock'N'Roll Day
-Apr 25, 2018 Всемирный день пингвина 					World Penguin Day c 2015
+Apr 25, 2018 Всемирный день пингвина 					World Penguin Day c 2015          ПОздравьте всех пингивинов, которых встретите на пути сегодня. It is also popular today to tell a penguin joke or two.
 
 
 Май 2018
@@ -35,18 +35,18 @@ Apr 25, 2018 Всемирный день пингвина 					World Penguin Day
 31 Всемирный день блондинок								International Blondes Day 
 
 Июнь 2018
-08 World Ocean Day с 2013
+08 World Ocean Day с 2013                                            World Ocean Day is a special global day to celebrate our oceans, and to work towards maintaining and improving their health and cleanliness. As the health of our oceans goes, so goes the health of the entire planet.
 //09 Международный день друзей	
-15 Всемирный день ветра 			Global Wind Day
+15 Всемирный день ветра 			Global Wind Day                  Global Wind Day is intended to help us discover wind and its' power.
 // 17 День отца
 // 18 Всемирный день мотоциклиста
-21 Всемирный день йоги 				International Yoga Day с2015
+21 Всемирный день йоги 				International Yoga Day с 2015    Celebrating this day is easy... just put your yoga mat down on the floor, and begin your exercise.
 
 Июль 2018
-06 Всемирный день поцелуя
-7 Всемирный день шоколада			World Chocolate Day
+06 Всемирный день поцелуя           Kissing Day                      The objective of this very special day, is to appreciate and enjoy a kiss. There's all sorts of kisses, for all sorts of reasons.
+7 Всемирный день шоколада			World Chocolate Day              Chocolate Day is the perfect opportunity to eat you favorite chocolates in ample portions. Do you really need another excuse to over indulge with your favorite food treat?
 //20 Международный день торта
-29 Международный день тигра			International Tiger Day
+29 Международный день тигра			International Tiger Day          The day of the largest cat on the planet
 30 Международный день дружбы		Friendship Day
 
 Август 2018

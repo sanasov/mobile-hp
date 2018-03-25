@@ -71,7 +71,7 @@ export class MyApp {
             this.defineLanguage();
             this.storageRepository.getUser().then((result: User) => this.commonSettings.user = result);
 
-            // this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
+            this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
         });
     }
 
@@ -111,7 +111,7 @@ export class MyApp {
         if (this.slides.isEnd()) {
             setTimeout(() => {
                 this.firstOpening = false;
-                // this.storage.set("firstOpening", this.firstOpening); разблокировать, когда закончишь со всем остальным
+                this.storage.set("firstOpening", this.firstOpening);
                 this.storageRepository.setUser(this.user);
             }, 2000)
         }

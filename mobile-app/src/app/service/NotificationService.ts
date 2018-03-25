@@ -39,13 +39,24 @@ export class NotificationService {
             return;
         }
         this.localNotifications.schedule(
-            new HolidayService(event).happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
+            new HolidayService(event, null).happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
                 .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1))
         );
         const eventNotifyAtNotification = event.toILocalNotification();
         if (eventNotifyAtNotification) {
             this.localNotifications.schedule(eventNotifyAtNotification);
         }
+    }
+
+//birthday eventId = 0
+    public initBirthdayNotification(birthday: Date) {
+        if (!window['cordova']) {
+            return;
+        }
+        this.localNotifications.schedule(
+            new HolidayService(null, birthday).birthdayHolidays(NotificationService.NEXT_YEARS_AMOUNT)
+                .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1))
+        );
     }
 
     // all world holiday notificationID < 0
@@ -64,6 +75,7 @@ export class NotificationService {
             return;
         }
         this.localNotifications.getAllIds().then((ids) => {
+            ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.cancel(id));
             ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.clear(id));
         });
     }
@@ -73,6 +85,7 @@ export class NotificationService {
             return;
         }
         this.localNotifications.getAllIds().then((ids) => {
+            ids.filter((id) => id > 0).forEach((id) => this.localNotifications.cancel(id));
             ids.filter((id) => id > 0).forEach((id) => this.localNotifications.clear(id));
         });
     }

@@ -96,6 +96,7 @@ export class SettingsPage {
     toggleEventHoliday($event) {
         if ($event.value) {
             this.notificationService.initEventsNotifications(this.events);
+            this.notificationService.initBirthdayNotification(this.user.birth);
         } else {
             this.notificationService.clearAllEventNotifications();
         }

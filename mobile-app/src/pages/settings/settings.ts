@@ -17,7 +17,7 @@ import HolidayEvent from "../../app/domain/holiday-event";
 export class SettingsPage {
     locale: string;
     currentLanguage: Object = {};
-    notification: Object = {worldHoliday: true, eventHoliday: true};
+    notification: Object = {worldHoliday: false, eventHoliday: false};
     user: User = new User("", "", null);
     events: Array<HolidayEvent> = [];
 

@@ -46,92 +46,164 @@
 
   "HAPPY_BIRTHDAY" : "Happy Birthday!!!",
 
-  "ARCHAEOLOGIST": {
-    "TITLE": "Archaeologist",
-    "DESCRIPTION": "Time to collect sweets"
+  "ACT_OF_KIDNESS": {
+    "TITLE": "Random Acts of Kindness Day",
+    "DESCRIPTION": "You know what to do...perform a few random acts of kindness. And we suggest you perform kind acts on as many people as you can"
+  },
+  "ANIMALS": {
+    "TITLE": "World Animal Day",
+    "DESCRIPTION": ""
+  },
+  "BEATLES": {
+    "TITLE": "Beatles Day",
+    "DESCRIPTION": "All you need is love;)"
   },
   "BLONDE": {
-    "TITLE": "Blonde",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "International Blondes Day",
+    "DESCRIPTION": ""
   },
-  "BOSS": {
-    "TITLE": "Boss",
-    "DESCRIPTION": "Time to collect sweets"
+  "CHEESE": {
+    "TITLE": "International Cheese Day",
+    "DESCRIPTION": "Use today to enjoy any of the hundreds of varieties of cheese"
   },
   "CHOCOLATE": {
-    "TITLE": "Chocolate",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "World Chocolate Day",
+    "DESCRIPTION": "Chocolate Day is the perfect opportunity to eat you favorite chocolates in ample portions. Do you really need another excuse to over indulge with your favorite food treat?"
   },
-  "CHRISTMAS": {
-    "TITLE": "Christmas",
-    "DESCRIPTION": "Time to collect sweets"
+  "CINEMA": {
+    "TITLE": "International Cinema Day",
+    "DESCRIPTION": ""
+  },
+  "EARTH": {
+    "TITLE": "International Earth Day",
+    "DESCRIPTION": "International Earth Day was initiated to make earth inhabitants aware of their responsibility to care for the planet."
+  },
+  "ESKIMO_PIE": {
+    "TITLE": "Eskimo Pie Day",
+    "DESCRIPTION": "Wonderful reason to buy this sweetness loved by everyone"
   },
   "FAMILY": {
-    "TITLE": "Family",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "International Day of Families",
+    "DESCRIPTION": ""
   },
-  "FOOTBALL": {
-    "TITLE": "Football",
-    "DESCRIPTION": "Time to collect sweets"
+  "FOREST": {
+    "TITLE": "International Day of Forests",
+    "DESCRIPTION": ""
   },
-  "FRIENDS": {
-    "TITLE": "Friends",
-    "DESCRIPTION": "Time to collect sweets"
+  "FRIENDSHIP": {
+    "TITLE": "Friendship Day",
+    "DESCRIPTION": "Use this day to promote friendship in big and small ways. If we all try just a little the world will be a friendlier, more peaceful place"
+  },
+  "GIRLS": {
+    "TITLE": "International Day of the Girl Child",
+    "DESCRIPTION": ""
+  },
+  "GROUNDHOG": {
+    "TITLE": "Groundhog Day",
+    "DESCRIPTION": "Time to watch wonderful great Groundhog Day"
   },
   "HALLOWEEN": {
     "TITLE": "Halloween",
-    "DESCRIPTION": "Time to collect sweets"
+    "DESCRIPTION": "Bats, Dracula, Ghosts, Witches, Ghouls, Haunted Houses, Halloween Parties, Pumpkins, Skeletons, Scarecrows, Vampires and much more..."
+  },
+  "HARRY_POTTER": {
+    "TITLE": "Harry Potter Day",
+    "DESCRIPTION": "Harry Potter Day was created in memorial to the epic importance of the day that Harry Potter defeated the Dark Lord"
+  },
+  "HELLO": {
+    "TITLE": "World Hello Day",
+    "DESCRIPTION": "The theme of this day is 'Greet ten people for peace'. Simply, say hello to the people today."
   },
   "HUGS": {
-    "TITLE": "Hugs",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "International Hug Day",
+    "DESCRIPTION": "The idea of National Hug Day is to encourage everyone to hug family and friends more often. This is an opportunity to give and to receive. Give a hug, and you automatically receive one in return"
   },
-  "KIT": {
-    "TITLE": "Kit",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "LAUGHT": {
-    "TITLE": "Laught",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "MEN": {
-    "TITLE": "Men's day",
-    "DESCRIPTION": "Time to collect sweets"
+  "KISSING": {
+    "TITLE": "Kissing Day",
+    "DESCRIPTION": "The objective of this very special day, is to appreciate and enjoy a kiss. There's all sorts of kisses, for all sorts of reasons"
   },
   "MOUNTIN": {
-    "TITLE": "Mountin",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "International Mountain Day",
+    "DESCRIPTION": ""
   },
-  "MOVIE": {
-    "TITLE": "Movie",
-    "DESCRIPTION": "Time to collect sweets"
+  "MUSIC": {
+    "TITLE": "International Music Day",
+    "DESCRIPTION": ""
   },
-  "MUSEUM": {
-    "TITLE": "Museum",
-    "DESCRIPTION": "Time to collect sweets"
+  "OCEAN": {
+    "TITLE": "World Ocean Day",
+    "DESCRIPTION": "World Ocean Day is a special global day to celebrate our oceans, and to work towards maintaining and improving their health and cleanliness. As the health of our oceans goes, so goes the health of the entire planet."
   },
-  "NURSE": {
-    "TITLE": "Nurse",
-    "DESCRIPTION": "Time to collect sweets"
+  "PATRICK": {
+    "TITLE": "Saint Patrick's Day",
+    "DESCRIPTION": "It is truly a day of celebrating Irish history, ancestry, traditions and customs"
+  },
+  "PEACE": {
+    "TITLE": "World Peace Day",
+    "DESCRIPTION": "Holiday is dedicated to world peace"
+  },
+  "PENGUIN": {
+    "TITLE": "World Penguin Day",
+    "DESCRIPTION": "Congratulate all the penguins you meet on the way today. It is also popular today to tell a penguin joke or two"
+  },
+  "PETS": {
+    "TITLE": "World day Pets",
+    "DESCRIPTION": ""
   },
   "PI": {
-    "TITLE": "Pi",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "Pi Day",
+    "DESCRIPTION": "Why today? Because today is 3.14, the value of Pi. Besides today is also the birthday physicist Albert Einstein"
   },
-  "POLOTENCE": {
-    "TITLE": "Polotence",
-    "DESCRIPTION": "Time to collect sweets"
+  "PIRATE": {
+    "TITLE": "Talk Like a Pirate Day",
+    "DESCRIPTION": "It is parodic holiday when everyone in the world should talk like a pirate"
   },
   "ROCK_N_ROLL": {
-    "TITLE": "Rock'n'roll",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "Rock'N'Roll",
+    "DESCRIPTION": ""
   },
-  "SLEEPCAT": {
-    "TITLE": "Sleepcat",
-    "DESCRIPTION": "Time to collect sweets"
+  "SCIENCE": {
+    "TITLE": "World Science Day",
+    "DESCRIPTION": ""
   },
-  "SUN": {
-    "TITLE": "Sun",
-    "DESCRIPTION": "Time to collect sweets"
+  "SIBLINGS": {
+    "TITLE": "Siblings Day",
+    "DESCRIPTION": "The day to appreciate and cherish your brothers and sisters"
+  },
+  "STAR_WARS": {
+    "TITLE": "Star Wars Day",
+    "DESCRIPTION": "May the Force (Fourth) be with you"
+  },
+  "TEA": {
+    "TITLE": "International Tea Day",
+    "DESCRIPTION": ""
+  },
+  "THANK_YOU": {
+    "TITLE": "International Thank-You Day",
+    "DESCRIPTION": ""
+  },
+  "TIGER": {
+    "TITLE": "International Tiger Day",
+    "DESCRIPTION": "The day of the largest cat on the planet. It is arguably the most beautiful and majestic cat on the planet, too"
+  },
+  "TOURISM": {
+    "TITLE": " World Tourism Day",
+    "DESCRIPTION": "Perhaps tourism is one of the best ways to spend a vacation"
+  },
+  "VALENTIN": {
+    "TITLE": "Valentine's Day",
+    "DESCRIPTION": "It is a time to exchange cards or small gifts. Chocolates, flowers and romantic dinners are the big hits of this holiday"
+  },
+  "WHALE": {
+    "TITLE": "World Whale Day",
+    "DESCRIPTION": ""
+  },
+  "WIND": {
+    "TITLE": "Global Wind Day",
+    "DESCRIPTION": "Global Wind Day is intended to help us discover wind and its' power"
+  },
+  "YOGA": {
+    "TITLE": "International Yoga Day",
+    "DESCRIPTION": "Celebrating this day is easy... just put your yoga mat down on the floor, and begin your exercise"
   }
 }

@@ -2,7 +2,7 @@ import {Component, NgZone} from '@angular/core';
 import {LanguagePage} from "./launguage-page/language";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
-import {ModalController, NavController, NavParams} from "ionic-angular";
+import {ModalController, NavController} from "ionic-angular";
 import {Language} from "../../app/dictionary/language";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 import User from "../../app/domain/user";

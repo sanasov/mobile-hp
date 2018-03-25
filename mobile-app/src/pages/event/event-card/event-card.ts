@@ -9,12 +9,15 @@ import {HappyHolidays} from "../../../app/service/magic-number/HappyHolidays";
 import HappyHoliday from "../../../app/domain/happy-holiday";
 import {MagicNumberUtils} from "../../../app/service/magic-number/MagicNumberUtils";
 import {StorageRepositoryProvider} from "../../../app/service/storage-repository/storage-repository";
+import {NotificationService} from "../../../app/service/NotificationService";
+import {Storage} from "@ionic/storage";
 
 @Component({
     templateUrl: 'event-card.html'
 })
 export class EventCardPage implements OnDestroy {
     private event: HolidayEvent;
+    private allowNotifyCustomHolidays: boolean;
     private locale: string;
     private minNotifyDate: string = moment(new Date()).format('YYYY-MM-DD');
     private nearestHolidays: Array<HappyHoliday>;
@@ -23,10 +26,15 @@ export class EventCardPage implements OnDestroy {
     constructor(private navParams: NavParams,
                 private navCtrl: NavController,
                 private repository: StorageRepositoryProvider,
-                public translateService: TranslateService,
-                public modalCtrl: ModalController,
-                public viewCtrl: ViewController) {
+                private storage: Storage,
+                private translateService: TranslateService,
+                private notificationService: NotificationService,
+                private modalCtrl: ModalController,
+                private viewCtrl: ViewController) {
         this.event = navParams.get('event');
+        storage.get('notification').then(result => {
+            this.allowNotifyCustomHolidays = result ? result.eventHoliday : false;
+        });
         this.locale = translateService.currentLang;
         if (this.event.magicEvent) {
             this.calculateHolidays();
@@ -46,6 +54,10 @@ export class EventCardPage implements OnDestroy {
     ionViewDidEnter() {
         this.navBar.backButtonClick = () => {
             this.repository.setHolidayEvents(this.navParams.get('events'));
+            if (this.allowNotifyCustomHolidays) {
+                this.notificationService.clearAllByEventId(this.event.id);
+                this.notificationService.initEventNotifications(this.event);
+            }
             this.navCtrl.pop();
         };
 

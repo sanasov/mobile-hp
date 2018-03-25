@@ -7,7 +7,7 @@ import {CommonSettings} from "../CommonSettings";
 @Injectable()
 export class StorageRepositoryProvider {
 
-    constructor(private storage: Storage, private commonSettings: CommonSettings,) {
+    constructor(private storage: Storage, private commonSettings: CommonSettings) {
     }
 
     // getPhoneLanguage(): Promise<Language> {

@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {EventModalPage} from "./event-modal/event-modal";
 import {TranslateService} from "@ngx-translate/core";
@@ -7,11 +7,12 @@ import HolidayEvent from "../../app/domain/holiday-event";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 import {NotificationService} from "../../app/service/NotificationService";
 
+
 @Component({
     selector: 'page-event',
     templateUrl: 'event.html'
 })
-export class EventPage implements OnDestroy {
+export class EventPage {
     locale: string;
     eventSegment: string = "ALL";
     events: HolidayEvent[];
@@ -27,10 +28,6 @@ export class EventPage implements OnDestroy {
             this.events = result;
         });
         this.locale = translateService.currentLang;
-    }
-
-    ngOnDestroy() {
-        this.save();
     }
 
     addEvent() {

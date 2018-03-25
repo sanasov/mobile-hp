@@ -27,7 +27,7 @@ export class MyApp {
     eventsTitle: string = "Events";
     settingsTitle: string = "Settings";
 
-    firstOpening: boolean = false;
+    firstOpening: boolean = true;
     appReady: boolean = false;
     user: User = new User("", "", undefined);
     deltaHeight: number;
@@ -57,6 +57,12 @@ export class MyApp {
         return window.screen.availHeight - this.deltaHeight + "px";
     }
 
+
+    ngAfterViewInit() {
+
+
+    }
+
     initializeApp() {
         this.platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
@@ -70,9 +76,24 @@ export class MyApp {
             }
             this.defineLanguage();
             this.storageRepository.getUser().then((result: User) => this.commonSettings.user = result);
-
-            this.storage.get("firstOpening").then((result: boolean) => this.firstOpening = (result || true));
+            this.storage.get("firstOpening").then((result: boolean) => {
+                this.firstOpening = result == null ? true : result;
+                this.appReady = true;
+                setTimeout(() => this.prepareIntroductionSlides());
+            });
         });
+    }
+
+    private prepareIntroductionSlides() {
+        if (this.firstOpening) {
+            if (document.getElementById("introduction")) {
+                this.deltaHeight = window.screen.availHeight - document.getElementById("introduction").offsetHeight;
+            }
+            setTimeout(() => {
+                document.getElementById("introduction-name").focus()
+            }, 100);
+            this.slides.lockSwipes(true)
+        }
     }
 
     private defineLanguage() {
@@ -87,7 +108,6 @@ export class MyApp {
                 this.commonSettings.locale = deviceLanguage.toLocaleLowerCase();
                 this.translateService.use(deviceLanguage.toLocaleLowerCase());
                 this.initTabTitle();
-                this.appReady = true;
             });
         });
     }
@@ -117,15 +137,6 @@ export class MyApp {
         }
     }
 
-    ngAfterViewInit() {
-        if (this.firstOpening) {
-            this.deltaHeight = window.screen.availHeight - document.getElementById("introduction").offsetHeight;
-            setTimeout(() => {
-                document.getElementById("introduction-name").focus()
-            }, 100);
-            this.slides.lockSwipes(true)
-        }
-    }
 
     nextSlide() {
         document.getElementById("introduction-name").blur()

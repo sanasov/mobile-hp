@@ -1,5 +1,5 @@
 <ion-content>
-    <ion-slides id="introduction" *ngIf="firstOpening"
+    <ion-slides id="introduction" *ngIf="appReady&&firstOpening"
                 (ionSlideDidChange)="slideChanged()"
                 [style.height]="screenHeight()"
                 pager>

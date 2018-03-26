@@ -45,92 +45,164 @@
   "PASSED_YEAR": "Passed 1 year",
   "YEARS_HAVE_PASSED": "{{value}}  years have passed",
 
-  "ARCHAEOLOGIST": {
-    "TITLE": "День археолога",
-    "DESCRIPTION": "Самое время пересмотреть 'Индиана Джонс'"
+  "ACT_OF_KIDNESS": {
+    "TITLE": " День спонтанного проявления доброты",
+    "DESCRIPTION": "You know what to do...perform a few random acts of kindness. And we suggest you perform kind acts on as many people as you can"
+  },
+  "ANIMALS": {
+    "TITLE": "Всемирный день животных",
+    "DESCRIPTION": ""
+  },
+  "BEATLES": {
+    "TITLE": "День Beatles",
+    "DESCRIPTION": "All you need is love;)"
   },
   "BLONDE": {
-    "TITLE": "День блондинок",
-    "DESCRIPTION": "Сегодня блондинкам можно простить все, даже крашенным :)"
+    "TITLE": "Всемирный день блондинок",
+    "DESCRIPTION": ""
   },
-  "BOSS": {
-    "TITLE": "День босса",
-    "DESCRIPTION": "Самое время поднять своему начальнику настроение, особенно если он уже давно ждет от вас годовой отчет :)"
+  "CHEESE": {
+    "TITLE": "День сыра",
+    "DESCRIPTION": "Use today to enjoy any of the hundreds of varieties of cheese"
   },
   "CHOCOLATE": {
     "TITLE": "День шоколада",
-    "DESCRIPTION": "Только не лопните"
+    "DESCRIPTION": "Chocolate Day is the perfect opportunity to eat you favorite chocolates in ample portions. Do you really need another excuse to over indulge with your favorite food treat?"
   },
-  "CHRISTMAS": {
-    "TITLE": "Рождество",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "FAMILY": {
-    "TITLE": "День семьи",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "FOOTBALL": {
-    "TITLE": "Football",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "FRIENDS": {
-    "TITLE": "День дружбы",
-    "DESCRIPTION": "Хороший повод встретиься с друзьями"
-  },
-  "HALLOWEEN": {
-    "TITLE": "Halloween",
+  "CINEMA": {
+    "TITLE": "Международный день кино",
     "DESCRIPTION": ""
   },
+  "EARTH": {
+    "TITLE": "День Земли",
+    "DESCRIPTION": "International Earth Day was initiated to make earth inhabitants aware of their responsibility to care for the planet."
+  },
+  "ESKIMO_PIE": {
+    "TITLE": " День эскимо",
+    "DESCRIPTION": "Wonderful reason to buy this sweetness loved by everyone"
+  },
+  "FAMILY": {
+    "TITLE": "Международный день семьи",
+    "DESCRIPTION": ""
+  },
+  "FOREST": {
+    "TITLE": "День леса",
+    "DESCRIPTION": ""
+  },
+  "FRIENDSHIP": {
+    "TITLE": "День дружбы",
+    "DESCRIPTION": "Use this day to promote friendship in big and small ways. If we all try just a little the world will be a friendlier, more peaceful place"
+  },
+  "GIRLS": {
+    "TITLE": "Всемирный день девочек",
+    "DESCRIPTION": ""
+  },
+  "GROUNDHOG": {
+    "TITLE": "День сурка",
+    "DESCRIPTION": "Time to watch wonderful great Groundhog Day"
+  },
+  "HALLOWEEN": {
+    "TITLE": "Хэллоуин",
+    "DESCRIPTION": "На этом празднике вас ожидают: летучие мыши, дракула, призраки, ведьмы, дома с привидениями, тыквы, скелеты, вампиры и многое другое..."
+  },
+  "HARRY_POTTER": {
+    "TITLE": "День Гарри Поттера",
+    "DESCRIPTION": "День Гарри Поттера был создан в память о эпической важности того дня, когда Гарри Поттер победил Темного Лорда"
+  },
+  "HELLO": {
+    "TITLE": "Всемирный день приветствий",
+    "DESCRIPTION": "The theme of this day is 'Greet ten people for peace'. Simply, say hello to the people today."
+  },
   "HUGS": {
-    "TITLE": "День объятий",
-    "DESCRIPTION": "Самое время обнять родных и близких"
+    "TITLE": "Международный день объятий",
+    "DESCRIPTION": "The idea of National Hug Day is to encourage everyone to hug family and friends more often. This is an opportunity to give and to receive. Give a hug, and you automatically receive one in return"
   },
-  "KIT": {
-    "TITLE": "День кита",
-    "DESCRIPTION": "Обязательно поздравьте знакомого кита с праздником, им будет приятно"
-  },
-  "LAUGHT": {
-    "TITLE": "Laught",
-    "DESCRIPTION": "Time to collect sweets"
-  },
-  "MEN": {
-    "TITLE": "Men's day",
-    "DESCRIPTION": "Time to collect sweets"
+  "KISSING": {
+    "TITLE": "День поцелуя",
+    "DESCRIPTION": "The objective of this very special day, is to appreciate and enjoy a kiss. There's all sorts of kisses, for all sorts of reasons"
   },
   "MOUNTIN": {
-    "TITLE": "День гор",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "Международный день гор",
+    "DESCRIPTION": ""
   },
-  "MOVIE": {
-    "TITLE": "День кино",
-    "DESCRIPTION": "Всех с праздником и хороших вам фильмов"
+  "MUSIC": {
+    "TITLE": " Международный день музыки",
+    "DESCRIPTION": ""
   },
-  "MUSEUM": {
-    "TITLE": "Museum",
-    "DESCRIPTION": "Time to collect sweets"
+  "OCEAN": {
+    "TITLE": "День океана",
+    "DESCRIPTION": "World Ocean Day is a special global day to celebrate our oceans, and to work towards maintaining and improving their health and cleanliness. As the health of our oceans goes, so goes the health of the entire planet."
   },
-  "NURSE": {
-    "TITLE": "Nurse",
-    "DESCRIPTION": "Time to collect sweets"
+  "PATRICK": {
+    "TITLE": "День святого Патрика",
+    "DESCRIPTION": "Это день празднования ирландской истории, их традиций и обычаев"
+  },
+  "PEACE": {
+    "TITLE": "Международный день мира",
+    "DESCRIPTION": "Праздник посвящен миру во всем мире"
+  },
+  "PENGUIN": {
+    "TITLE": "Всемирный день пингвина",
+    "DESCRIPTION": "Congratulate all the penguins you meet on the way today. It is also popular today to tell a penguin joke or two"
+  },
+  "PETS": {
+    "TITLE": "Всемирный день домашних животных",
+    "DESCRIPTION": ""
   },
   "PI": {
-    "TITLE": "Pi",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День числа «Пи»",
+    "DESCRIPTION": "Почему именно в этот день? Сегодня 3.14 - значение числа «Пи». Также в этот день родился великий ученый Альберт Эйнштейн"
   },
-  "POLOTENCE": {
-    "TITLE": "Polotence",
-    "DESCRIPTION": "Time to collect sweets"
+  "PIRATE": {
+    "TITLE": "Международный день «Говори как пират»",
+    "DESCRIPTION": " Забавный праздник пародии, в течение которого нужно разговаривать как пират"
   },
   "ROCK_N_ROLL": {
-    "TITLE": "Rock_n_roll",
-    "DESCRIPTION": "Time to collect sweets"
+    "TITLE": "День рок-н-ролла",
+    "DESCRIPTION": ""
   },
-  "SLEEPCAT": {
-    "TITLE": "Сегодня день сна и кота",
-    "DESCRIPTION": "Хороший аргумент на случай, если вы опаздываете"
+  "SCIENCE": {
+    "TITLE": "Всемирный день науки",
+    "DESCRIPTION": ""
   },
-  "SUN": {
-    "TITLE": "День солнца",
-    "DESCRIPTION": "Возможно оно сейчас спряталось за тучи. Но в этот день солнцу можно все"
+  "SIBLINGS": {
+    "TITLE": "День братьев и сестер",
+    "DESCRIPTION": "The day to appreciate and cherish your brothers and sisters"
+  },
+  "STAR_WARS": {
+    "TITLE": " День «Звёздных войн»",
+    "DESCRIPTION": "May the Force (Fourth) be with you"
+  },
+  "TEA": {
+    "TITLE": "Международный день чая",
+    "DESCRIPTION": ""
+  },
+  "THANK_YOU": {
+    "TITLE": "Международный день «спасибо»",
+    "DESCRIPTION": ""
+  },
+  "TIGER": {
+    "TITLE": "День Тигра",
+    "DESCRIPTION": "The day of the largest cat on the planet. It is arguably the most beautiful and majestic cat on the planet, too"
+  },
+  "TOURISM": {
+    "TITLE": "Международный день туризма",
+    "DESCRIPTION": "Perhaps tourism is one of the best ways to spend a vacation"
+  },
+  "VALENTIN": {
+    "TITLE": "День святого Валентина",
+    "DESCRIPTION": "It is a time to exchange cards or small gifts. Chocolates, flowers and romantic dinners are the big hits of this holiday"
+  },
+  "WHALE": {
+    "TITLE": "Всемирный день кита",
+    "DESCRIPTION": ""
+  },
+  "WIND": {
+    "TITLE": "Всемирный день ветра",
+    "DESCRIPTION": "Global Wind Day is intended to help us discover wind and its' power"
+  },
+  "YOGA": {
+    "TITLE": "Всемирный день йоги",
+    "DESCRIPTION": "Celebrating this day is easy... just put your yoga mat down on the floor, and begin your exercise"
   }
 }

@@ -55,7 +55,7 @@
   },
   "BEATLES": {
     "TITLE": "День Beatles",
-    "DESCRIPTION": "All you need is love;)"
+    "DESCRIPTION": "All you need is love ;)"
   },
   "BLONDE": {
     "TITLE": "Всемирный день блондинок",
@@ -79,7 +79,7 @@
   },
   "ESKIMO_PIE": {
     "TITLE": " День эскимо",
-    "DESCRIPTION": "Wonderful reason to buy this sweetness loved by everyone"
+    "DESCRIPTION": "Отличный повод попробовать в этот разные виды эскимо"
   },
   "FAMILY": {
     "TITLE": "Международный день семьи",
@@ -99,7 +99,7 @@
   },
   "GROUNDHOG": {
     "TITLE": "День сурка",
-    "DESCRIPTION": "Time to watch wonderful great Groundhog Day"
+    "DESCRIPTION": "Самое время пересмотреть всеми любимый фильм «День сурка»"
   },
   "HALLOWEEN": {
     "TITLE": "Хэллоуин",
@@ -119,7 +119,7 @@
   },
   "KISSING": {
     "TITLE": "День поцелуя",
-    "DESCRIPTION": "The objective of this very special day, is to appreciate and enjoy a kiss. There's all sorts of kisses, for all sorts of reasons"
+    "DESCRIPTION": "Спасибо Великобритании за изобретение этого волшебного праздника!"
   },
   "MOUNTIN": {
     "TITLE": "Международный день гор",
@@ -143,7 +143,7 @@
   },
   "PENGUIN": {
     "TITLE": "Всемирный день пингвина",
-    "DESCRIPTION": "Congratulate all the penguins you meet on the way today. It is also popular today to tell a penguin joke or two"
+    "DESCRIPTION": "Обязательно поздравьте всех знакомых пингвинов с праздником ;)"
   },
   "PETS": {
     "TITLE": "Всемирный день домашних животных",
@@ -167,11 +167,11 @@
   },
   "SIBLINGS": {
     "TITLE": "День братьев и сестер",
-    "DESCRIPTION": "The day to appreciate and cherish your brothers and sisters"
+    "DESCRIPTION": "День посвящен созданию теплых отношений между братьями и сестрами. Любите своих родных)"
   },
   "STAR_WARS": {
     "TITLE": " День «Звёздных войн»",
-    "DESCRIPTION": "May the Force (Fourth) be with you"
+    "DESCRIPTION": "Не случайно празднуется 4 мая: «May the Force (Fourth) be with you»"
   },
   "TEA": {
     "TITLE": "Международный день чая",
@@ -183,15 +183,15 @@
   },
   "TIGER": {
     "TITLE": "День Тигра",
-    "DESCRIPTION": "The day of the largest cat on the planet. It is arguably the most beautiful and majestic cat on the planet, too"
+    "DESCRIPTION": "Этот день самой большой величественной и красивой кошки на планете"
   },
   "TOURISM": {
     "TITLE": "Международный день туризма",
-    "DESCRIPTION": "Perhaps tourism is one of the best ways to spend a vacation"
+    "DESCRIPTION": "Пожалуй туризм - это лучший способ провести"
   },
   "VALENTIN": {
     "TITLE": "День святого Валентина",
-    "DESCRIPTION": "It is a time to exchange cards or small gifts. Chocolates, flowers and romantic dinners are the big hits of this holiday"
+    "DESCRIPTION": "В этот прекрасный праздник принято дарить любимым и дорогим людям подарки, цветы, конфеты, воздушные шарики и любовные открытки со стихами"
   },
   "WHALE": {
     "TITLE": "Всемирный день кита",
@@ -199,10 +199,10 @@
   },
   "WIND": {
     "TITLE": "Всемирный день ветра",
-    "DESCRIPTION": "Global Wind Day is intended to help us discover wind and its' power"
+    "DESCRIPTION": "Всемирный день ветра предназначен для осознания важности ветра как источник энергии"
   },
   "YOGA": {
     "TITLE": "Всемирный день йоги",
-    "DESCRIPTION": "Celebrating this day is easy... just put your yoga mat down on the floor, and begin your exercise"
+    "DESCRIPTION": "Отметить день йоги лекго... постелите коврик и начните заниматься ;)"
   }
 }

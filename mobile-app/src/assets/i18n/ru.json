@@ -47,7 +47,7 @@
 
   "ACT_OF_KIDNESS": {
     "TITLE": " День спонтанного проявления доброты",
-    "DESCRIPTION": "You know what to do...perform a few random acts of kindness. And we suggest you perform kind acts on as many people as you can"
+    "DESCRIPTION": "Полагаю, вы знаете, что нужно делать. Делайте как можно больше добрых дел!"
   },
   "ANIMALS": {
     "TITLE": "Всемирный день животных",
@@ -63,11 +63,11 @@
   },
   "CHEESE": {
     "TITLE": "День сыра",
-    "DESCRIPTION": "Use today to enjoy any of the hundreds of varieties of cheese"
+    "DESCRIPTION": "Самое время открыть для себя новый необчный сорт сыра"
   },
   "CHOCOLATE": {
     "TITLE": "День шоколада",
-    "DESCRIPTION": "Chocolate Day is the perfect opportunity to eat you favorite chocolates in ample portions. Do you really need another excuse to over indulge with your favorite food treat?"
+    "DESCRIPTION": "Шоколадный день - потрясающая возможность съесть любимые конфеты в больших количествах! Какие еще оправдания нужны, чтобы побаловать себя любимыми сладостями?)"
   },
   "CINEMA": {
     "TITLE": "Международный день кино",
@@ -75,7 +75,7 @@
   },
   "EARTH": {
     "TITLE": "День Земли",
-    "DESCRIPTION": "International Earth Day was initiated to make earth inhabitants aware of their responsibility to care for the planet."
+    "DESCRIPTION": "День Земли создан для того, чтобы люди осознали как важно любить и беречь свою планету"
   },
   "ESKIMO_PIE": {
     "TITLE": " День эскимо",
@@ -91,7 +91,7 @@
   },
   "FRIENDSHIP": {
     "TITLE": "День дружбы",
-    "DESCRIPTION": "Use this day to promote friendship in big and small ways. If we all try just a little the world will be a friendlier, more peaceful place"
+    "DESCRIPTION": "Будьте дружелюбными, друзья!)"
   },
   "GIRLS": {
     "TITLE": "Всемирный день девочек",
@@ -111,11 +111,11 @@
   },
   "HELLO": {
     "TITLE": "Всемирный день приветствий",
-    "DESCRIPTION": "The theme of this day is 'Greet ten people for peace'. Simply, say hello to the people today."
+    "DESCRIPTION": "Тема этого дня: «Приветствую 10 случайных человек». Просто скажите людям привет)"
   },
   "HUGS": {
     "TITLE": "Международный день объятий",
-    "DESCRIPTION": "The idea of National Hug Day is to encourage everyone to hug family and friends more often. This is an opportunity to give and to receive. Give a hug, and you automatically receive one in return"
+    "DESCRIPTION": "Согласно традиции праздника, заключить в дружеские объятия можно даже незнакомых людей ;)"
   },
   "KISSING": {
     "TITLE": "День поцелуя",
@@ -131,7 +131,7 @@
   },
   "OCEAN": {
     "TITLE": "День океана",
-    "DESCRIPTION": "World Ocean Day is a special global day to celebrate our oceans, and to work towards maintaining and improving their health and cleanliness. As the health of our oceans goes, so goes the health of the entire planet."
+    "DESCRIPTION": "Цель праздника - показать важность сохранения неповторимой океанской флоры и фауны"
   },
   "PATRICK": {
     "TITLE": "День святого Патрика",

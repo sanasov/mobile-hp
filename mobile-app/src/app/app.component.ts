@@ -158,4 +158,10 @@ export class MyApp {
             this.slideChanged();
         }, 800);
     }
+
+    keyUpIntroductionName($event) {
+        if ($event.keyCode === 13 && this.user.firstName.trim().length > 0) {
+            this.nextSlide();
+        }
+    }
 }

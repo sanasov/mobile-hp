@@ -7,7 +7,7 @@
             <ion-list>
                 <input id="introduction-name"
                           placeholder="Hello! What's your name?"
-                          (keyup)="$event.key === 'Enter' && user.firstName.trim().length>0 && nextSlide($event)"
+                          (keyup)="keyUpIntroductionName($event)"
                           [style.width]="user.firstName.length === 0 ? '295px' : (user.firstName.length + 1) * 16 + 'px'"
                           style="border:none; max-width:300px; font-size: 26px"
                           [(ngModel)]="user.firstName"/>

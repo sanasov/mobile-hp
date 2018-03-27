@@ -75,6 +75,8 @@ export class NotificationService {
             return;
         }
         this.localNotifications.getAllIds().then((ids) => {
+            console.log(JSON.stringify("eventId: " + eventId));
+            console.log(JSON.stringify(ids));
             ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.cancel(id));
             ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.clear(id));
         });

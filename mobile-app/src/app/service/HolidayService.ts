@@ -29,7 +29,7 @@ export class HolidayService {
 
     public birthdayHolidays(nextYearsAmount: number): HappyHoliday[] {
         let holidays = [];
-        const startYear = this.hEvent.date <= new Date() ? new Date().getFullYear() : this.hEvent.date.getFullYear();
+        const startYear = this.birthday <= new Date() ? new Date().getFullYear() : this.birthday.getFullYear();
         for (let year = startYear; year <= startYear + nextYearsAmount; year++) {
             holidays = _.unique(
                 holidays.concat(new HappyHolidays([], this.birthday, year).getBirthdayHolidays()),
@@ -37,6 +37,6 @@ export class HolidayService {
                 (hp) => hp.title + hp.description
             );
         }
-        return holidays.filter(h => h.date >= new Date() && h.date >= this.hEvent.date);
+        return holidays.filter(h => h.date >= new Date() && h.date >= this.birthday);
     }
 }

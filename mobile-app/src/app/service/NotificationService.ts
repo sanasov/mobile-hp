@@ -38,8 +38,6 @@ export class NotificationService {
         if (!window['cordova']) {
             return;
         }
-        console.log(JSON.stringify(this.localNotifications));
-        console.log(JSON.stringify(this.localNotifications.getAllIds()));
         const birthdayNotifications = new HolidayService(event, null)
             .happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
             .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1));
@@ -69,6 +67,7 @@ export class NotificationService {
         this.localNotifications.getAllIds().then((ids) => {
             ids.filter((id) => id < 0).forEach((id) => this.localNotifications.clear(id));
         });
+
     }
 
     // assume that there is no more than 500 holidays belongs to only event
@@ -76,11 +75,10 @@ export class NotificationService {
         if (!window['cordova']) {
             return;
         }
-        this.localNotifications.getAllIds().then((ids) => {
+        cordova.plugins.notification.local.getIds((ids) => {
             console.log(JSON.stringify("eventId: " + eventId));
             console.log(JSON.stringify(ids));
-            ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.cancel(id));
-            ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => this.localNotifications.clear(id));
+            ids.filter((id) => id - 1000 * eventId < 1000).forEach((id) => cordova.plugins.notification.local.clear(id));
         });
     }
 
@@ -88,9 +86,8 @@ export class NotificationService {
         if (!window['cordova']) {
             return;
         }
-        this.localNotifications.getAllIds().then((ids) => {
-            ids.filter((id) => id > 0).forEach((id) => this.localNotifications.cancel(id));
-            ids.filter((id) => id > 0).forEach((id) => this.localNotifications.clear(id));
+        cordova.plugins.notification.local.getIds((ids) => {
+            ids.filter((id) => id > 0).forEach((id) => cordova.plugins.notification.local.clear(id));
         });
     }
 

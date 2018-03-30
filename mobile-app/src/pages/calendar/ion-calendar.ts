@@ -130,13 +130,16 @@ export class CalendarPage {
     private generateCalendarEvents(year: number): void {
         let happyHolidays = new HappyHolidays(this.hEvents, this.commonSettings.user.birth, year);
         this.customHolidays = happyHolidays.all();
-        this.events = happyHolidays.toCalendarEvents()
-            .concat(WorldHoliday.toCalendarEvents(year));
+        this.events = happyHolidays.toCalendarEvents();
+        if (year >= 2015) {
+            this.events = this.events.concat(WorldHoliday.toCalendarEvents(year));
+        }
     }
 
     private selectYear() {
         this.currentDate.setFullYear(moment(this.yearPickerDate.substring(0, 10), CalendarPage.dateFormat).year());
         this.toDate(new Date(this.currentDate));
+        this.generateCalendarEvents(this.currentDate.getFullYear());
     }
 
     toDate(date) {

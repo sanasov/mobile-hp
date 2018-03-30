@@ -20,7 +20,7 @@
                 [headerTemplate]="customHeaderTemplate">
         </mwl-calendar-month-view>
     <ion-slides style="height: calc(100% - 85px);"
-                (ionSlideWillChange)="slideWillChange()"
+                (ionSlideWillChange)="slideWillChange($event)"
                 (ionSlideNextStart)="slideNextStart()"
                 (ionSlidePrevStart)="slidePrevStart()"
                 (ionSlideNextEnd)="slideNextEnd()"

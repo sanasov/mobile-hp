@@ -52,11 +52,18 @@ export class CalendarPage {
         });
     }
 
-    private slideWillChange() {
-        if (this.currentDate.getFullYear() === this.currentYear) {
+    // created for only one reason: generate all holidays for new (prev or next) year
+    private slideWillChange($event) {
+        let currentYearAfterSlide;
+        if ($event.swipeDirection === "next") {
+            currentYearAfterSlide = this.withMonths(this.currentDate, this.currentDate.getMonth() + 1).getFullYear();
+        } else {
+            currentYearAfterSlide = this.withMonths(this.currentDate, this.currentDate.getMonth() - 1).getFullYear();
+        }
+        if (currentYearAfterSlide === this.currentYear) {
             return;
         }
-        this.currentYear = this.currentDate.getFullYear();
+        this.currentYear = currentYearAfterSlide;
         this.yearPickerDate = null;
         this.generateCalendarEvents(this.currentYear);
     }

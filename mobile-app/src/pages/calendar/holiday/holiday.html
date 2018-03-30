@@ -29,7 +29,7 @@
 
             <div *ngIf="holiday.priority>= 3" class="holiday-card">
                 <div class="holiday-card-title"> {{holiday.title}}</div>
-                <img class="holiday-img" [src]="holiday.imgSrc">
+                <img class="holiday-img" [style.max-height]="imgMaxHeight + 'px'" [src]="holiday.imgSrc">
                 <div class="holiday-card-description">
                     <div>{{holiday.description}}</div>
                 </div>

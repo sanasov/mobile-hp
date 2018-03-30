@@ -16,6 +16,7 @@ export class HolidayPage {
     private locale: string;
     private wish: string;
     private holidays: HappyHoliday[] = [];
+    private imgMaxHeight: number;
 
     constructor(public platform: Platform,
                 private navParams: NavParams,
@@ -25,6 +26,7 @@ export class HolidayPage {
         console.log(JSON.stringify(this.holidays));
         this.locale = translateService.currentLang;
         this.initWish();
+        this.imgMaxHeight = 0.55 * window.screen.availHeight;
     }
 
     getHolidays(): HappyHoliday[] {

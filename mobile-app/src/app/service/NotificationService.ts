@@ -38,10 +38,10 @@ export class NotificationService {
         if (!window['cordova']) {
             return;
         }
-        const birthdayNotifications = new HolidayService(event, null)
+        const eventLocalNotifications = new HolidayService(event, null)
             .happyHolidays(NotificationService.NEXT_YEARS_AMOUNT)
             .map((hh, i) => hh.toILocalNotification(NotificationService.EVENT_ID_STEP * hh.eventId + i + 1));
-        this.localNotifications.schedule(birthdayNotifications);
+        this.localNotifications.schedule(eventLocalNotifications);
         const eventNotifyAtNotification = event.toILocalNotification();
         if (eventNotifyAtNotification) {
             this.localNotifications.schedule(eventNotifyAtNotification);

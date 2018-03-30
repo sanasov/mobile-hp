@@ -23,6 +23,7 @@ export class HappyHolidays {
 
     }
 
+    public static BIRTHDAY_EVENT_ID: number = 0;
     private eventHolidays: HappyHoliday[];
     private birthdayHolidays: HappyHoliday[];
 
@@ -67,7 +68,7 @@ export class HappyHolidays {
     private birthDayHolidays(): HappyHoliday[] {
         return _.uniq(
             _.flatten(
-                this.magicNumbers(new HolidayEvent(0, "", this.birthday, this.birthday, true))
+                this.magicNumbers(new HolidayEvent(HappyHolidays.BIRTHDAY_EVENT_ID, "", this.birthday, this.birthday, true))
                     .map(magicNumber => magicNumber.birthdayHolidays(this.birthday, this.year)),
                 true),
             false,

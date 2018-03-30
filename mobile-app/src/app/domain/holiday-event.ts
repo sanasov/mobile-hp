@@ -49,7 +49,7 @@ export default class HolidayEvent {
     get notifyDateString(): string {
         if (!this._notifyDate) {
             this._notifyDate = this._date;
-            this._notifyDate.setHours(9);
+            this._notifyDate.setHours(new Date().getHours() + 1);
             this._notifyDate.setMinutes(0);
             if (this.isPast()) {
                 this._notifyDate.setFullYear(new Date().getFullYear());

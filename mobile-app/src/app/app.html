@@ -6,20 +6,20 @@
         <ion-slide>
             <ion-list>
                 <input id="introduction-name"
-                          placeholder="Hello! What's your name?"
-                          (keyup)="keyUpIntroductionName($event)"
-                          [style.width]="user.firstName.length === 0 ? '295px' : (user.firstName.length + 1) * 16 + 'px'"
-                          style="border:none; max-width:300px; font-size: 26px"
-                          [(ngModel)]="user.firstName"/>
+                       placeholder="'HELLO_WHATS_YOUR_NAME' | translate"
+                       (keyup)="keyUpIntroductionName($event)"
+                       [style.width]="user.firstName.length === 0 ? '295px' : (user.firstName.length + 1) * 16 + 'px'"
+                       style="border:none; max-width:300px; font-size: 26px"
+                       [(ngModel)]="user.firstName"/>
             </ion-list>
         </ion-slide>
         <ion-slide>
 
             <ion-list>
-                <h1>When you were born?</h1>
+                <h1>{{'WHEN_YOU_WERE_BORN' | translate}}</h1>
                 <show-fade [turnOn]="slides && slides.getActiveIndex() === 1 && !user.birthString" [slow]="true"
                            style="width:100%">
-                    <p style="color:grey">I need to know even more than your name :)</p>
+                    <p style="color:grey">{{'I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME' | translate}} :)</p>
                 </show-fade>
                 <ion-datetime
                         align-items-center
@@ -31,13 +31,13 @@
             </ion-list>
         </ion-slide>
         <ion-slide>
-            <h1>Add events and i help you to discover your new holidays</h1>
+            <h1>{{'ADD_EVENTS_AND_I_HELP_YOU_TO_DISCOVER_YOUR_NEW_HOLIDAYS' | translate}}</h1>
         </ion-slide>
     </ion-slides>
 
     <ion-tabs #mainTabs class="tabs-basic" *ngIf="appReady&&!firstOpening">
-        <ion-tab tabIcon="ios-calendar" tabTitle = {{calendarTitle}} [root]="ionCalendarPage"></ion-tab>
-        <ion-tab tabIcon="ios-list-box" tabTitle = {{eventsTitle}} [root]="eventPage"></ion-tab>
-        <ion-tab tabIcon="ios-settings" tabTitle = {{settingsTitle}} [root]="settingsPage"></ion-tab>
+        <ion-tab tabIcon="ios-calendar" tabTitle={{calendarTitle}} [root]="ionCalendarPage"></ion-tab>
+        <ion-tab tabIcon="ios-list-box" tabTitle={{eventsTitle}} [root]="eventPage"></ion-tab>
+        <ion-tab tabIcon="ios-settings" tabTitle={{settingsTitle}} [root]="settingsPage"></ion-tab>
     </ion-tabs>
 </ion-content>

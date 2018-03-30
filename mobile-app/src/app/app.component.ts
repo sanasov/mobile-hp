@@ -133,7 +133,7 @@ export class MyApp {
                 this.firstOpening = false;
                 this.storage.set("firstOpening", this.firstOpening);
                 this.storageRepository.setUser(this.user);
-            }, 2000)
+            }, 3500)
         }
     }
 

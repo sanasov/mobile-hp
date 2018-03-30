@@ -46,6 +46,11 @@
 
   "HAPPY_BIRTHDAY" : "Happy Birthday!!!",
 
+  "HELLO_WHATS_YOUR_NAME": "Hello! What's your name?",
+  "WHEN_YOU_WERE_BORN": "When you were born?",
+  "I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME": "I need to know even more than your name",
+  "ADD_EVENTS_AND_I_HELP_YOU_TO_DISCOVER_YOUR_NEW_HOLIDAYS": "Add events and i help you to discover your new holidays",
+
   "ACT_OF_KIDNESS": {
     "TITLE": "Random Acts of Kindness Day",
     "DESCRIPTION": "You know what to do...perform a few random acts of kindness. And we suggest you perform kind acts on as many people as you can"

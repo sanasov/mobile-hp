@@ -26,7 +26,7 @@ export class HolidayPage {
         console.log(JSON.stringify(this.holidays));
         this.locale = translateService.currentLang;
         this.initWish();
-        this.imgMaxHeight = 0.55 * window.screen.availHeight;
+        this.imgMaxHeight = 0.5 * window.screen.availHeight;
     }
 
     getHolidays(): HappyHoliday[] {

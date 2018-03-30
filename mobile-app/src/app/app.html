@@ -6,7 +6,7 @@
         <ion-slide>
             <ion-list>
                 <input id="introduction-name"
-                       placeholder="'HELLO_WHATS_YOUR_NAME' | translate"
+                       placeholder="{{'HELLO_WHATS_YOUR_NAME' | translate}}"
                        (keyup)="keyUpIntroductionName($event)"
                        [style.width]="user.firstName.length === 0 ? '295px' : (user.firstName.length + 1) * 16 + 'px'"
                        style="border:none; max-width:300px; font-size: 26px"
@@ -19,7 +19,7 @@
                 <h1>{{'WHEN_YOU_WERE_BORN' | translate}}</h1>
                 <show-fade [turnOn]="slides && slides.getActiveIndex() === 1 && !user.birthString" [slow]="true"
                            style="width:100%">
-                    <p style="color:grey">{{'I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME' | translate}} :)</p>
+                    <p style="color:grey; padding: 0 4px;">{{'I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME' | translate}} :)</p>
                 </show-fade>
                 <ion-datetime
                         align-items-center

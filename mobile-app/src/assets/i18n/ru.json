@@ -45,10 +45,10 @@
   "PASSED_YEAR": "Passed 1 year",
   "YEARS_HAVE_PASSED": "{{value}}  years have passed",
 
-  "HELLO_WHATS_YOUR_NAME": "Здравствуйте! Как Вас зовут?",
+  "HELLO_WHATS_YOUR_NAME": "Привет! Как Вас зовут?",
   "WHEN_YOU_WERE_BORN": "Когда Вы родились?",
-  "I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME": "По дате рождения я составлю крайне необычные и интересные праздники :)",
-  "ADD_EVENTS_AND_I_HELP_YOU_TO_DISCOVER_YOUR_NEW_HOLIDAYS": "Чем больше событий Вы добавите, тем больше праздников Вас ожидает",
+  "I_NEED_TO_KNOW_EVEN_MORE_THAN_YOUR_NAME": "По дате рождения я составлю крайне необычные и интересные праздники",
+  "ADD_EVENTS_AND_I_HELP_YOU_TO_DISCOVER_YOUR_NEW_HOLIDAYS": "Чем больше событий Вы добавите, тем больше праздников я найду для Вас",
 
   "ACT_OF_KIDNESS": {
     "TITLE": " День спонтанного проявления доброты",

@@ -25,11 +25,14 @@ export default class User {
     }
 
     get birth(): Date {
+        if (!this._birth || isNaN(this._birth.getTime())) {
+            return new Date();
+        }
         return new Date(this._birth);
     }
 
     get birthString(): string {
-        if (!this._birth) {
+        if (!this.birth) {
             return "";
         }
         return moment(this._birth).format('YYYY-MM-DD');

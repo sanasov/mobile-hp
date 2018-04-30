@@ -4,7 +4,7 @@ export class MagicNumberUtils {
 
     public static diffDays(date1: Date, date2: Date) {
         var daysDiff = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
-        if (moment(date1, "YYYY-MM-DD").isSame(moment(date2, "YYYY-MM-DD"))) {
+        if (moment(date1, "YYYY-MM-DD").isSame(moment(date2, "YYYY-MM-DD"), 'day')) {
             return 0;
         }
         if (daysDiff > 0) {
@@ -41,7 +41,7 @@ export class MagicNumberUtils {
 
     public static calcDateByDays(eventDate: Date, daysAmount: number): Date {
         let result = new Date(eventDate);
-            result.setDate(eventDate.getDate() + daysAmount);
+        result.setDate(eventDate.getDate() + daysAmount);
         // if (eventDate < new Date) {
         // } else {
         //     result.setDate(eventDate.getDate() - daysAmount);

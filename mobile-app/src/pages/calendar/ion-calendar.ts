@@ -10,6 +10,7 @@ import {HappyHolidays} from "../../app/service/magic-number/HappyHolidays";
 import {StorageRepositoryProvider} from "../../app/service/storage-repository/storage-repository";
 import HolidayEvent from "../../app/domain/holiday-event";
 import HappyHoliday from "../../app/domain/happy-holiday";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
     selector: 'page-ion-calendar',
@@ -39,6 +40,7 @@ export class CalendarPage {
 
     constructor(private repository: StorageRepositoryProvider,
                 private navCtrl: NavController,
+                private translateService: TranslateService,
                 private commonSettings: CommonSettings) {
         this.locale = commonSettings.locale;
         this.weekStartsOn = commonSettings.weekStartsOn();
@@ -139,7 +141,7 @@ export class CalendarPage {
         this.customHolidays = happyHolidays.all();
         this.events = happyHolidays.toCalendarEvents();
         if (year >= 2015) {
-            this.events = this.events.concat(WorldHoliday.toCalendarEvents(year));
+            this.events = this.events.concat(WorldHoliday.toCalendarEvents(year, this.translateService));
         }
     }
 

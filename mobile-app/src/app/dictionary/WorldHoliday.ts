@@ -87,12 +87,12 @@ export class WorldHoliday {
         return new Date(year, +dayMonth.split(".")[1] - 1, +dayMonth.split(".")[0])
     }
 
-    static toCalendarEvents(year: number): Array<CalendarEvent> {
+    static toCalendarEvents(year: number, translateService: TranslateService): Array<CalendarEvent> {
         return WorldHoliday.holidays.map(holiday => {
             return {
                 start: WorldHoliday.toDate(holiday.date, year),
                 end: WorldHoliday.toDate(holiday.date, year),
-                title: holiday.id,
+                title: translateService.instant(holiday.id)['TITLE'],
                 color: holidayColors.yellow,
                 actions: null
             }

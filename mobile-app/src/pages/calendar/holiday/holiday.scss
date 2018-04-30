@@ -16,17 +16,33 @@
     }
   }
 
+  @media only screen and (min-width: 1200px) {
+    .card-title {
+      font-size: 3vw;
+    }
+    .card-subtitle {
+      font-size: 3vw;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .card-title {
+      font-size: 6vw;
+    }
+    .card-subtitle {
+      font-size: 6vw;
+    }
+  }
+
   .card-title {
     position: absolute;
     top: 25%;
-    font-size: 6vw;
     width: 98%;
     font-weight: bold;
     color: #fff;
   }
 
   .card-subtitle {
-    font-size: 6vw;
     font-weight: 600;
     position: absolute;
     top: 65%;
